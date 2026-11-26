@@ -278,7 +278,7 @@ input[type=number],input[type=text],input[type=email],select,textarea{width:100%
 .ba-stats div{background:#0b1511;border:1px solid var(--line);border-radius:14px;padding:8px 12px;text-align:center;min-width:82px}
 .ba-stats b{display:block;font-size:26px;line-height:1.1;color:var(--accent);font-variant-numeric:tabular-nums;transition:color .3s}
 .ba-stats b.good{color:var(--green)}.ba-stats span{font-size:11.5px;color:var(--soft)}
-.ba-stage{position:relative;margin-top:18px;border-radius:16px;overflow:hidden;border:1px solid var(--line);background:#0b1511;aspect-ratio:8/3;touch-action:pan-y}
+.ba-stage{position:relative;margin-top:18px;border-radius:16px;overflow:hidden;border:1px solid var(--line);background:#0b1511;aspect-ratio:8/3}
 .ba-layer{position:absolute;inset:0}.ba-layer svg{width:100%;height:100%;display:block}
 .ba-before{background:repeating-linear-gradient(135deg,#1a1512 0 14px,#16120f 14px 28px)}
 .ba-after{background:radial-gradient(500px 200px at 40% 50%,#14301f,#0b1511);clip-path:inset(0 calc(100% - var(--cut,12%)) 0 0)}
@@ -297,28 +297,7 @@ input[type=number],input[type=text],input[type=email],select,textarea{width:100%
 .ba-stage input:focus-visible~.ba-handle span,.ba-stage:has(input:focus-visible) .ba-handle span{outline:3px solid var(--accent);outline-offset:3px}
 @media(max-width:700px){.ba-stats{grid-template-columns:repeat(2,minmax(0,1fr));width:100%}.ba-stage{aspect-ratio:8/4.4}.ba-layer svg{height:100%}.n text{font-size:16px}}
 
-/* ---------- 5. buddy ---------- */
-.buddy{position:fixed;left:max(16px,env(safe-area-inset-left));bottom:max(16px,env(safe-area-inset-bottom));z-index:61;display:flex;align-items:flex-end;gap:10px;pointer-events:none;opacity:0;transform:translateY(20px);transition:opacity .4s,transform .4s}
-.buddy.show{opacity:1;transform:none}
-.buddy-btn{pointer-events:auto;width:72px;height:72px;padding:0;border:0;border-radius:50%;background:none;cursor:pointer;filter:drop-shadow(0 10px 20px rgba(0,0,0,.45));transition:transform .25s}
-.buddy-btn:hover{transform:translateY(-3px) rotate(-4deg)}.buddy-btn:focus-visible{outline:3px solid var(--accent);outline-offset:3px;border-radius:50%}
-.buddy-btn svg{width:100%;height:100%}
-.wave{transform-origin:92px 104px}
-.buddy.hello .wave{animation:wave .5s ease-in-out 4 alternate}@keyframes wave{to{transform:rotate(-18deg)}}
-.bubble{order:2;pointer-events:auto;position:relative;max-width:240px;background:#f4f7f5;color:#0b1511;border-radius:16px 16px 16px 4px;padding:10px 30px 10px 14px;font-size:14px;font-weight:600;line-height:1.4;box-shadow:0 10px 30px rgba(0,0,0,.4);opacity:0;transform:translateY(8px) scale(.96);transform-origin:bottom left;transition:opacity .3s,transform .3s;margin-bottom:40px}
-.bubble.show{opacity:1;transform:none}
-.bubble a{color:#1a6b45;font-weight:800}
-.bubble button{position:absolute;top:4px;right:6px;border:0;background:none;font-size:18px;line-height:1;cursor:pointer;color:#44564e;padding:2px}
-.buddy-btn{order:1}
-@media(max-width:700px){.buddy-btn{width:58px;height:58px}.bubble{max-width:200px;font-size:13px;margin-bottom:30px}}
-@media print{.buddy{display:none}}
 
-.vid video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
-.vid .cap{position:absolute;left:50%;bottom:44px;transform:translateX(-50%);max-width:88%;padding:6px 12px;border-radius:10px;background:rgba(0,0,0,.62);color:#fff;font-weight:700;font-size:clamp(13px,1.6vw,17px);line-height:1.35;text-align:center;opacity:0;transition:opacity .25s;pointer-events:none}
-.vid .cap.on{opacity:1}
-.vid .snd{position:absolute;left:12px;bottom:12px;display:inline-flex;align-items:center;gap:8px;padding:8px 14px;border-radius:999px;border:0;background:var(--green);color:#08130e;font:700 14px "Plus Jakarta Sans",sans-serif;cursor:pointer;box-shadow:0 6px 18px rgba(0,0,0,.4)}
-.vid .snd[aria-pressed="true"]{background:#0b1511cc;color:var(--green);border:1px solid var(--green2)}
-.vid .snd:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
 .ringcap{min-width:0;flex:1 1 260px;max-width:460px;text-align:center;font-weight:600;color:var(--green)}
 .ringcap span{display:block;color:var(--soft);font-weight:500;font-size:14px}
 .rbtn{width:48px;height:48px;border-radius:50%;border:2px solid var(--green);background:transparent;color:var(--green);font:700 20px "Plus Jakarta Sans",sans-serif;cursor:pointer;flex:none}
@@ -895,13 +874,13 @@ a.inl{color:var(--green);font-weight:600;text-underline-offset:3px}
   <h2>Productivity ROI calculator</h2>
   <p class="lead">How much is manual document work costing your team? Pick your market — the defaults load from official wage data and local research, with every source listed below. Then make it yours.</p>
   <div class="ba" id="ba">
-    <div class="ba-head"><div><span class="eyebrow">See the difference</span><h3>Drag to automate an invoice</h3><p class="muted">One supplier invoice. Drag the handle right to automate it.</p></div>
+    <div class="ba-head"><div><span class="eyebrow">See the difference</span><h3>Watch an invoice automate itself</h3><p class="muted">One supplier invoice, before and after automation.</p></div>
       <div class="ba-stats" aria-live="polite"><div><b id="baSteps">7</b><span>steps</span></div><div><b id="baDays">9</b><span>days to approve</span></div><div><b id="baPaper">15</b><span>sheets of paper</span></div><div><b id="baTouch">12</b><span>people touches</span></div></div></div>
     <div class="ba-stage" id="baStage">
       <div class="ba-layer ba-before"><span class="ba-tag bad">Before · manual</span><svg viewBox="0 0 800 300" aria-hidden="true"><g class="ba-manual"><path class="ba-path bad" d="M70 90 L190 200 L310 90 L430 200 L550 90 L670 200 L740 70"/><g class="n bad" transform="translate(70 90)"><rect x="-46" y="-34" width="92" height="68" rx="14"/><g class="gl"><rect x="-16" y="-14" width="32" height="22" rx="3"/><path d="M-16-12l16 11 16-11"/></g><text y="52" text-anchor="middle">Email arrives</text></g><g class="n bad" transform="translate(190 200)"><rect x="-46" y="-34" width="92" height="68" rx="14"/><g class="gl"><rect x="-16" y="-8" width="32" height="16" rx="3"/><path d="M-10-8v-10h20v10M-10 8v8h20v-8"/></g><text y="52" text-anchor="middle">Print it</text></g><g class="n bad" transform="translate(310 90)"><rect x="-46" y="-34" width="92" height="68" rx="14"/><g class="gl"><path d="M-6-18h12v12h-12zM-14-6h28v8h-28zM-16 8h32"/></g><text y="52" text-anchor="middle">Stamp & sign</text></g><g class="n bad" transform="translate(430 200)"><rect x="-46" y="-34" width="92" height="68" rx="14"/><g class="gl"><rect x="-18" y="-12" width="36" height="24" rx="3"/><path d="M-18-12l18 14 18-14"/><path d="M-26 0h-6M-26 6h-10" /></g><text y="52" text-anchor="middle">Courier to HQ</text></g><g class="n bad" transform="translate(550 90)"><rect x="-46" y="-34" width="92" height="68" rx="14"/><g class="gl"><path d="M-18-4h36v18h-36zM-18-4l6-12h24l6 12M-6-4v6h12v-6"/><path d="M-12-20h20M-10-24h16"/></g><text y="52" text-anchor="middle">Stuck in inbox</text></g><g class="n bad" transform="translate(670 200)"><rect x="-46" y="-34" width="92" height="68" rx="14"/><g class="gl"><circle r="14"/><path d="M0-8v8l6 4"/><path d="M14-14l6-4M-14-14l-6-4"/></g><text y="52" text-anchor="middle">Chase by email</text></g><g class="n bad" transform="translate(740 70)"><rect x="-46" y="-34" width="92" height="68" rx="14"/><g class="gl"><rect x="-14" y="-18" width="28" height="36" rx="3"/><path d="M-8-8h16M-8 0h16M-8 8h10"/></g><text y="52" text-anchor="middle">File in cabinet</text></g><g class="papers-pile"><path d="M250 268h40l-4 8h-40zM262 258h40l-4 8h-40zM240 278h40l-4 8h-40z"/></g></g></svg></div>
       <div class="ba-layer ba-after" id="baAfter"><span class="ba-tag good">After · automated</span><svg viewBox="0 0 800 300" aria-hidden="true"><g class="ba-auto"><path class="ba-path good" d="M90 150 H690"/><circle class="flowdot" r="6"><animateMotion dur="2.6s" repeatCount="indefinite" path="M90 150 H690"/></circle><g class="n good" transform="translate(90 150)"><rect x="-46" y="-34" width="92" height="68" rx="14"/><g class="gl"><rect x="-16" y="-16" width="32" height="32" rx="6"/><path d="M-16-4h32" stroke="#ffd166"/><path d="M-8-10h16M-8 4h16M-8 10h10"/></g><text y="52" text-anchor="middle">Capture</text></g><g class="n good" transform="translate(290 150)"><rect x="-46" y="-34" width="92" height="68" rx="14"/><g class="gl"><rect x="-16" y="-14" width="32" height="28" rx="8"/><circle cx="-6" cy="-1" r="2.5"/><circle cx="6" cy="-1" r="2.5"/><path d="M-6 7h12M0-14v-6"/></g><text y="52" text-anchor="middle">AI reads & matches</text></g><g class="n good" transform="translate(490 150)"><rect x="-46" y="-34" width="92" height="68" rx="14"/><g class="gl"><rect x="-11" y="-18" width="22" height="36" rx="5"/><path d="M-5 0l4 4 7-8" stroke="#9ff0c0"/></g><text y="52" text-anchor="middle">Approve on phone</text></g><g class="n good" transform="translate(690 150)"><rect x="-46" y="-34" width="92" height="68" rx="14"/><g class="gl"><rect x="-14" y="-6" width="28" height="22" rx="4"/><path d="M-8-6v-6a8 8 0 0 1 16 0v6"/><circle cy="5" r="3"/></g><text y="52" text-anchor="middle">Stored securely</text></g></g></svg></div>
-      <div class="ba-handle" id="baHandle" aria-hidden="true"><span>⟷</span></div>
-      <input type="range" id="baRange" min="0" max="100" value="12" aria-label="Slide from manual to automated invoice process">
+      <div class="ba-handle" id="baHandle" aria-hidden="true"><span>→</span></div>
+      
     </div>
     <p class="fine">Illustrative example of a typical manual invoice approval versus an automated one. Your numbers will differ, so try the calculator below.</p>
   </div>
@@ -1000,34 +979,6 @@ a.inl{color:var(--green);font-weight:600;text-underline-offset:3px}
 </div></section>
 
 <a class="totop" id="toTop" href="#top" aria-label="Back to top"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7"/></svg><svg class="prog" viewBox="0 0 52 52" aria-hidden="true"><circle cx="26" cy="26" r="24"/></svg></a>
-<div class="buddy" id="buddy">
-  <div class="bubble" id="bubble" role="status" aria-live="polite"><span id="bubbleTxt"></span><button type="button" id="bubbleX" aria-label="Hide tips">&times;</button></div>
-  <button class="buddy-btn" id="buddyBtn" type="button" aria-label="Tech-Savvy Dad: tap for a tip">
-    <svg viewBox="0 0 120 120" aria-hidden="true">
-      <circle cx="60" cy="60" r="58" fill="#12251d" stroke="#5fd394" stroke-width="3"/>
-      <clipPath id="bClip"><circle cx="60" cy="60" r="56"/></clipPath>
-      <g clip-path="url(#bClip)">
-        <!-- body: blazer + tee -->
-        <path d="M18 124c2-26 18-38 42-38s40 12 42 38z" fill="#7d8a86"/>
-        <path d="M46 88l14 30 14-30c-4-2-9-3-14-3s-10 1-14 3z" fill="#141414"/>
-        <path d="M46 88l8 18-6 2zM74 88l-8 18 6 2z" fill="#5f6b67"/>
-        <!-- neck & head -->
-        <rect x="52" y="72" width="16" height="16" rx="6" fill="#c98e62"/>
-        <ellipse cx="60" cy="52" rx="23" ry="26" fill="#d9a074"/>
-        <path d="M36 46c0-18 11-28 25-28 15 0 25 9 25 26-5-7-13-11-24-11-12 0-21 5-26 13z" fill="#1a1a1a"/>
-        <ellipse cx="37" cy="55" rx="4" ry="6" fill="#c98e62"/><ellipse cx="83" cy="55" rx="4" ry="6" fill="#c98e62"/>
-        <!-- glasses -->
-        <g fill="none" stroke="#1a1a1a" stroke-width="2.6"><rect x="40" y="46" width="16" height="12" rx="4"/><rect x="64" y="46" width="16" height="12" rx="4"/><path d="M56 51h8M40 50l-4-1M80 50l4-1"/></g>
-        <g id="pupils"><circle class="eye" cx="48" cy="52" r="2.6" fill="#1a1a1a"/><circle class="eye" cx="72" cy="52" r="2.6" fill="#1a1a1a"/></g>
-        <path d="M51 66c5 5 13 5 18 0" fill="none" stroke="#6b3a1f" stroke-width="2.4" stroke-linecap="round"/>
-        <!-- waving arm -->
-        <g id="wave" class="wave"><path d="M92 104c4-14 6-24 10-34" stroke="#7d8a86" stroke-width="11" stroke-linecap="round" fill="none"/><circle cx="103" cy="66" r="7" fill="#d9a074"/></g>
-        <!-- teh tarik mug -->
-        <g transform="translate(22 92)"><path d="M0 0h18v16a5 5 0 0 1-5 5H5a5 5 0 0 1-5-5z" fill="#f4efe6"/><path d="M0 0h18v5H0z" fill="#c8915a"/><path d="M18 4h3a4 4 0 0 1 0 8h-3" fill="none" stroke="#f4efe6" stroke-width="2.4"/></g>
-      </g>
-    </svg>
-  </button>
-</div>
 <footer>
   <div class="fgrid2">
     <div><p class="fname">Let's make paper disappear.</p><p class="muted" style="margin:0">Halid Bin Ayob · Tech-Savvy Dad · Singapore</p></div>
@@ -1350,46 +1301,20 @@ if(mapCard){
   show("SG");
 }
 
-/* 4. before / after slider */
+/* 4. before / after: auto swipe */
 const ba=$$("ba");
 if(ba){
-  const rng=$$("baRange"),stage=$$("baStage"),out={steps:[$$("baSteps"),7,3],days:[$$("baDays"),9,1],paper:[$$("baPaper"),15,0],touch:[$$("baTouch"),12,2]};
+  const stage=$$("baStage"),out={steps:[$$("baSteps"),7,3],days:[$$("baDays"),9,1],paper:[$$("baPaper"),15,0],touch:[$$("baTouch"),12,2]};
   const set=v=>{stage.style.setProperty("--cut",v+"%");const f=v/100;
     for(const k in out){const [el,a,b]=out[k];el.textContent=Math.round(a+(b-a)*f);el.classList.toggle("good",f>.6)}};
-  rng.addEventListener("input",()=>set(+rng.value));set(+rng.value);
-  if(!RM){const io2=new IntersectionObserver(es=>{if(es[0].isIntersecting){io2.disconnect();let v=12;const id=setInterval(()=>{v+=1.5;if(v>=50){v=50;clearInterval(id)}rng.value=v;set(v)},16)}},{threshold:.5});io2.observe(stage)}
-}
-
-/* 5. Tech-Savvy Dad buddy */
-const buddy=$$("buddy");
-if(buddy){
-  const bub=$$("bubble"),txt=$$("bubbleTxt"),btn=$$("buddyBtn"),eyes=[...buddy.querySelectorAll(".eye")];
-  let muted=false;try{muted=sessionStorage.getItem("buddyOff")==="1"}catch(e){}
-  const TIPS={
-    top:["Hi, I'm Halid 👋 Scroll down, the paper is about to fly."],
-    story:["Keep scrolling and watch the desk clear itself."],
-    about:["Fun fact: I started out fixing copiers."],
-    work:["Tap a country on the map to see where I've spoken."],
-    framework:["Hover the cards below to watch Shadow AI turn secure."],
-    speaking:["Press play for a 30-second taste of the keynote."],
-    channels:["Pick your platform, I post on all five."],
-    "kind-words":["Kind words from people I've worked with."],
-    rates:["Want my rate card? Leave your details, I'll reply personally."],
-    roi:["Drag the slider, then try the calculator with your own numbers."],
-    signup:["Tell me what you have in mind. I read every message."],
-    faq:["Still curious? Tap a question."]};
-  let cur="",hideT,idx=0;
-  const say=(m,ms=6000)=>{if(muted)return;txt.textContent=m;bub.classList.add("show");clearTimeout(hideT);hideT=setTimeout(()=>bub.classList.remove("show"),ms)};
-  const secs=[...document.querySelectorAll("header[id],section[id]")];
-  const sio=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting&&e.target.id!==cur){cur=e.target.id;const t=TIPS[cur];if(t&&buddy.classList.contains("show"))say(t[0])}}),{rootMargin:"-45% 0px -45% 0px"});
-  secs.forEach(s=>sio.observe(s));
-  const onS=()=>{const vis=scrollY>innerHeight*.6;if(vis&&!buddy.classList.contains("show")){buddy.classList.add("show","hello");setTimeout(()=>buddy.classList.remove("hello"),2200);const t=TIPS[cur];if(t)say(t[0])}else if(!vis){buddy.classList.remove("show");bub.classList.remove("show")}};
-  addEventListener("scroll",onS,{passive:true});onS();
-  btn.addEventListener("click",()=>{muted=false;try{sessionStorage.removeItem("buddyOff")}catch(e){}buddy.classList.add("hello");setTimeout(()=>buddy.classList.remove("hello"),2200);const all=Object.values(TIPS).flat();idx=(idx+1)%all.length;say(all[idx],7000)});
-  $$("bubbleX").addEventListener("click",e=>{e.stopPropagation();muted=true;try{sessionStorage.setItem("buddyOff","1")}catch(_){}bub.classList.remove("show")});
-  if(!RM&&matchMedia("(hover:hover)").matches){
-    addEventListener("pointermove",e=>{const r=btn.getBoundingClientRect(),cx=r.left+r.width/2,cy=r.top+r.height*.43,dx=e.clientX-cx,dy=e.clientY-cy,d=Math.hypot(dx,dy)||1,k=Math.min(2.4,d/60);
-      eyes.forEach(el=>el.setAttribute("transform",`translate(${(dx/d*k).toFixed(2)} ${(dy/d*k).toFixed(2)})`))},{passive:true});
+  if(RM){set(100)}else{
+    const ease=t=>t<.5?4*t*t*t:1-Math.pow(-2*t+2,3)/2;
+    const SWIPE=3600,HOLD=2600,RESET=700,WAIT=900,CYCLE=SWIPE+HOLD+RESET+WAIT;
+    let t0=null,run=false,raf=0;set(0);
+    const tick=ts=>{if(!run)return;if(t0===null)t0=ts;const e=(ts-t0)%CYCLE;
+      let v;if(e<SWIPE)v=ease(e/SWIPE)*100;else if(e<SWIPE+HOLD)v=100;else if(e<SWIPE+HOLD+RESET)v=100*(1-ease((e-SWIPE-HOLD)/RESET));else v=0;
+      set(+v.toFixed(2));raf=requestAnimationFrame(tick)};
+    new IntersectionObserver(es=>es.forEach(en=>{if(en.isIntersecting&&!run){run=true;t0=null;raf=requestAnimationFrame(tick)}else if(!en.isIntersecting&&run){run=false;cancelAnimationFrame(raf)}}),{threshold:.45}).observe(stage);
   }
 }
 })();
