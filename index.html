@@ -305,6 +305,11 @@ input[type=number],input[type=text],input[type=email],select,textarea{width:100%
 .more-q summary::after{content:"+";font-size:20px;line-height:1;transition:transform .3s}
 .more-q[open] summary::after{transform:rotate(45deg)}
 .more-q .qmore{margin-top:16px}
+.vid video,.vid img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+.vid .cap{position:absolute;left:50%;bottom:60px;transform:translateX(-50%);max-width:88%;padding:6px 12px;border-radius:10px;background:rgba(0,0,0,.62);color:#fff;font-weight:700;font-size:clamp(13px,1.6vw,17px);line-height:1.35;text-align:center;opacity:0;transition:opacity .25s;pointer-events:none}
+.vid .cap.on{opacity:1}
+.vid .snd{position:absolute;left:12px;bottom:12px;display:inline-flex;align-items:center;gap:8px;padding:8px 14px;border-radius:999px;border:0;background:var(--green);color:#08130e;font:700 14px "Plus Jakarta Sans",sans-serif;cursor:pointer;box-shadow:0 6px 18px rgba(0,0,0,.4);z-index:2}
+.vid .snd:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
 .ringcap{min-width:0;flex:1 1 260px;max-width:460px;text-align:center;font-weight:600;color:var(--green)}
 .ringcap span{display:block;color:var(--soft);font-weight:500;font-size:14px}
 .rbtn{width:48px;height:48px;border-radius:50%;border:2px solid var(--green);background:transparent;color:var(--green);font:700 20px "Plus Jakarta Sans",sans-serif;cursor:pointer;flex:none}
