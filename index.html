@@ -53,7 +53,7 @@ nav .wrap{display:flex;align-items:center;gap:20px;flex-wrap:wrap;padding:12px m
 .btn:hover{filter:brightness(1.08)}.btn:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
 .cta-s{background:var(--green);color:#08130e!important}
 /* hero */
-.hero .wrap{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:clamp(24px,4vw,56px);align-items:center}
+.hero .wrap.top{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:clamp(24px,4vw,56px);align-items:center}
 .tag{display:inline-block;background:var(--card);border:1px solid var(--line);color:var(--green);font-weight:700;font-size:14px;padding:6px 14px;border-radius:999px;margin-bottom:18px}
 .actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:24px}
 .fig{position:relative;min-height:380px}.fig>svg{position:absolute;inset:0;width:100%;height:100%}
@@ -61,7 +61,7 @@ nav .wrap{display:flex;align-items:center;gap:20px;flex-wrap:wrap;padding:12px m
 .stats div{background:var(--bg);padding:20px}
 .stats b{display:block;font-size:clamp(26px,3vw,36px);color:var(--green);line-height:1.1;white-space:nowrap}
 .stats span{color:var(--soft);font-size:14px}
-@media(max-width:860px){.hero .wrap{grid-template-columns:1fr}.fig{min-height:300px}.stats{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:860px){.hero .wrap.top{grid-template-columns:1fr}.fig{min-height:300px}.stats{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @keyframes flow{to{stroke-dashoffset:-40}}.flow{stroke-dasharray:6 14;animation:flow 1.6s linear infinite}
 @keyframes bob{50%{transform:translateY(-6px)}}.bob{animation:bob 4s ease-in-out infinite}
 /* story + journey */
@@ -139,7 +139,7 @@ footer .wrap{display:flex;gap:16px;flex-wrap:wrap;justify-content:space-between}
   <div class="links"><a href="#about">About</a><a href="#work">Work</a><a href="#speaking">Speaking</a><a href="#rates">Rates</a><a href="#roi">ROI calculator</a><a class="cta-s" href="#signup">Get in touch</a></div>
 </div></nav>
 
-<header class="band hero" id="top"><div class="wrap">
+<header class="band hero" id="top"><div class="wrap top">
   <div>
     <span class="tag">Tech-Savvy Dad · Singapore</span>
     <h1>From fixing copiers to making paper disappear.</h1>
@@ -151,12 +151,12 @@ footer .wrap{display:flex;gap:16px;flex-wrap:wrap;justify-content:space-between}
       <defs>
         <linearGradient id="g1" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1d4a38"/><stop offset="1" stop-color="#0f261d"/></linearGradient>
         <linearGradient id="g2" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#9ff0c0"/><stop offset="1" stop-color="#3fb57a"/></linearGradient>
-        <g id="paper"><rect width="74" height="94" rx="6" fill="#f4f7f5"/><rect x="12" y="16" width="44" height="6" rx="3" fill="#b9c8c0"/><rect x="12" y="32" width="50" height="5" rx="2.5" fill="#d6e0da"/><rect x="12" y="44" width="38" height="5" rx="2.5" fill="#d6e0da"/><rect x="12" y="56" width="46" height="5" rx="2.5" fill="#d6e0da"/></g>
+        <g id="paperDoc"><rect width="74" height="94" rx="6" fill="#f4f7f5"/><rect x="12" y="16" width="44" height="6" rx="3" fill="#b9c8c0"/><rect x="12" y="32" width="50" height="5" rx="2.5" fill="#d6e0da"/><rect x="12" y="44" width="38" height="5" rx="2.5" fill="#d6e0da"/><rect x="12" y="56" width="46" height="5" rx="2.5" fill="#d6e0da"/></g>
         <g id="tile"><rect width="58" height="40" rx="9" fill="#173a2c" stroke="#5fd394" stroke-width="2"/><rect x="10" y="11" width="24" height="5" rx="2.5" fill="#9ff0c0"/><rect x="10" y="23" width="36" height="4" rx="2" fill="#5fd394" opacity=".6"/></g>
       </defs>
       <ellipse cx="280" cy="360" rx="250" ry="22" fill="#0e2119"/>
       <!-- paper stack -->
-      <g transform="translate(40 190)"><use href="#paper" transform="rotate(-8) translate(-6 14)" opacity=".7"/><use href="#paper" transform="rotate(4) translate(8 4)" opacity=".85"/><use href="#paper"/></g>
+      <g transform="translate(40 190)"><use href="#paperDoc" transform="rotate(-8) translate(-6 14)" opacity=".7"/><use href="#paperDoc" transform="rotate(4) translate(8 4)" opacity=".85"/><use href="#paperDoc"/></g>
       <text x="76" y="318" text-anchor="middle" fill="#c9d8d1" font-size="15" font-weight="600" font-family="Plus Jakarta Sans">Paper in</text>
       <!-- pipeline -->
       <path d="M130 236 C190 236 190 200 245 200" fill="none" stroke="#24463a" stroke-width="16" stroke-linecap="round"/>
