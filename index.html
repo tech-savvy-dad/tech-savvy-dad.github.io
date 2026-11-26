@@ -252,7 +252,7 @@ details.sources summary:focus-visible{outline:3px solid var(--accent);outline-of
 /* mobile: swipe rows instead of long stacks */
 @media(max-width:700px){
   .band{padding-top:44px;padding-bottom:44px}
-  .grid,.tgrid,.hsteps{display:flex!important;overflow-x:auto;scroll-snap-type:x mandatory;gap:12px;margin-left:calc(-1*max(5vw,16px));margin-right:calc(-1*max(5vw,16px));padding:4px max(5vw,16px) 14px;scrollbar-width:none}
+  .grid,.tgrid,.hsteps{display:flex!important;overflow-x:auto;scroll-snap-type:x mandatory;scroll-padding-inline:max(5vw,16px);gap:12px;margin-left:calc(-1*max(5vw,16px));margin-right:calc(-1*max(5vw,16px));padding:4px max(5vw,16px) 14px;scrollbar-width:none}
   .grid::-webkit-scrollbar,.tgrid::-webkit-scrollbar,.hsteps::-webkit-scrollbar{display:none}
   .grid>*,.tgrid>*,.hsteps>li{flex:0 0 82%;scroll-snap-align:start}
   .hsteps::before,.hsteps::after{display:none}
