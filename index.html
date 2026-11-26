@@ -148,6 +148,80 @@ input[type=checkbox]{width:20px;height:20px;accent-color:var(--green);flex:none;
 .note pre{white-space:pre-wrap;font:14px/1.5 "Plus Jakarta Sans",sans-serif;background:var(--bg);padding:12px;border-radius:10px;margin:10px 0}
 footer{border-top:1px solid var(--line);padding:32px max(5vw,16px);color:var(--soft);font-size:14px}
 footer .wrap{display:flex;gap:16px;flex-wrap:wrap;justify-content:space-between}
+
+/* ===== visual upgrade ===== */
+body{background:radial-gradient(1200px 600px at 85% -10%,rgba(95,211,148,.10),transparent 60%),radial-gradient(900px 500px at -10% 40%,rgba(159,240,192,.06),transparent 60%),var(--bg)}
+.band{position:relative;isolation:isolate}
+.band.alt{background:linear-gradient(180deg,#0f1f19,#10201a 40%,#0e1c16)}
+.band.alt::before{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;background-image:linear-gradient(rgba(159,240,192,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(159,240,192,.045) 1px,transparent 1px);background-size:56px 56px;mask-image:radial-gradient(ellipse at 50% 30%,#000 30%,transparent 75%);-webkit-mask-image:radial-gradient(ellipse at 50% 30%,#000 30%,transparent 75%)}
+.eyebrow{display:inline-flex;align-items:center;gap:8px;color:var(--green2);font-weight:700;font-size:14px;margin-bottom:10px}
+.eyebrow::before{content:"";width:22px;height:2px;border-radius:2px;background:var(--green2)}
+/* reveal on scroll */
+.rv{opacity:0;transform:translateY(26px);transition:opacity .7s ease,transform .7s cubic-bezier(.2,.8,.2,1)}
+.rv.in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){.rv{opacity:1;transform:none}}
+/* spotlight cards */
+.card{position:relative;overflow:hidden;transition:opacity .7s ease,transform .45s cubic-bezier(.2,.8,.2,1),border-color .35s,box-shadow .35s;background:linear-gradient(160deg,#16302556,#12251d) ,var(--card)}
+.card::after{content:"";position:absolute;inset:0;pointer-events:none;opacity:0;transition:opacity .35s;background:radial-gradient(420px circle at var(--mx,50%) var(--my,50%),rgba(159,240,192,.14),transparent 45%)}
+.card:hover{transform:translateY(-6px);border-color:var(--green2);box-shadow:0 24px 50px rgba(0,0,0,.4)}
+.card:hover::after{opacity:1}
+.ico{width:56px;height:56px;border-radius:16px;display:grid;place-items:center;margin-bottom:16px;background:linear-gradient(145deg,#1f4a39,#12271e);border:1px solid var(--line);box-shadow:inset 0 1px 0 rgba(255,255,255,.06)}
+.ico svg{width:30px!important;height:30px!important;margin:0!important;transition:transform .4s}
+.card:hover .ico svg{transform:scale(1.12) rotate(-4deg)}
+.card .kpi{display:inline-block;margin-top:14px;padding:4px 12px;border-radius:999px;background:#0b1511;border:1px solid var(--line);color:var(--green);font-weight:700;font-size:13px}
+/* hero marquee + glow */
+.hero{overflow:hidden}
+.hero::before{content:"";position:absolute;z-index:-1;width:620px;height:620px;right:-120px;top:-80px;border-radius:50%;background:radial-gradient(circle,rgba(95,211,148,.22),transparent 65%);filter:blur(10px);animation:pulse 8s ease-in-out infinite}
+@keyframes pulse{50%{transform:scale(1.12);opacity:.7}}
+.marquee{margin-top:28px;overflow:hidden;mask-image:linear-gradient(90deg,transparent,#000 10%,#000 90%,transparent);-webkit-mask-image:linear-gradient(90deg,transparent,#000 10%,#000 90%,transparent)}
+.marquee .lbl{display:block;color:var(--soft);font-size:13px;margin-bottom:10px;text-align:center}
+.mtrack{display:flex;gap:14px;width:max-content;animation:mq 38s linear infinite}
+.marquee:hover .mtrack{animation-play-state:paused}
+.mtrack span{white-space:nowrap;padding:10px 18px;border-radius:999px;border:1px solid var(--line);background:#0f1f18;color:var(--ink);font-weight:600;font-size:14px}
+.mtrack span b{color:var(--green)}
+@keyframes mq{to{transform:translateX(-50%)}}
+@media(prefers-reduced-motion:reduce){.mtrack{animation:none;flex-wrap:wrap;width:auto;justify-content:center}}
+.stats div{transition:background .3s}.stats div:hover{background:#0f1f18}
+/* about: portrait + live timeline */
+.portrait{position:relative;margin-top:26px;border-radius:22px;overflow:hidden;border:1px solid var(--line);aspect-ratio:4/3;box-shadow:0 30px 60px rgba(0,0,0,.45);transform:perspective(900px) rotateY(-4deg);transition:transform .6s cubic-bezier(.2,.8,.2,1)}
+.portrait:hover{transform:perspective(900px) rotateY(0)}
+.portrait img{width:100%;height:100%;object-fit:cover;object-position:50% 25%;display:block}
+.portrait figcaption{position:absolute;left:14px;bottom:14px;padding:8px 14px;border-radius:999px;background:rgba(11,21,17,.82);backdrop-filter:blur(6px);font-weight:600;font-size:14px}
+.steps::after{content:"";position:absolute;left:15px;top:8px;width:2px;height:calc((100% - 16px) * var(--p,0));background:linear-gradient(var(--green),var(--green2));box-shadow:0 0 12px rgba(159,240,192,.6);transition:height .15s linear}
+.steps li{transition:transform .3s}.steps li:hover{transform:translateX(6px)}
+.steps li.lit:before{background:var(--green);border-color:var(--green);box-shadow:0 0 0 6px rgba(159,240,192,.15)}
+.steps .yr{display:inline-block;font-size:12px;font-weight:700;color:var(--green2);margin-bottom:2px}
+/* talks by year */
+.years{display:grid;gap:clamp(26px,4vw,44px);margin-top:clamp(26px,4vw,40px)}
+.year{display:grid;grid-template-columns:150px minmax(0,1fr);gap:clamp(16px,3vw,40px);align-items:start}
+.yr-big{position:sticky;top:96px;font-size:clamp(44px,6vw,72px);font-weight:800;line-height:1;color:transparent;-webkit-text-stroke:1.5px var(--green2);background:linear-gradient(180deg,var(--green),var(--green2));-webkit-background-clip:text;background-clip:text}
+.tgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));gap:16px}
+.tcard{padding:22px}
+.tcard h3{font-size:18px;margin:10px 0 6px}
+.tcard p{font-size:15px}
+.ttype{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:700;color:#08130e;background:var(--green);padding:3px 10px;border-radius:999px}
+.ttype.alt2{background:var(--accent)}.ttype.alt3{background:#c4b5fd}
+.cities{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px}
+.cities span{font-size:12px;font-weight:600;padding:3px 10px;border-radius:999px;border:1px solid var(--line);color:var(--soft)}
+@media(max-width:700px){.year{grid-template-columns:1fr}.yr-big{position:static}}
+.spk-intro{display:grid;grid-template-columns:minmax(0,1.3fr) auto;gap:20px 40px;align-items:end;margin-top:clamp(36px,5vw,64px)}
+@media(max-width:700px){.spk-intro{grid-template-columns:1fr}}
+/* contact */
+.reasons{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin:8px 0 18px;padding:0;list-style:none}
+.reasons li{display:flex;gap:10px;align-items:flex-start;padding:14px;border-radius:14px;background:var(--card);border:1px solid var(--line);font-weight:600;font-size:15px;transition:border-color .3s,transform .3s}
+.reasons li:hover{border-color:var(--green2);transform:translateY(-3px)}
+.reasons svg{flex:none;width:22px;height:22px}
+@media(max-width:520px){.reasons{grid-template-columns:1fr}}
+.form{position:relative;background:linear-gradient(160deg,#142a21cc,#0e1d17);border:1px solid var(--line);border-radius:24px;padding:clamp(20px,3vw,32px);box-shadow:0 30px 60px rgba(0,0,0,.35)}
+.form::before{content:"";position:absolute;inset:-1px;border-radius:24px;padding:1px;background:linear-gradient(140deg,var(--green),transparent 40%,transparent 60%,var(--green2));-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;pointer-events:none;opacity:.6}
+.checks label{transition:border-color .2s,background .2s}.checks label:has(input:checked){border-color:var(--green);background:#173a2c}
+/* footer */
+footer{background:#08110d;padding:clamp(36px,5vw,56px) max(5vw,16px) 28px}
+.fgrid2{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr);gap:28px;align-items:end;max-width:1240px;margin:0 auto 26px}
+.fgrid2 .fname{font-size:clamp(28px,4vw,40px);font-weight:800;color:var(--green);line-height:1.1;margin:0 0 8px}
+.flinks{display:flex;flex-wrap:wrap;gap:8px 18px;justify-content:flex-end}
+.flinks a{color:var(--ink);text-decoration:none;font-weight:600}.flinks a:hover{color:var(--green)}
+@media(max-width:700px){.fgrid2{grid-template-columns:1fr}.flinks{justify-content:flex-start}}
 </style>
 </head>
 <body>
@@ -196,83 +270,94 @@ footer .wrap{display:flex;gap:16px;flex-wrap:wrap;justify-content:space-between}
   </div>
 </div>
 <div class="wrap"><div class="stats">
-  <div><b>20+ yrs</b><span>in enterprise organisations since 2006</span></div>
-  <div><b>6</b><span>APAC South markets covered</span></div>
-  <div><b>16,800+</b><span>LinkedIn followers</span></div>
+  <div><b data-count="20" data-suffix="+ yrs">20+ yrs</b><span>in enterprise organisations since 2006</span></div>
+  <div><b data-count="6">6</b><span>APAC South markets covered</span></div>
+  <div><b data-count="16800" data-suffix="+">16,800+</b><span>LinkedIn followers</span></div>
   <div><b>Top 200</b><span>LinkedIn creators in Singapore (Favikon)</span></div>
-</div></div>
+</div>
+<div class="marquee" aria-label="Stages and rooms Halid has spoken at"><span class="lbl">On stages and in rooms at</span><div class="mtrack">
+<span><b>Finance ReImagined</b> Singapore</span><span><b>Finance ReImagined</b> Bangkok</span><span><b>Finance ReImagined</b> Kuala Lumpur</span><span><b>DigitalCFO Asia</b> Malaysia Symposium</span><span><b>DigitalCFO Asia</b> Thailand Symposium</span><span><b>DocuWorld</b> 2026</span><span><b>National Library</b> Singapore</span><span><b>Masjid Darul Ghufran</b></span><span><b>Partner webinars</b> across APAC</span><span><b>Finance ReImagined</b> Singapore</span><span><b>Finance ReImagined</b> Bangkok</span><span><b>Finance ReImagined</b> Kuala Lumpur</span><span><b>DigitalCFO Asia</b> Malaysia Symposium</span><span><b>DigitalCFO Asia</b> Thailand Symposium</span><span><b>DocuWorld</b> 2026</span><span><b>National Library</b> Singapore</span><span><b>Masjid Darul Ghufran</b></span><span><b>Partner webinars</b> across APAC</span>
+</div></div></div>
 </header>
 
 <section class="band alt" id="about"><div class="wrap two">
   <div>
+    <span class="eyebrow">About</span>
     <h2>A regular dad who stumbled into tech leadership.</h2>
     <p>I started as a copier technician. As offices went paperless, I taught myself the software that replaced the paper and became a hybrid engineer handling both hardware and software calls. That curiosity took me into regional marketing, product training and partner enablement — and eventually into sales leadership in MNC settings.</p>
     <p>I was DocuWare's first Singaporean hire, and its first team member based here. My job isn't to "lead" sales — it's to stand beside our partners, strategise with them, and back them in front of customers until they can run on their own.</p>
     <p>Online I'm <b>Tech-Savvy Dad</b>: practical stories about digital transformation, work efficiency and career growth, told the way you'd share them over teh tarik. The follower count is nice. The messages from people who landed a job or felt seen matter more.</p>
+    <figure class="portrait"><img src="img/stage/docuworld-laugh.jpg" alt="Halid laughing on stage with a microphone at DocuWorld 2026" loading="lazy"><figcaption>DocuWorld 2026</figcaption></figure>
   </div>
   <div>
     <h3 style="margin-bottom:22px">The journey so far</h3>
     <ol class="steps">
-      <li><h3>Copier technician</h3><p>Hands-on with print hardware, in the field with customers every day.</p></li>
+      <li><span class="yr">Where it started</span><h3>Copier technician</h3><p>Hands-on with print hardware, in the field with customers every day.</p></li>
       <li><h3>Hybrid engineer</h3><p>Learned the software side as offices went digital — hardware and software calls alike.</p></li>
       <li><h3>Regional marketer &amp; trainer</h3><p>Product training and enablement for partners across Southeast Asia.</p></li>
       <li><h3>Sales leadership</h3><p>Enterprise sales and channel strategy in MNC settings.</p></li>
-      <li><h3>DocuWare, APAC South</h3><p>Since May 2025 — building the partner ecosystem and enterprise presence from Singapore.</p></li>
+      <li><span class="yr">Since May 2025</span><h3>DocuWare, APAC South</h3><p>Building the partner ecosystem and enterprise presence from Singapore.</p></li>
     </ol>
   </div>
 </div></section>
 
 <section class="band" id="work"><div class="wrap">
+  <span class="eyebrow">Work</span>
   <h2>What I work on</h2>
   <p class="lead">Four threads, one idea: technology should give people time back.</p>
   <div class="grid">
-    <div class="card"><svg viewBox="0 0 44 44" fill="none" stroke="#9ff0c0" stroke-width="2.5" stroke-linecap="round"><rect x="6" y="8" width="22" height="28" rx="3"/><path d="M12 16h10M12 22h10M12 28h6"/><path d="M30 20l8 4-8 4" /></svg>
-      <h3>Document workflows with DocuWare</h3><p>Purchase-to-pay, invoice automation, HR records, intelligent document processing and Aura — governed AI that lets teams ask their own documents questions, with an audit trail.</p></div>
-    <div class="card"><svg viewBox="0 0 44 44" fill="none" stroke="#9ff0c0" stroke-width="2.5" stroke-linecap="round"><circle cx="14" cy="16" r="6"/><circle cx="30" cy="16" r="6"/><path d="M4 36c2-7 6-10 10-10s8 3 8 3 4-3 8-3 8 3 10 10"/></svg>
-      <h3>Channel partner growth</h3><p>Recruiting and enabling ISVs and VARs across seven authorised partners. Helped grow two new partners in seven months, and guided a Base partner up to Silver.</p></div>
-    <div class="card"><svg viewBox="0 0 44 44" fill="none" stroke="#9ff0c0" stroke-width="2.5" stroke-linecap="round"><rect x="6" y="8" width="32" height="22" rx="3"/><path d="M16 36h12M22 30v6"/><path d="M14 22l5-5 4 4 7-7"/></svg>
-      <h3>LinkedIn &amp; personal branding</h3><p>Workshops, profile audits and coaching through Linqista — helping professionals show up, not show off.</p></div>
-    <div class="card"><svg viewBox="0 0 44 44" fill="none" stroke="#9ff0c0" stroke-width="2.5" stroke-linecap="round"><path d="M22 38s-14-8-14-19a8 8 0 0 1 14-5 8 8 0 0 1 14 5c0 11-14 19-14 19z"/></svg>
-      <h3>Community</h3><p>Grassroots work in Zhenghua, mentoring sessions, Read With Dad on YouTube, and networking meetups that turn online connections into real friendships.</p></div>
+    <div class="card"><div class="ico"><svg viewBox="0 0 44 44" fill="none" stroke="#9ff0c0" stroke-width="2.5" stroke-linecap="round"><rect x="6" y="8" width="22" height="28" rx="3"/><path d="M12 16h10M12 22h10M12 28h6"/><path d="M30 20l8 4-8 4" /></svg></div>
+      <h3>Document workflows with DocuWare</h3><p>Purchase-to-pay, invoice automation, HR records, intelligent document processing and Aura — governed AI that lets teams ask their own documents questions, with an audit trail.</p><span class="kpi">Aura · IDP · P2P</span></div>
+    <div class="card"><div class="ico"><svg viewBox="0 0 44 44" fill="none" stroke="#9ff0c0" stroke-width="2.5" stroke-linecap="round"><circle cx="14" cy="16" r="6"/><circle cx="30" cy="16" r="6"/><path d="M4 36c2-7 6-10 10-10s8 3 8 3 4-3 8-3 8 3 10 10"/></svg></div>
+      <h3>Channel partner growth</h3><p>Recruiting and enabling ISVs and VARs across seven authorised partners. Helped grow two new partners in seven months, and guided a Base partner up to Silver.</p><span class="kpi">7 authorised partners</span></div>
+    <div class="card"><div class="ico"><svg viewBox="0 0 44 44" fill="none" stroke="#9ff0c0" stroke-width="2.5" stroke-linecap="round"><rect x="6" y="8" width="32" height="22" rx="3"/><path d="M16 36h12M22 30v6"/><path d="M14 22l5-5 4 4 7-7"/></svg></div>
+      <h3>LinkedIn &amp; personal branding</h3><p>Workshops, profile audits and coaching through Linqista — helping professionals show up, not show off.</p><span class="kpi">Linqista</span></div>
+    <div class="card"><div class="ico"><svg viewBox="0 0 44 44" fill="none" stroke="#9ff0c0" stroke-width="2.5" stroke-linecap="round"><path d="M22 38s-14-8-14-19a8 8 0 0 1 14-5 8 8 0 0 1 14 5c0 11-14 19-14 19z"/></svg></div>
+      <h3>Community</h3><p>Grassroots work in Zhenghua, mentoring sessions, Read With Dad on YouTube, and networking meetups that turn online connections into real friendships.</p><span class="kpi">Zhenghua · NHT Family</span></div>
   </div>
 </div></section>
 
 <section class="band alt" id="speaking"><div class="wrap">
+  <span class="eyebrow">Speaking</span>
   <h2>On stage</h2>
   <p class="lead" style="margin-bottom:8px">Keynotes, panels and hands-on workshops across Singapore, Malaysia, Thailand and beyond. Drag to spin, or tap a photo to see it full size.</p>
   <div class="ring3d" id="ring3d" aria-roledescription="carousel" aria-label="Photos of Halid speaking at events"><div class="ring" id="ring"></div></div>
   <div class="ringbar"><button class="rbtn" id="rPrev" aria-label="Previous photo">&#8592;</button><p class="ringcap" id="ringcap" aria-live="polite"></p><button class="rbtn" id="rNext" aria-label="Next photo">&#8594;</button></div>
-</div><div class="wrap two">
-  <div>
-    <h3 style="font-size:28px">Speaking &amp; workshops</h3>
-    <p class="lead">I speak on Shadow AI, secure AI with your own data, document automation, and building an authentic LinkedIn presence. Hands-on beats slides — most sessions end with people trying it themselves.</p>
+</div><div class="wrap">
+  <div class="spk-intro">
+    <div><h3 style="font-size:clamp(26px,3vw,34px)">Speaking &amp; workshops</h3>
+    <p class="lead" style="margin:0">I speak on Shadow AI, secure AI with your own data, document automation, parenting in a digital age and building an authentic LinkedIn presence. Hands-on beats slides — most sessions end with people trying it themselves.</p></div>
     <a class="btn sec" href="#signup" id="toSpeak">Invite me to speak</a>
   </div>
-  <ul class="talks">
-    <li><time>19 Nov 2026</time><span><b>The Modern Business Engine — IDP and P2P</b><br><span class="muted">Partner co-hosted webinar</span></span></li>
-    <li><time>4 Nov 2026</time><span><b>AI to your data, not data to AI</b><br><span class="muted">Hands-on DocuWare Aura workshop, National Library, Singapore</span></span></li>
-    <li><time>15 Oct 2026</time><span><b>Shadow AI: The Hidden Cost Between Innovation and Exposure</b><br><span class="muted">5th Finance ReImagined Malaysia 2026 by DigitalCFO Asia, Kuala Lumpur</span></span></li>
-    <li><time>10 Sep 2026</time><span><b>Shadow AI: The Hidden Cost Between Innovation and Exposure</b><br><span class="muted">5th Finance ReImagined Thailand 2026 by DigitalCFO Asia, Bangkok</span></span></li>
-    <li><time>Aug 2026</time><span><b>Panel: When You Step Away, Who Steps In?</b><br><span class="muted">Ready, Set, Parent! with Ustaz Syakir Pasuni, Masjid Darul Ghufran, Singapore</span></span></li>
-    <li><time>14 May 2026</time><span><b>Shadow AI: The Hidden Cost Between Innovation and Exposure</b><br><span class="muted">5th Finance ReImagined Singapore 2026 by DigitalCFO Asia</span></span></li>
-    <li><time>9 Oct 2025</time><span><b>Simplifying Requisition: From Chaos to Clarity</b><br><span class="muted">4th DigitalCFO Asia Malaysia Symposium 2025, Kuala Lumpur</span></span></li>
-    <li><time>2025</time><span><b>Simplifying Requisition: From Chaos to Clarity</b><br><span class="muted">4th DigitalCFO Asia Thailand Symposium 2025, Bangkok</span></span></li>
-  </ul>
+  <div class="years">
+    <div class="year"><div class="yr-big">2026</div><div class="tgrid">
+      <article class="card tcard"><span class="ttype">Keynote · Tech spotlight</span><h3>Shadow AI: The Hidden Cost Between Innovation and Exposure</h3><p class="muted">Finance ReImagined 2026 by DigitalCFO Asia — three cities, one conversation about AI risk in finance.</p><div class="cities"><span>Singapore</span><span>Bangkok</span><span>Kuala Lumpur</span></div></article>
+      <article class="card tcard"><span class="ttype alt2">Hands-on workshop</span><h3>AI to your data, not data to AI</h3><p class="muted">DocuWare Aura workshop for business leaders on safe, governed AI over their own documents.</p><div class="cities"><span>National Library, Singapore</span></div></article>
+      <article class="card tcard"><span class="ttype alt3">Panel</span><h3>When You Step Away, Who Steps In?</h3><p class="muted">Ready, Set, Parent! — raising children with confidence in the digital age, alongside Ustaz Syakir Pasuni.</p><div class="cities"><span>Masjid Darul Ghufran, Singapore</span></div></article>
+      <article class="card tcard"><span class="ttype">Webinar</span><h3>The Modern Business Engine — IDP and P2P</h3><p class="muted">Partner co-hosted session on intelligent document processing and purchase-to-pay.</p><div class="cities"><span>Online</span></div></article>
+      <article class="card tcard"><span class="ttype">Webinar</span><h3>Say goodbye to manual data entry</h3><p class="muted">IDP webinars with partners for Vietnamese and Singaporean businesses.</p><div class="cities"><span>Vietnam</span><span>Singapore</span></div></article>
+    </div></div>
+    <div class="year"><div class="yr-big">2025</div><div class="tgrid">
+      <article class="card tcard"><span class="ttype">Tech spotlight</span><h3>Simplifying Requisition: From Chaos to Clarity</h3><p class="muted">How intelligent automation brings transparency and speed to procurement — DigitalCFO Asia Symposium 2025.</p><div class="cities"><span>Bangkok</span><span>Kuala Lumpur</span></div></article>
+    </div></div>
+  </div>
 </div></section>
 
 <section class="band" id="rates"><div class="wrap">
+  <span class="eyebrow">Collaborate</span>
   <h2>Work with me</h2>
   <p class="lead">Creator collaborations, speaking and LinkedIn LIVE sessions. Every brief is different, so I tailor each package to your audience, goals and budget. Share a few details and I'll reach out personally with options and my rate card.</p>
   <div class="grid">
-    <div class="card"><h3>Sponsored content</h3><p>Story-led LinkedIn posts written in my own voice, reshares, TikTok POV videos and Instagram cross-posts — single pieces or bundles across platforms.</p></div>
-    <div class="card"><h3>Speaking &amp; workshops</h3><p>Panels, keynotes and hands-on workshops on AI at work, secure AI, digitalisation, careers and LinkedIn personal branding.</p></div>
-    <div class="card"><h3>LinkedIn LIVE</h3><p>45-minute featured guest interviews, co-hosted sessions, sponsored segments and series sponsorships, with replay clips for your own channels.</p></div>
+    <div class="card"><div class="ico"><svg viewBox="0 0 44 44" fill="none" stroke="#9ff0c0" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="7" width="30" height="30" rx="6"/><path d="M14 17h16M14 23h16M14 29h9"/></svg></div><h3>Sponsored content</h3><p>Story-led LinkedIn posts written in my own voice, reshares, TikTok POV videos and Instagram cross-posts — single pieces or bundles across platforms.</p></div>
+    <div class="card"><div class="ico"><svg viewBox="0 0 44 44" fill="none" stroke="#9ff0c0" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="17" y="6" width="10" height="18" rx="5"/><path d="M11 20a11 11 0 0 0 22 0M22 31v7M16 38h12"/></svg></div><h3>Speaking &amp; workshops</h3><p>Panels, keynotes and hands-on workshops on AI at work, secure AI, digitalisation, careers and LinkedIn personal branding.</p></div>
+    <div class="card"><div class="ico"><svg viewBox="0 0 44 44" fill="none" stroke="#9ff0c0" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="22" cy="22" r="4"/><path d="M14 14a11 11 0 0 0 0 16M30 14a11 11 0 0 1 0 16M9 9a18 18 0 0 0 0 26M35 9a18 18 0 0 1 0 26"/></svg></div><h3>LinkedIn LIVE</h3><p>45-minute featured guest interviews, co-hosted sessions, sponsored segments and series sponsorships, with replay clips for your own channels.</p></div>
   </div>
   <div class="actions"><a class="btn pri" href="#signup" id="toCollab">Request my rate card</a></div>
   <p class="muted" style="margin-top:16px">Special rates are available for non-profits and community events. All paid content is clearly labelled as a partnership.</p>
 </div></section>
 
 <section class="band alt" id="roi"><div class="wrap">
+  <span class="eyebrow">Calculator</span>
   <h2>Productivity ROI calculator</h2>
   <p class="lead">How much is manual document work costing your team? Pick your market — the defaults load from official wage data and local research, with every source listed below. Then make it yours.</p>
   <div class="market" id="market" role="radiogroup" aria-label="Market" data-m="sg"><span class="pill" aria-hidden="true"></span><button role="radio" aria-checked="true" data-m="sg">Singapore · SGD</button><button role="radio" aria-checked="false" data-m="my">Malaysia · MYR</button></div>
@@ -316,15 +401,11 @@ footer .wrap{display:flex;gap:16px;flex-wrap:wrap;justify-content:space-between}
 
 <section class="band" id="signup"><div class="wrap two">
   <div>
+    <span class="eyebrow">Get in touch</span>
     <h2>Curious about working together?</h2>
     <p class="lead">Whether it's fixing a document headache, partnering, a talk or a collaboration — tell me a little about you and what you have in mind. I'll reach out personally to find the right next step.</p>
     <p>People usually get in touch about:</p>
-    <ul class="lead" style="padding-left:1.2em;margin:0 0 1em">
-      <li>Digitising invoices, HR files and approvals with DocuWare</li>
-      <li>Becoming a DocuWare partner</li>
-      <li>Speaking, workshops and LinkedIn LIVE sessions</li>
-      <li>Creator collaborations</li>
-    </ul>
+    <ul class="reasons"><li><svg viewBox="0 0 24 24" fill="none" stroke="#9ff0c0" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M7.5 12.5l3 3 6-6.5"/></svg><span>Digitising invoices, HR files and approvals with DocuWare</span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="#9ff0c0" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M7.5 12.5l3 3 6-6.5"/></svg><span>Becoming a DocuWare partner</span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="#9ff0c0" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M7.5 12.5l3 3 6-6.5"/></svg><span>Speaking, workshops and LinkedIn LIVE</span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="#9ff0c0" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M7.5 12.5l3 3 6-6.5"/></svg><span>Creator collaborations</span></li></ul>
     <p class="muted">Prefer to chat first? Message me on LinkedIn: <a href="https://www.linkedin.com/in/techsavvy-dad">linkedin.com/in/techsavvy-dad</a></p>
   </div>
   <form class="form" id="form" novalidate>
@@ -353,10 +434,13 @@ footer .wrap{display:flex;gap:16px;flex-wrap:wrap;justify-content:space-between}
   </form>
 </div></section>
 
-<footer><div class="wrap">
-  <span>© 2026 Halid Bin Ayob · Tech-Savvy Dad · Singapore</span>
-  <a href="https://www.linkedin.com/in/techsavvy-dad">Connect on LinkedIn</a>
-</div></footer>
+<footer>
+  <div class="fgrid2">
+    <div><p class="fname">Let's make paper disappear.</p><p class="muted" style="margin:0">Halid Bin Ayob · Tech-Savvy Dad · Singapore</p></div>
+    <nav class="flinks" aria-label="Footer"><a href="#about">About</a><a href="#work">Work</a><a href="#speaking">Speaking</a><a href="#roi">ROI calculator</a><a href="#signup">Get in touch</a><a href="https://www.linkedin.com/in/techsavvy-dad">LinkedIn</a></nav>
+  </div>
+  <div class="wrap" style="border-top:1px solid var(--line);padding-top:18px;color:var(--soft);font-size:14px">© 2026 Halid Bin Ayob. All rights reserved.</div>
+</footer>
 <div class="lightbox" id="lb" role="dialog" aria-modal="true" aria-label="Photo"><button class="rbtn" id="lbClose" aria-label="Close">&#10005;</button><img id="lbImg" alt=""><p id="lbCap"></p></div>
 
 <script>
@@ -464,6 +548,23 @@ $("toCollab").addEventListener("click",()=>{const c=document.querySelector('inpu
 $("toSpeak").addEventListener("click",()=>{const c=document.querySelector('input[value="Speaking or workshop"]');if(c)c.checked=true;});
 $("toForm").addEventListener("click",()=>{includeRoi=true;const c=$("fl");if(c)c.value=M().name;const m=$("fm");if(!m.value)m.value=`My ROI estimate (${M().name}): ${last.hours} hours/year saved, net benefit ${fmt(last.net)} in year one.`});
 
+
+
+// ===== visual upgrade behaviours =====
+(()=>{
+  const RM=matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const targets=document.querySelectorAll("h2,.lead,.card,.steps li,.stats,.portrait,.result,.sources,.year,.reasons li,.form,.marquee,.ringbar");
+  targets.forEach((el,i)=>{el.classList.add("rv");const sib=el.parentElement?[...el.parentElement.children].indexOf(el):0;el.style.transitionDelay=Math.min(sib,5)*70+"ms"});
+  const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add("in");io.unobserve(e.target)}}),{rootMargin:"0px 0px -8% 0px"});
+  targets.forEach(el=>io.observe(el));
+  document.querySelectorAll(".card").forEach(c=>c.addEventListener("pointermove",e=>{const r=c.getBoundingClientRect();c.style.setProperty("--mx",e.clientX-r.left+"px");c.style.setProperty("--my",e.clientY-r.top+"px")}));
+  const nums=document.querySelectorAll("[data-count]");
+  const nio=new IntersectionObserver(es=>es.forEach(e=>{if(!e.isIntersecting)return;nio.unobserve(e.target);const el=e.target,to=+el.dataset.count,suf=el.dataset.suffix||"";if(RM){return}const t0=performance.now();(function f(t){const k=Math.min(1,(t-t0)/1400),v=Math.round(to*(1-Math.pow(1-k,3)));el.textContent=v.toLocaleString("en-SG")+suf;if(k<1)requestAnimationFrame(f)})(t0)}),{threshold:.6});
+  nums.forEach(n=>nio.observe(n));
+  const steps=document.querySelector(".steps"),lis=[...document.querySelectorAll(".steps li")];
+  function tl(){if(!steps)return;const r=steps.getBoundingClientRect(),vh=innerHeight,p=Math.max(0,Math.min(1,(vh*.75-r.top)/r.height));steps.style.setProperty("--p",p);lis.forEach((li,i)=>li.classList.toggle("lit",p>=(i)/(lis.length-1)-.02))}
+  addEventListener("scroll",tl,{passive:true});tl();
+})();
 
 // stage ring
 const STAGE=[
