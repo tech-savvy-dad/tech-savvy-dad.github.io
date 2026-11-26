@@ -142,6 +142,9 @@ input[type=number],input[type=text],input[type=email],select,textarea{width:100%
 .faq summary{list-style:none;cursor:pointer;padding:18px 56px 18px 22px;font-weight:700;color:var(--green);position:relative;font-size:17px}.faq summary::-webkit-details-marker{display:none}
 .faq summary::after{content:"+";position:absolute;right:22px;top:50%;transform:translateY(-50%);font-size:24px;transition:transform .3s}.faq details[open] summary::after{transform:translateY(-50%) rotate(45deg)}
 .faq details p{margin:0;padding:0 22px 20px;color:var(--ink)}
+.totop{position:fixed;right:max(18px,env(safe-area-inset-right));bottom:max(18px,env(safe-area-inset-bottom));z-index:60;width:52px;height:52px;border-radius:50%;display:grid;place-items:center;background:#12251dee;color:var(--green);border:1px solid var(--line);box-shadow:0 12px 30px rgba(0,0,0,.45);backdrop-filter:blur(8px);opacity:0;transform:translateY(16px) scale(.9);pointer-events:none;transition:opacity .35s,transform .35s,background .25s}
+.totop.show{opacity:1;transform:none;pointer-events:auto}.totop:hover{background:var(--green);color:#08130e}.totop:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
+.totop .prog{position:absolute;inset:-1px;width:54px;height:54px;transform:rotate(-90deg)}.totop .prog circle{fill:none;stroke:var(--green);stroke-width:2.5;stroke-dasharray:151;stroke-dashoffset:var(--off,151);stroke-linecap:round}
 .ringcap{min-width:0;flex:1 1 260px;max-width:460px;text-align:center;font-weight:600;color:var(--green)}
 .ringcap span{display:block;color:var(--soft);font-weight:500;font-size:14px}
 .rbtn{width:48px;height:48px;border-radius:50%;border:2px solid var(--green);background:transparent;color:var(--green);font:700 20px "Plus Jakarta Sans",sans-serif;cursor:pointer;flex:none}
@@ -359,7 +362,7 @@ a.inl{color:var(--green);font-weight:600;text-underline-offset:3px}
 <nav id="nav"><div class="wrap">
   <a class="brand" href="#top">Halid Bin Ayob</a>
   <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="navLinks" aria-label="Open menu"><span></span><span></span><span></span></button>
-  <div class="links" id="navLinks"><a href="#about">About</a><a href="#work">Work</a><a href="#speaking">Speaking</a><a href="#channels">Channels</a><a href="#rates">Rates</a><a href="#roi">ROI calculator</a><a class="cta-s" href="#signup">Get in touch</a></div>
+  <div class="links" id="navLinks"><a href="#about">About</a><a href="#work">Work</a><a href="#speaking">Speaking</a><a href="#channels">Channels</a><a href="#rates">Rates</a><a href="#roi">ROI calculator</a><a href="#faq">FAQ</a><a class="cta-s" href="#signup">Get in touch</a></div>
 </div></nav>
 
 <header class="band hero" id="top"><div class="wrap top">
@@ -605,6 +608,7 @@ a.inl{color:var(--green);font-weight:600;text-underline-offset:3px}
   </div>
 </div></section>
 
+<a class="totop" id="toTop" href="#top" aria-label="Back to top"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7"/></svg><svg class="prog" viewBox="0 0 52 52" aria-hidden="true"><circle cx="26" cy="26" r="24"/></svg></a>
 <footer>
   <div class="fgrid2">
     <div><p class="fname">Let's make paper disappear.</p><p class="muted" style="margin:0">Halid Bin Ayob · Tech-Savvy Dad · Singapore</p></div>
@@ -745,6 +749,12 @@ document.querySelectorAll(".src").forEach(a=>a.addEventListener("click",()=>{con
     const icoIO=new IntersectionObserver(es=>es.forEach(e=>{e.target.classList.toggle("live",e.isIntersecting)}),{threshold:.6});
     document.querySelectorAll(".card .ico").forEach(el=>icoIO.observe(el));
   }
+
+  /* back-to-top with scroll progress ring */
+  const tt=document.getElementById("toTop");
+  const onS=()=>{const h=document.documentElement,max=h.scrollHeight-innerHeight,y=scrollY;tt.classList.toggle("show",y>innerHeight*.8);tt.style.setProperty("--off",151-151*(max>0?y/max:0))};
+  addEventListener("scroll",onS,{passive:true});onS();
+  tt.addEventListener("click",e=>{e.preventDefault();scrollTo({top:0,behavior:matchMedia("(prefers-reduced-motion:reduce)").matches?"auto":"smooth"});history.replaceState(null,"",location.pathname+location.search);document.querySelector(".skip,nav a")?.focus({preventScroll:true})});
   const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add("in");io.unobserve(e.target)}}),{rootMargin:"0px 0px -8% 0px"});
   targets.forEach(el=>io.observe(el));
   document.querySelectorAll(".card").forEach(c=>c.addEventListener("pointermove",e=>{const r=c.getBoundingClientRect();c.style.setProperty("--mx",e.clientX-r.left+"px");c.style.setProperty("--my",e.clientY-r.top+"px")}));
