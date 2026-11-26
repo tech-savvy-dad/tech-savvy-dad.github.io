@@ -182,6 +182,123 @@ input[type=number],input[type=text],input[type=email],select,textarea{width:100%
 .vid .dur{position:absolute;right:12px;bottom:12px;padding:3px 9px;border-radius:8px;background:rgba(0,0,0,.75);color:#fff;font-size:13px;font-weight:700}
 .vid iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
 @media(max-width:860px){.vidwrap{grid-template-columns:1fr}}
+/* ---------- 1. scroll story ---------- */
+.story{padding:0!important;height:260vh;position:relative;background:linear-gradient(180deg,#0b1511,#0e1d17 50%,#0b1511)}
+.story::after{display:none}
+.story-sticky{position:sticky;top:0;height:100vh;height:100svh;display:flex;align-items:center;overflow:hidden}
+.story-grid{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:clamp(20px,4vw,56px);align-items:center;width:100%}
+.story-steps{list-style:none;margin:18px 0 0;padding:0;display:grid;gap:10px}
+.story-steps li{padding:12px 16px;border-left:3px solid var(--line);opacity:.35;transition:opacity .4s,border-color .4s,background .4s;border-radius:0 12px 12px 0}
+.story-steps li b{display:block;color:var(--green);font-size:15px}.story-steps li span{font-size:15px;color:var(--soft)}
+.story-steps li.on{opacity:1;border-color:var(--green);background:#12251d}
+.story-meter{display:flex;align-items:baseline;gap:10px;margin-top:18px;color:var(--soft);font-weight:600;font-size:14px}
+.story-meter b{font-size:34px;color:var(--accent);font-variant-numeric:tabular-nums;transition:color .3s}.story-meter b.zero{color:var(--green)}
+.story-scene svg{width:100%;height:auto;max-height:78vh}
+#papers rect{fill:#f4f7f5;stroke:#c9d8d1;stroke-width:1.2}#papers path{stroke:#9fb3aa;stroke-width:1.6}
+.steam{animation:steam 2.4s ease-in-out infinite}@keyframes steam{50%{opacity:.3;transform:translateY(-4px)}}
+@media(max-width:860px){
+  .story{height:240vh}
+  .story-grid{grid-template-columns:1fr;gap:6px}
+  .story-copy h2{font-size:26px;margin-bottom:4px}
+  .story-copy .eyebrow{margin-bottom:4px}
+  .story-steps{margin-top:6px;gap:0;position:relative;min-height:76px}
+  .story-steps li{position:absolute;inset:0;opacity:0;padding:8px 12px}
+  .story-steps li.on{opacity:1}
+  .story-steps li span{font-size:13.5px;line-height:1.45}
+  .story-meter{margin-top:6px}.story-meter b{font-size:24px}
+  .story-scene svg{max-height:46vh}
+}
+@media(prefers-reduced-motion:reduce){.story{height:auto}.story-sticky{position:static;height:auto;padding:60px 0}}
+
+/* ---------- 2. spot the risk ---------- */
+.spot{margin-top:44px;background:#0f1f18;border:1px solid var(--line);border-radius:24px;padding:clamp(18px,3vw,30px)}
+.spot-head{display:flex;justify-content:space-between;gap:16px;align-items:flex-start;flex-wrap:wrap}
+.spot-head h3{font-size:clamp(22px,2.6vw,28px);margin:0 0 4px}.spot-head p{margin:0}
+.spot-score{text-align:center;background:#0b1511;border:1px solid var(--line);border-radius:16px;padding:10px 18px}
+.spot-score b{display:block;font-size:34px;color:var(--accent);line-height:1}.spot-score span{font-size:13px;color:var(--soft)}
+.spot-stage{position:relative;margin-top:18px;border-radius:16px;background:radial-gradient(600px 300px at 50% 30%,#14291f,#0b1511);border:1px solid var(--line);overflow:hidden}
+.spot-stage svg{display:block;width:100%;height:auto}
+.hs{position:absolute;width:13%;aspect-ratio:1;transform:translate(-50%,-50%);border-radius:50%;border:0;background:transparent;cursor:pointer;padding:0}
+.hs::after{content:"";position:absolute;inset:18%;border-radius:50%;border:2px dashed rgba(255,209,102,0);transition:border-color .3s}
+.hs:hover::after,.hs:focus-visible::after{border-color:rgba(255,209,102,.55)}
+.hs:focus-visible{outline:none}
+.hs.found{cursor:default}
+.hs.found::after{border:3px solid var(--green);background:rgba(95,211,148,.14);animation:found .6s cubic-bezier(.2,.8,.2,1)}
+.hs.found::before{content:"✓";position:absolute;right:6%;top:4%;width:24px;height:24px;border-radius:50%;background:var(--green);color:#08130e;font-weight:800;font-size:14px;display:grid;place-items:center;z-index:1}
+@keyframes found{from{transform:scale(.4);opacity:0}}
+.hs.hint::after{border-color:var(--accent);animation:hint 1s ease-in-out 3}@keyframes hint{50%{transform:scale(1.15)}}
+.spot-tip{margin-top:14px;min-height:52px;padding:12px 16px;border-radius:14px;background:#0b1511;border:1px solid var(--line);color:var(--soft);font-size:15px}
+.spot-tip b{color:var(--green)}
+.spot-done{margin-top:12px;padding:16px;border-radius:14px;background:linear-gradient(135deg,#1f4a39,#12251d);border:1px solid var(--green2);display:flex;flex-wrap:wrap;gap:10px 14px;align-items:center}
+.spot-done b{color:var(--green)}
+.spot-miss{position:absolute;width:26px;height:26px;margin:-13px 0 0 -13px;border-radius:50%;border:2px solid #ff8a8a;pointer-events:none;animation:miss .6s forwards}
+@keyframes miss{to{transform:scale(1.8);opacity:0}}
+@media(max-width:700px){.hs{width:17%}.spot-score b{font-size:26px}}
+
+/* ---------- 3. map ---------- */
+.mapwrap{margin-top:44px;display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:clamp(18px,3vw,40px);align-items:center;background:#0f1f18;border:1px solid var(--line);border-radius:24px;padding:clamp(18px,3vw,30px)}
+.map-copy h3{font-size:clamp(22px,2.6vw,28px);margin:0 0 6px}
+.map-svg svg{width:100%;height:auto;display:block}
+.land{stroke:#2f5c4a;stroke-width:5;stroke-linecap:round;fill:none}
+.route{fill:none;stroke:#5fd394;stroke-width:2;stroke-dasharray:4 8;opacity:.55;animation:route 1.6s linear infinite}
+@keyframes route{to{stroke-dashoffset:-24}}
+.pin{cursor:pointer;outline:none}.pin .dot{fill:#0b1511;stroke:var(--green);stroke-width:3;transition:fill .3s}
+.pin.home .dot{fill:var(--green)}
+.pin .pulse{fill:var(--green);opacity:.25;transform-box:fill-box;transform-origin:center;animation:pinpulse 2.2s ease-out infinite}
+@keyframes pinpulse{from{transform:scale(.6);opacity:.5}to{transform:scale(2.6);opacity:0}}
+.pin text{fill:var(--soft);font-size:17px;font-weight:700;paint-order:stroke;stroke:#0b1511;stroke-width:5px}
+.pin.on .dot{fill:var(--accent);stroke:var(--accent)}.pin.on text{fill:var(--accent)}
+.pin:focus-visible .dot{stroke:var(--accent);stroke-width:5}
+.map-card{margin-top:14px;padding:16px;border-radius:16px;background:#0b1511;border:1px solid var(--line);min-height:180px}
+.map-card h4{margin:0 0 2px;color:var(--green);font-size:18px}.map-card .city{color:var(--soft);font-size:13px}
+.map-card ul{list-style:none;margin:10px 0 0;padding:0;display:grid;gap:8px}
+.map-card li{font-size:14px;line-height:1.45}.map-card li i{font-style:normal;display:inline-block;margin-right:6px;padding:1px 8px;border-radius:999px;background:#1d3a2d;color:var(--green);font-size:11.5px;font-weight:700}
+.map-card li small{display:block;color:var(--soft);font-size:12.5px}
+@media(max-width:860px){.mapwrap{grid-template-columns:1fr}.map-svg{order:-1}.map-card{min-height:0}}
+
+/* ---------- 4. before / after ---------- */
+.ba{margin:0 0 40px;background:#0f1f18;border:1px solid var(--line);border-radius:24px;padding:clamp(18px,3vw,30px)}
+.ba-head{display:flex;flex-wrap:wrap;justify-content:space-between;gap:16px;align-items:flex-end}
+.ba-head h3{font-size:clamp(22px,2.6vw,28px);margin:0 0 4px}.ba-head p{margin:0}
+.ba-stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px}
+.ba-stats div{background:#0b1511;border:1px solid var(--line);border-radius:14px;padding:8px 12px;text-align:center;min-width:82px}
+.ba-stats b{display:block;font-size:26px;line-height:1.1;color:var(--accent);font-variant-numeric:tabular-nums;transition:color .3s}
+.ba-stats b.good{color:var(--green)}.ba-stats span{font-size:11.5px;color:var(--soft)}
+.ba-stage{position:relative;margin-top:18px;border-radius:16px;overflow:hidden;border:1px solid var(--line);background:#0b1511;aspect-ratio:8/3;touch-action:pan-y}
+.ba-layer{position:absolute;inset:0}.ba-layer svg{width:100%;height:100%;display:block}
+.ba-before{background:repeating-linear-gradient(135deg,#1a1512 0 14px,#16120f 14px 28px)}
+.ba-after{background:radial-gradient(500px 200px at 60% 50%,#14301f,#0b1511);clip-path:inset(0 0 0 var(--cut,88%))}
+.ba-tag{position:absolute;top:10px;padding:3px 10px;border-radius:999px;font-size:12px;font-weight:800;z-index:2}
+.ba-before .ba-tag{left:10px;background:#3a2620;color:#ffb38a}.ba-after .ba-tag{right:10px;background:#1f4a39;color:var(--green)}
+.n rect{stroke-width:2.5}.n .gl{fill:none;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
+.n text{font-size:13px;font-weight:700}
+.n.bad rect{fill:#241a16;stroke:#c9805e}.n.bad .gl{stroke:#ffb38a}.n.bad text{fill:#ffcfb5}
+.n.good rect{fill:#12251d;stroke:var(--green2)}.n.good .gl{stroke:var(--green)}.n.good text{fill:var(--green)}
+.ba-path{fill:none;stroke-width:3}.ba-path.bad{stroke:#c9805e;stroke-dasharray:8 7}.ba-path.good{stroke:var(--green2)}
+.papers-pile path{fill:#f4f7f5;stroke:#c9d8d1;stroke-width:1}
+.flowdot{fill:var(--accent)}
+.ba-handle{position:absolute;top:0;bottom:0;left:var(--cut,88%);width:3px;margin-left:-1.5px;background:var(--green);box-shadow:0 0 18px rgba(159,240,192,.7);pointer-events:none;z-index:3}
+.ba-handle span{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:44px;height:44px;border-radius:50%;background:var(--green);color:#08130e;display:grid;place-items:center;font-weight:800;font-size:20px;box-shadow:0 6px 20px rgba(0,0,0,.4)}
+.ba-stage input{position:absolute;inset:0;width:100%;height:100%;opacity:0;cursor:ew-resize;margin:0;z-index:4}
+.ba-stage input:focus-visible~.ba-handle span,.ba-stage:has(input:focus-visible) .ba-handle span{outline:3px solid var(--accent);outline-offset:3px}
+@media(max-width:700px){.ba-stats{grid-template-columns:repeat(2,minmax(0,1fr));width:100%}.ba-stage{aspect-ratio:8/4.4}.ba-layer svg{height:100%}.n text{font-size:16px}}
+
+/* ---------- 5. buddy ---------- */
+.buddy{position:fixed;left:max(16px,env(safe-area-inset-left));bottom:max(16px,env(safe-area-inset-bottom));z-index:61;display:flex;align-items:flex-end;gap:10px;pointer-events:none;opacity:0;transform:translateY(20px);transition:opacity .4s,transform .4s}
+.buddy.show{opacity:1;transform:none}
+.buddy-btn{pointer-events:auto;width:72px;height:72px;padding:0;border:0;border-radius:50%;background:none;cursor:pointer;filter:drop-shadow(0 10px 20px rgba(0,0,0,.45));transition:transform .25s}
+.buddy-btn:hover{transform:translateY(-3px) rotate(-4deg)}.buddy-btn:focus-visible{outline:3px solid var(--accent);outline-offset:3px;border-radius:50%}
+.buddy-btn svg{width:100%;height:100%}
+.wave{transform-origin:92px 104px}
+.buddy.hello .wave{animation:wave .5s ease-in-out 4 alternate}@keyframes wave{to{transform:rotate(-18deg)}}
+.bubble{order:2;pointer-events:auto;position:relative;max-width:240px;background:#f4f7f5;color:#0b1511;border-radius:16px 16px 16px 4px;padding:10px 30px 10px 14px;font-size:14px;font-weight:600;line-height:1.4;box-shadow:0 10px 30px rgba(0,0,0,.4);opacity:0;transform:translateY(8px) scale(.96);transform-origin:bottom left;transition:opacity .3s,transform .3s;margin-bottom:40px}
+.bubble.show{opacity:1;transform:none}
+.bubble a{color:#1a6b45;font-weight:800}
+.bubble button{position:absolute;top:4px;right:6px;border:0;background:none;font-size:18px;line-height:1;cursor:pointer;color:#44564e;padding:2px}
+.buddy-btn{order:1}
+@media(max-width:700px){.buddy-btn{width:58px;height:58px}.bubble{max-width:200px;font-size:13px;margin-bottom:30px}}
+@media print{.buddy{display:none}}
+
 .ringcap{min-width:0;flex:1 1 260px;max-width:460px;text-align:center;font-weight:600;color:var(--green)}
 .ringcap span{display:block;color:var(--soft);font-weight:500;font-size:14px}
 .rbtn{width:48px;height:48px;border-radius:50%;border:2px solid var(--green);background:transparent;color:var(--green);font:700 20px "Plus Jakarta Sans",sans-serif;cursor:pointer;flex:none}
@@ -452,6 +569,64 @@ a.inl{color:var(--green);font-weight:600;text-underline-offset:3px}
 </div></div></div>
 </header>
 
+<section class="band story" id="story" aria-label="My story: from paper piles to paperless">
+  <div class="story-sticky">
+    <div class="wrap story-grid">
+      <div class="story-copy">
+        <span class="eyebrow">Scroll the story</span>
+        <h2>From paper piles to paperless</h2>
+        <ol class="story-steps" id="storySteps">
+          <li class="on"><b>2006 · The copier years</b><span>Paper everywhere. I was the technician who kept the copiers printing it.</span></li>
+          <li><b>The shift</b><span>Offices started going digital, so I learned the software that replaced the paper.</span></li>
+          <li><b>Automation</b><span>Today documents are captured, routed and approved on their own, with no chasing.</span></li>
+          <li><b>Clean desk, secure vault</b><span>Everything is searchable, governed and safe. And the desk is finally clear.</span></li>
+        </ol>
+        <div class="story-meter" aria-hidden="true"><span>Paper on the desk</span><b id="storyCount">12</b></div>
+      </div>
+      <div class="story-scene">
+        <svg id="storySvg" viewBox="0 0 640 460" role="img" aria-label="Illustration: paper documents lift off a desk next to an old copier and fly into a secure cloud vault, leaving a clean desk with a laptop showing an approved tick">
+          <defs>
+            <linearGradient id="vaultG" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1f4a39"/><stop offset="1" stop-color="#0f261d"/></linearGradient>
+            <radialGradient id="glowG"><stop offset="0" stop-color="#9ff0c0" stop-opacity=".55"/><stop offset="1" stop-color="#9ff0c0" stop-opacity="0"/></radialGradient>
+          </defs>
+          <!-- cloud vault -->
+          <g id="vault" transform="translate(470 92)">
+            <circle id="vaultGlow" r="120" fill="url(#glowG)" opacity=".15"/>
+            <path d="M-92 30c-22 0-36-16-36-34 0-19 16-34 35-34 4-26 26-44 53-44 23 0 42 13 50 32 5-2 10-3 16-3 24 0 43 19 43 43 0 22-17 40-39 40z" fill="url(#vaultG)" stroke="#5fd394" stroke-width="2.5"/>
+            <rect x="-26" y="-16" width="52" height="40" rx="8" fill="#0b1511" stroke="#9ff0c0" stroke-width="2.5"/>
+            <path d="M-14-16v-9a14 14 0 0 1 28 0v9" fill="none" stroke="#9ff0c0" stroke-width="2.5"/>
+            <circle cy="2" r="5" fill="#9ff0c0"/><path d="M0 6v8" stroke="#9ff0c0" stroke-width="3" stroke-linecap="round"/>
+            <text id="vaultN" y="56" text-anchor="middle" fill="#9ff0c0" font-size="15" font-weight="800">0 stored</text>
+          </g>
+          <!-- floor & desk -->
+          <path d="M20 420h600" stroke="#24463a" stroke-width="2"/>
+          <path d="M150 330h380M170 330v90M510 330v90" stroke="#5fd394" stroke-width="3" stroke-linecap="round" fill="none"/>
+          <!-- copier -->
+          <g id="copier" stroke="#5fd394" stroke-width="2.5" fill="#12251d" stroke-linejoin="round">
+            <rect x="34" y="250" width="104" height="170" rx="8"/>
+            <rect x="44" y="236" width="84" height="18" rx="4"/>
+            <path d="M46 290h80M46 320h80" fill="none"/>
+            <rect x="52" y="340" width="68" height="14" rx="3"/>
+            <circle cx="120" cy="272" r="4" fill="#ffd166" stroke="none"/>
+            <path d="M138 300h18v12h-18" fill="#0b1511"/>
+          </g>
+          <!-- laptop -->
+          <g id="laptop" transform="translate(372 262)" stroke="#9ff0c0" stroke-width="2.5" fill="#0b1511" stroke-linejoin="round">
+            <rect x="0" y="0" width="112" height="68" rx="6"/>
+            <path d="M-14 68h140l-10 10h-120z"/>
+            <g id="lapTick" opacity="0"><circle cx="56" cy="34" r="18" fill="#5fd394" stroke="none"/><path d="M47 34l6 6 12-13" stroke="#08130e" stroke-width="3.5" fill="none" stroke-linecap="round"/></g>
+            <g id="lapBusy"><path d="M20 20h60M20 32h72M20 44h44" stroke="#5fd394" stroke-width="3" stroke-linecap="round"/></g>
+          </g>
+          <!-- mug -->
+          <g stroke="#9ff0c0" stroke-width="2.5" fill="none"><path d="M508 300h22v24a6 6 0 0 1-6 6h-10a6 6 0 0 1-6-6z" fill="#12251d"/><path d="M530 306h5a6 6 0 0 1 0 12h-5"/><path class="steam" d="M514 292c-4-6 4-8 0-14M522 292c-4-6 4-8 0-14" stroke-linecap="round"/></g>
+          <!-- papers inserted by JS -->
+          <g id="papers"></g>
+        </svg>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section class="band alt" id="about"><div class="wrap two">
   <div>
     <span class="eyebrow">About</span>
@@ -491,6 +666,19 @@ a.inl{color:var(--green);font-weight:600;text-underline-offset:3px}
     <div class="card"><div class="ico"><svg viewBox="0 0 44 44" fill="none" stroke="#9ff0c0" stroke-width="2.5" stroke-linecap="round"><path d="M22 38s-14-8-14-19a8 8 0 0 1 14-5 8 8 0 0 1 14 5c0 11-14 19-14 19z"/></svg></div>
       <h3>Community</h3><p>Grassroots work in Zhenghua, mentoring sessions, <a class="inl" href="https://www.youtube.com/@tech_savvy_dad">Read With Dad on YouTube</a>, and networking meetups that turn online connections into real friendships.</p><span class="kpi">Zhenghua · NHT Family</span></div>
   </div>
+  <div class="mapwrap" id="mapwrap">
+    <div class="map-copy">
+      <span class="eyebrow">Where I work</span>
+      <h3>Six countries, one region</h3>
+      <p class="muted">Tap a country to see the stages, rooms and partners there.</p>
+      <div class="map-card" id="mapCard" aria-live="polite"></div>
+    </div>
+    <div class="map-svg"><svg viewBox="0 0 720 680" role="img" aria-label="Dot map of Southeast Asia with Singapore, Malaysia, Thailand, Vietnam, Brunei and Laos highlighted">
+      <path class="land" d="M0.0 0.0h0M11.0 0.0h0M22.0 0.0h0M33.0 0.0h0M44.0 0.0h0M55.0 0.0h0M66.0 0.0h0M77.0 0.0h0M88.0 0.0h0M99.0 0.0h0M110.0 0.0h0M121.0 0.0h0M132.0 0.0h0M143.0 0.0h0M154.0 0.0h0M165.0 0.0h0M176.0 0.0h0M187.0 0.0h0M198.0 0.0h0M209.0 0.0h0M220.0 0.0h0M231.0 0.0h0M242.0 0.0h0M253.0 0.0h0M264.0 0.0h0M275.0 0.0h0M286.0 0.0h0M297.0 0.0h0M308.0 0.0h0M319.0 0.0h0M330.0 0.0h0M341.0 0.0h0M352.0 0.0h0M363.0 0.0h0M374.0 0.0h0M385.0 0.0h0M396.0 0.0h0M407.0 0.0h0M418.0 0.0h0M429.0 0.0h0M440.0 0.0h0M451.0 0.0h0M462.0 0.0h0M473.0 0.0h0M484.0 0.0h0M495.0 0.0h0M506.0 0.0h0M572.0 0.0h0M583.0 0.0h0M0.0 11.0h0M11.0 11.0h0M22.0 11.0h0M33.0 11.0h0M44.0 11.0h0M55.0 11.0h0M66.0 11.0h0M77.0 11.0h0M88.0 11.0h0M99.0 11.0h0M110.0 11.0h0M121.0 11.0h0M132.0 11.0h0M143.0 11.0h0M154.0 11.0h0M165.0 11.0h0M176.0 11.0h0M187.0 11.0h0M198.0 11.0h0M209.0 11.0h0M220.0 11.0h0M231.0 11.0h0M242.0 11.0h0M253.0 11.0h0M264.0 11.0h0M275.0 11.0h0M286.0 11.0h0M297.0 11.0h0M308.0 11.0h0M319.0 11.0h0M330.0 11.0h0M341.0 11.0h0M352.0 11.0h0M363.0 11.0h0M374.0 11.0h0M385.0 11.0h0M396.0 11.0h0M407.0 11.0h0M418.0 11.0h0M429.0 11.0h0M440.0 11.0h0M451.0 11.0h0M462.0 11.0h0M473.0 11.0h0M484.0 11.0h0M495.0 11.0h0M572.0 11.0h0M583.0 11.0h0M0.0 22.0h0M11.0 22.0h0M22.0 22.0h0M33.0 22.0h0M44.0 22.0h0M55.0 22.0h0M66.0 22.0h0M77.0 22.0h0M88.0 22.0h0M99.0 22.0h0M110.0 22.0h0M121.0 22.0h0M132.0 22.0h0M143.0 22.0h0M154.0 22.0h0M165.0 22.0h0M176.0 22.0h0M187.0 22.0h0M198.0 22.0h0M209.0 22.0h0M220.0 22.0h0M231.0 22.0h0M242.0 22.0h0M253.0 22.0h0M264.0 22.0h0M275.0 22.0h0M286.0 22.0h0M297.0 22.0h0M308.0 22.0h0M319.0 22.0h0M330.0 22.0h0M341.0 22.0h0M352.0 22.0h0M363.0 22.0h0M374.0 22.0h0M385.0 22.0h0M396.0 22.0h0M407.0 22.0h0M418.0 22.0h0M429.0 22.0h0M440.0 22.0h0M451.0 22.0h0M462.0 22.0h0M473.0 22.0h0M572.0 22.0h0M583.0 22.0h0M0.0 33.0h0M11.0 33.0h0M22.0 33.0h0M33.0 33.0h0M44.0 33.0h0M55.0 33.0h0M66.0 33.0h0M77.0 33.0h0M88.0 33.0h0M99.0 33.0h0M110.0 33.0h0M121.0 33.0h0M132.0 33.0h0M143.0 33.0h0M154.0 33.0h0M165.0 33.0h0M176.0 33.0h0M187.0 33.0h0M198.0 33.0h0M209.0 33.0h0M220.0 33.0h0M231.0 33.0h0M242.0 33.0h0M253.0 33.0h0M264.0 33.0h0M275.0 33.0h0M286.0 33.0h0M297.0 33.0h0M308.0 33.0h0M319.0 33.0h0M330.0 33.0h0M341.0 33.0h0M352.0 33.0h0M363.0 33.0h0M374.0 33.0h0M385.0 33.0h0M396.0 33.0h0M407.0 33.0h0M418.0 33.0h0M429.0 33.0h0M572.0 33.0h0M0.0 44.0h0M11.0 44.0h0M22.0 44.0h0M33.0 44.0h0M44.0 44.0h0M55.0 44.0h0M66.0 44.0h0M77.0 44.0h0M88.0 44.0h0M99.0 44.0h0M110.0 44.0h0M121.0 44.0h0M132.0 44.0h0M143.0 44.0h0M154.0 44.0h0M165.0 44.0h0M176.0 44.0h0M187.0 44.0h0M198.0 44.0h0M209.0 44.0h0M220.0 44.0h0M231.0 44.0h0M242.0 44.0h0M253.0 44.0h0M264.0 44.0h0M275.0 44.0h0M286.0 44.0h0M297.0 44.0h0M308.0 44.0h0M319.0 44.0h0M341.0 44.0h0M352.0 44.0h0M363.0 44.0h0M374.0 44.0h0M385.0 44.0h0M396.0 44.0h0M407.0 44.0h0M11.0 55.0h0M22.0 55.0h0M33.0 55.0h0M44.0 55.0h0M55.0 55.0h0M66.0 55.0h0M77.0 55.0h0M88.0 55.0h0M99.0 55.0h0M110.0 55.0h0M121.0 55.0h0M132.0 55.0h0M143.0 55.0h0M154.0 55.0h0M165.0 55.0h0M176.0 55.0h0M187.0 55.0h0M198.0 55.0h0M209.0 55.0h0M220.0 55.0h0M231.0 55.0h0M242.0 55.0h0M253.0 55.0h0M264.0 55.0h0M275.0 55.0h0M286.0 55.0h0M297.0 55.0h0M363.0 55.0h0M11.0 66.0h0M22.0 66.0h0M33.0 66.0h0M44.0 66.0h0M55.0 66.0h0M66.0 66.0h0M77.0 66.0h0M88.0 66.0h0M99.0 66.0h0M110.0 66.0h0M121.0 66.0h0M132.0 66.0h0M143.0 66.0h0M154.0 66.0h0M165.0 66.0h0M176.0 66.0h0M187.0 66.0h0M198.0 66.0h0M209.0 66.0h0M220.0 66.0h0M231.0 66.0h0M242.0 66.0h0M253.0 66.0h0M264.0 66.0h0M275.0 66.0h0M286.0 66.0h0M363.0 66.0h0M22.0 77.0h0M33.0 77.0h0M44.0 77.0h0M55.0 77.0h0M66.0 77.0h0M77.0 77.0h0M88.0 77.0h0M99.0 77.0h0M110.0 77.0h0M121.0 77.0h0M132.0 77.0h0M143.0 77.0h0M154.0 77.0h0M165.0 77.0h0M176.0 77.0h0M187.0 77.0h0M198.0 77.0h0M209.0 77.0h0M220.0 77.0h0M231.0 77.0h0M242.0 77.0h0M253.0 77.0h0M264.0 77.0h0M275.0 77.0h0M286.0 77.0h0M44.0 88.0h0M55.0 88.0h0M66.0 88.0h0M77.0 88.0h0M88.0 88.0h0M99.0 88.0h0M110.0 88.0h0M121.0 88.0h0M132.0 88.0h0M143.0 88.0h0M154.0 88.0h0M165.0 88.0h0M176.0 88.0h0M187.0 88.0h0M198.0 88.0h0M209.0 88.0h0M220.0 88.0h0M231.0 88.0h0M242.0 88.0h0M253.0 88.0h0M264.0 88.0h0M275.0 88.0h0M341.0 88.0h0M352.0 88.0h0M363.0 88.0h0M374.0 88.0h0M44.0 99.0h0M55.0 99.0h0M66.0 99.0h0M77.0 99.0h0M88.0 99.0h0M99.0 99.0h0M110.0 99.0h0M121.0 99.0h0M132.0 99.0h0M143.0 99.0h0M154.0 99.0h0M165.0 99.0h0M176.0 99.0h0M187.0 99.0h0M198.0 99.0h0M209.0 99.0h0M220.0 99.0h0M231.0 99.0h0M242.0 99.0h0M253.0 99.0h0M264.0 99.0h0M341.0 99.0h0M352.0 99.0h0M363.0 99.0h0M55.0 110.0h0M66.0 110.0h0M77.0 110.0h0M88.0 110.0h0M99.0 110.0h0M110.0 110.0h0M121.0 110.0h0M132.0 110.0h0M143.0 110.0h0M154.0 110.0h0M165.0 110.0h0M176.0 110.0h0M187.0 110.0h0M198.0 110.0h0M209.0 110.0h0M220.0 110.0h0M231.0 110.0h0M242.0 110.0h0M253.0 110.0h0M264.0 110.0h0M275.0 110.0h0M341.0 110.0h0M352.0 110.0h0M572.0 110.0h0M583.0 110.0h0M55.0 121.0h0M66.0 121.0h0M77.0 121.0h0M88.0 121.0h0M99.0 121.0h0M110.0 121.0h0M121.0 121.0h0M132.0 121.0h0M143.0 121.0h0M154.0 121.0h0M165.0 121.0h0M176.0 121.0h0M187.0 121.0h0M198.0 121.0h0M209.0 121.0h0M220.0 121.0h0M231.0 121.0h0M242.0 121.0h0M253.0 121.0h0M264.0 121.0h0M275.0 121.0h0M286.0 121.0h0M572.0 121.0h0M583.0 121.0h0M594.0 121.0h0M55.0 132.0h0M66.0 132.0h0M77.0 132.0h0M88.0 132.0h0M99.0 132.0h0M110.0 132.0h0M121.0 132.0h0M132.0 132.0h0M143.0 132.0h0M154.0 132.0h0M165.0 132.0h0M176.0 132.0h0M187.0 132.0h0M198.0 132.0h0M209.0 132.0h0M220.0 132.0h0M231.0 132.0h0M242.0 132.0h0M253.0 132.0h0M264.0 132.0h0M275.0 132.0h0M286.0 132.0h0M572.0 132.0h0M583.0 132.0h0M594.0 132.0h0M605.0 132.0h0M55.0 143.0h0M66.0 143.0h0M77.0 143.0h0M88.0 143.0h0M110.0 143.0h0M121.0 143.0h0M132.0 143.0h0M143.0 143.0h0M154.0 143.0h0M165.0 143.0h0M176.0 143.0h0M187.0 143.0h0M198.0 143.0h0M209.0 143.0h0M220.0 143.0h0M231.0 143.0h0M242.0 143.0h0M253.0 143.0h0M264.0 143.0h0M275.0 143.0h0M286.0 143.0h0M297.0 143.0h0M572.0 143.0h0M583.0 143.0h0M594.0 143.0h0M605.0 143.0h0M55.0 154.0h0M66.0 154.0h0M77.0 154.0h0M110.0 154.0h0M121.0 154.0h0M132.0 154.0h0M143.0 154.0h0M154.0 154.0h0M165.0 154.0h0M176.0 154.0h0M187.0 154.0h0M198.0 154.0h0M209.0 154.0h0M220.0 154.0h0M231.0 154.0h0M242.0 154.0h0M253.0 154.0h0M264.0 154.0h0M275.0 154.0h0M286.0 154.0h0M297.0 154.0h0M308.0 154.0h0M319.0 154.0h0M572.0 154.0h0M583.0 154.0h0M594.0 154.0h0M121.0 165.0h0M132.0 165.0h0M143.0 165.0h0M154.0 165.0h0M165.0 165.0h0M176.0 165.0h0M187.0 165.0h0M198.0 165.0h0M209.0 165.0h0M220.0 165.0h0M231.0 165.0h0M242.0 165.0h0M253.0 165.0h0M264.0 165.0h0M275.0 165.0h0M286.0 165.0h0M297.0 165.0h0M308.0 165.0h0M319.0 165.0h0M561.0 165.0h0M572.0 165.0h0M583.0 165.0h0M121.0 176.0h0M132.0 176.0h0M143.0 176.0h0M154.0 176.0h0M165.0 176.0h0M176.0 176.0h0M187.0 176.0h0M198.0 176.0h0M209.0 176.0h0M220.0 176.0h0M231.0 176.0h0M242.0 176.0h0M253.0 176.0h0M264.0 176.0h0M275.0 176.0h0M286.0 176.0h0M297.0 176.0h0M308.0 176.0h0M319.0 176.0h0M330.0 176.0h0M561.0 176.0h0M572.0 176.0h0M583.0 176.0h0M121.0 187.0h0M132.0 187.0h0M143.0 187.0h0M154.0 187.0h0M165.0 187.0h0M176.0 187.0h0M187.0 187.0h0M198.0 187.0h0M209.0 187.0h0M220.0 187.0h0M231.0 187.0h0M242.0 187.0h0M253.0 187.0h0M264.0 187.0h0M275.0 187.0h0M286.0 187.0h0M297.0 187.0h0M308.0 187.0h0M319.0 187.0h0M330.0 187.0h0M341.0 187.0h0M583.0 187.0h0M132.0 198.0h0M143.0 198.0h0M154.0 198.0h0M165.0 198.0h0M176.0 198.0h0M187.0 198.0h0M198.0 198.0h0M209.0 198.0h0M220.0 198.0h0M231.0 198.0h0M242.0 198.0h0M253.0 198.0h0M264.0 198.0h0M275.0 198.0h0M286.0 198.0h0M297.0 198.0h0M308.0 198.0h0M319.0 198.0h0M330.0 198.0h0M341.0 198.0h0M583.0 198.0h0M594.0 198.0h0M605.0 198.0h0M616.0 198.0h0M132.0 209.0h0M143.0 209.0h0M154.0 209.0h0M165.0 209.0h0M176.0 209.0h0M187.0 209.0h0M198.0 209.0h0M209.0 209.0h0M220.0 209.0h0M231.0 209.0h0M242.0 209.0h0M253.0 209.0h0M264.0 209.0h0M275.0 209.0h0M286.0 209.0h0M297.0 209.0h0M308.0 209.0h0M319.0 209.0h0M330.0 209.0h0M341.0 209.0h0M627.0 209.0h0M132.0 220.0h0M143.0 220.0h0M154.0 220.0h0M187.0 220.0h0M198.0 220.0h0M209.0 220.0h0M220.0 220.0h0M231.0 220.0h0M242.0 220.0h0M253.0 220.0h0M264.0 220.0h0M275.0 220.0h0M286.0 220.0h0M297.0 220.0h0M308.0 220.0h0M319.0 220.0h0M330.0 220.0h0M341.0 220.0h0M583.0 220.0h0M638.0 220.0h0M143.0 231.0h0M154.0 231.0h0M209.0 231.0h0M220.0 231.0h0M231.0 231.0h0M242.0 231.0h0M253.0 231.0h0M264.0 231.0h0M275.0 231.0h0M286.0 231.0h0M297.0 231.0h0M308.0 231.0h0M319.0 231.0h0M330.0 231.0h0M341.0 231.0h0M583.0 231.0h0M627.0 231.0h0M649.0 231.0h0M660.0 231.0h0M11.0 242.0h0M143.0 242.0h0M154.0 242.0h0M220.0 242.0h0M231.0 242.0h0M242.0 242.0h0M253.0 242.0h0M264.0 242.0h0M275.0 242.0h0M286.0 242.0h0M297.0 242.0h0M308.0 242.0h0M319.0 242.0h0M330.0 242.0h0M341.0 242.0h0M638.0 242.0h0M660.0 242.0h0M143.0 253.0h0M220.0 253.0h0M231.0 253.0h0M242.0 253.0h0M253.0 253.0h0M264.0 253.0h0M275.0 253.0h0M286.0 253.0h0M297.0 253.0h0M308.0 253.0h0M319.0 253.0h0M330.0 253.0h0M605.0 253.0h0M616.0 253.0h0M649.0 253.0h0M671.0 253.0h0M11.0 264.0h0M132.0 264.0h0M143.0 264.0h0M242.0 264.0h0M253.0 264.0h0M264.0 264.0h0M275.0 264.0h0M286.0 264.0h0M297.0 264.0h0M308.0 264.0h0M319.0 264.0h0M550.0 264.0h0M605.0 264.0h0M627.0 264.0h0M638.0 264.0h0M660.0 264.0h0M132.0 275.0h0M143.0 275.0h0M253.0 275.0h0M264.0 275.0h0M275.0 275.0h0M286.0 275.0h0M539.0 275.0h0M660.0 275.0h0M671.0 275.0h0M132.0 286.0h0M143.0 286.0h0M264.0 286.0h0M275.0 286.0h0M286.0 286.0h0M616.0 286.0h0M638.0 286.0h0M671.0 286.0h0M132.0 297.0h0M143.0 297.0h0M154.0 297.0h0M264.0 297.0h0M517.0 297.0h0M671.0 297.0h0M682.0 297.0h0M132.0 308.0h0M143.0 308.0h0M154.0 308.0h0M506.0 308.0h0M649.0 308.0h0M660.0 308.0h0M671.0 308.0h0M682.0 308.0h0M132.0 319.0h0M143.0 319.0h0M154.0 319.0h0M165.0 319.0h0M616.0 319.0h0M627.0 319.0h0M638.0 319.0h0M649.0 319.0h0M660.0 319.0h0M671.0 319.0h0M682.0 319.0h0M154.0 330.0h0M605.0 330.0h0M627.0 330.0h0M649.0 330.0h0M660.0 330.0h0M671.0 330.0h0M682.0 330.0h0M165.0 341.0h0M176.0 341.0h0M495.0 341.0h0M649.0 341.0h0M660.0 341.0h0M682.0 341.0h0M154.0 352.0h0M165.0 352.0h0M176.0 352.0h0M187.0 352.0h0M495.0 352.0h0M506.0 352.0h0M649.0 352.0h0M660.0 352.0h0M671.0 352.0h0M66.0 363.0h0M176.0 363.0h0M187.0 363.0h0M198.0 363.0h0M209.0 363.0h0M484.0 363.0h0M495.0 363.0h0M506.0 363.0h0M517.0 363.0h0M671.0 363.0h0M66.0 374.0h0M77.0 374.0h0M165.0 374.0h0M176.0 374.0h0M187.0 374.0h0M198.0 374.0h0M209.0 374.0h0M220.0 374.0h0M473.0 374.0h0M484.0 374.0h0M495.0 374.0h0M506.0 374.0h0M517.0 374.0h0M528.0 374.0h0M539.0 374.0h0M77.0 385.0h0M88.0 385.0h0M99.0 385.0h0M110.0 385.0h0M176.0 385.0h0M187.0 385.0h0M198.0 385.0h0M209.0 385.0h0M220.0 385.0h0M462.0 385.0h0M473.0 385.0h0M484.0 385.0h0M495.0 385.0h0M506.0 385.0h0M517.0 385.0h0M88.0 396.0h0M99.0 396.0h0M110.0 396.0h0M121.0 396.0h0M176.0 396.0h0M187.0 396.0h0M198.0 396.0h0M209.0 396.0h0M220.0 396.0h0M440.0 396.0h0M451.0 396.0h0M462.0 396.0h0M473.0 396.0h0M484.0 396.0h0M495.0 396.0h0M506.0 396.0h0M517.0 396.0h0M99.0 407.0h0M110.0 407.0h0M121.0 407.0h0M132.0 407.0h0M187.0 407.0h0M198.0 407.0h0M209.0 407.0h0M220.0 407.0h0M429.0 407.0h0M440.0 407.0h0M451.0 407.0h0M462.0 407.0h0M473.0 407.0h0M484.0 407.0h0M495.0 407.0h0M506.0 407.0h0M671.0 407.0h0M110.0 418.0h0M121.0 418.0h0M132.0 418.0h0M143.0 418.0h0M154.0 418.0h0M187.0 418.0h0M198.0 418.0h0M209.0 418.0h0M220.0 418.0h0M418.0 418.0h0M429.0 418.0h0M440.0 418.0h0M451.0 418.0h0M462.0 418.0h0M473.0 418.0h0M484.0 418.0h0M495.0 418.0h0M506.0 418.0h0M121.0 429.0h0M132.0 429.0h0M143.0 429.0h0M154.0 429.0h0M198.0 429.0h0M209.0 429.0h0M220.0 429.0h0M231.0 429.0h0M396.0 429.0h0M407.0 429.0h0M418.0 429.0h0M429.0 429.0h0M440.0 429.0h0M451.0 429.0h0M462.0 429.0h0M473.0 429.0h0M484.0 429.0h0M495.0 429.0h0M506.0 429.0h0M517.0 429.0h0M132.0 440.0h0M143.0 440.0h0M154.0 440.0h0M165.0 440.0h0M176.0 440.0h0M220.0 440.0h0M231.0 440.0h0M352.0 440.0h0M385.0 440.0h0M396.0 440.0h0M407.0 440.0h0M418.0 440.0h0M429.0 440.0h0M440.0 440.0h0M451.0 440.0h0M462.0 440.0h0M473.0 440.0h0M484.0 440.0h0M495.0 440.0h0M506.0 440.0h0M143.0 451.0h0M154.0 451.0h0M165.0 451.0h0M176.0 451.0h0M187.0 451.0h0M198.0 451.0h0M209.0 451.0h0M231.0 451.0h0M242.0 451.0h0M352.0 451.0h0M363.0 451.0h0M374.0 451.0h0M385.0 451.0h0M396.0 451.0h0M407.0 451.0h0M418.0 451.0h0M429.0 451.0h0M440.0 451.0h0M451.0 451.0h0M462.0 451.0h0M473.0 451.0h0M484.0 451.0h0M495.0 451.0h0M506.0 451.0h0M517.0 451.0h0M528.0 451.0h0M660.0 451.0h0M715.0 451.0h0M143.0 462.0h0M154.0 462.0h0M165.0 462.0h0M176.0 462.0h0M187.0 462.0h0M198.0 462.0h0M242.0 462.0h0M341.0 462.0h0M352.0 462.0h0M363.0 462.0h0M374.0 462.0h0M385.0 462.0h0M396.0 462.0h0M407.0 462.0h0M418.0 462.0h0M429.0 462.0h0M440.0 462.0h0M451.0 462.0h0M462.0 462.0h0M473.0 462.0h0M484.0 462.0h0M495.0 462.0h0M506.0 462.0h0M517.0 462.0h0M528.0 462.0h0M583.0 462.0h0M594.0 462.0h0M605.0 462.0h0M627.0 462.0h0M649.0 462.0h0M154.0 473.0h0M165.0 473.0h0M176.0 473.0h0M187.0 473.0h0M198.0 473.0h0M209.0 473.0h0M231.0 473.0h0M341.0 473.0h0M352.0 473.0h0M363.0 473.0h0M374.0 473.0h0M385.0 473.0h0M396.0 473.0h0M407.0 473.0h0M418.0 473.0h0M429.0 473.0h0M440.0 473.0h0M451.0 473.0h0M462.0 473.0h0M473.0 473.0h0M484.0 473.0h0M495.0 473.0h0M506.0 473.0h0M561.0 473.0h0M627.0 473.0h0M638.0 473.0h0M715.0 473.0h0M165.0 484.0h0M176.0 484.0h0M187.0 484.0h0M198.0 484.0h0M209.0 484.0h0M220.0 484.0h0M253.0 484.0h0M352.0 484.0h0M363.0 484.0h0M374.0 484.0h0M385.0 484.0h0M396.0 484.0h0M407.0 484.0h0M418.0 484.0h0M429.0 484.0h0M440.0 484.0h0M451.0 484.0h0M462.0 484.0h0M473.0 484.0h0M484.0 484.0h0M495.0 484.0h0M506.0 484.0h0M715.0 484.0h0M165.0 495.0h0M176.0 495.0h0M187.0 495.0h0M198.0 495.0h0M209.0 495.0h0M220.0 495.0h0M352.0 495.0h0M363.0 495.0h0M374.0 495.0h0M385.0 495.0h0M396.0 495.0h0M407.0 495.0h0M418.0 495.0h0M429.0 495.0h0M440.0 495.0h0M451.0 495.0h0M462.0 495.0h0M473.0 495.0h0M484.0 495.0h0M495.0 495.0h0M506.0 495.0h0M561.0 495.0h0M627.0 495.0h0M704.0 495.0h0M715.0 495.0h0M176.0 506.0h0M187.0 506.0h0M198.0 506.0h0M209.0 506.0h0M220.0 506.0h0M231.0 506.0h0M242.0 506.0h0M363.0 506.0h0M374.0 506.0h0M385.0 506.0h0M396.0 506.0h0M407.0 506.0h0M418.0 506.0h0M429.0 506.0h0M440.0 506.0h0M451.0 506.0h0M462.0 506.0h0M473.0 506.0h0M484.0 506.0h0M495.0 506.0h0M550.0 506.0h0M561.0 506.0h0M572.0 506.0h0M594.0 506.0h0M605.0 506.0h0M627.0 506.0h0M187.0 517.0h0M198.0 517.0h0M209.0 517.0h0M220.0 517.0h0M231.0 517.0h0M242.0 517.0h0M275.0 517.0h0M363.0 517.0h0M374.0 517.0h0M385.0 517.0h0M396.0 517.0h0M407.0 517.0h0M418.0 517.0h0M429.0 517.0h0M440.0 517.0h0M451.0 517.0h0M462.0 517.0h0M473.0 517.0h0M484.0 517.0h0M550.0 517.0h0M561.0 517.0h0M572.0 517.0h0M583.0 517.0h0M594.0 517.0h0M649.0 517.0h0M660.0 517.0h0M671.0 517.0h0M682.0 517.0h0M187.0 528.0h0M198.0 528.0h0M209.0 528.0h0M220.0 528.0h0M231.0 528.0h0M242.0 528.0h0M253.0 528.0h0M264.0 528.0h0M286.0 528.0h0M374.0 528.0h0M385.0 528.0h0M396.0 528.0h0M407.0 528.0h0M418.0 528.0h0M429.0 528.0h0M440.0 528.0h0M451.0 528.0h0M462.0 528.0h0M473.0 528.0h0M484.0 528.0h0M550.0 528.0h0M561.0 528.0h0M572.0 528.0h0M583.0 528.0h0M594.0 528.0h0M165.0 539.0h0M198.0 539.0h0M209.0 539.0h0M220.0 539.0h0M231.0 539.0h0M242.0 539.0h0M253.0 539.0h0M264.0 539.0h0M275.0 539.0h0M297.0 539.0h0M319.0 539.0h0M374.0 539.0h0M385.0 539.0h0M396.0 539.0h0M407.0 539.0h0M418.0 539.0h0M429.0 539.0h0M440.0 539.0h0M451.0 539.0h0M462.0 539.0h0M473.0 539.0h0M484.0 539.0h0M539.0 539.0h0M550.0 539.0h0M561.0 539.0h0M583.0 539.0h0M594.0 539.0h0M605.0 539.0h0M209.0 550.0h0M220.0 550.0h0M231.0 550.0h0M242.0 550.0h0M253.0 550.0h0M264.0 550.0h0M275.0 550.0h0M451.0 550.0h0M462.0 550.0h0M473.0 550.0h0M484.0 550.0h0M539.0 550.0h0M550.0 550.0h0M561.0 550.0h0M583.0 550.0h0M594.0 550.0h0M605.0 550.0h0M693.0 550.0h0M704.0 550.0h0M209.0 561.0h0M220.0 561.0h0M231.0 561.0h0M242.0 561.0h0M253.0 561.0h0M264.0 561.0h0M275.0 561.0h0M561.0 561.0h0M594.0 561.0h0M605.0 561.0h0M231.0 572.0h0M242.0 572.0h0M253.0 572.0h0M264.0 572.0h0M275.0 572.0h0M561.0 572.0h0M594.0 572.0h0M242.0 583.0h0M253.0 583.0h0M264.0 583.0h0M275.0 583.0h0M550.0 583.0h0M561.0 583.0h0M616.0 583.0h0M275.0 594.0h0M286.0 605.0h0M297.0 605.0h0M308.0 605.0h0M275.0 616.0h0M286.0 616.0h0M297.0 616.0h0M308.0 616.0h0M319.0 616.0h0M330.0 616.0h0M374.0 616.0h0M385.0 616.0h0M396.0 616.0h0M297.0 627.0h0M308.0 627.0h0M319.0 627.0h0M330.0 627.0h0M341.0 627.0h0M352.0 627.0h0M363.0 627.0h0M374.0 627.0h0M385.0 627.0h0M396.0 627.0h0M407.0 627.0h0M363.0 638.0h0M374.0 638.0h0M385.0 638.0h0M396.0 638.0h0M407.0 638.0h0M418.0 638.0h0M429.0 638.0h0M440.0 638.0h0M440.0 649.0h0M462.0 649.0h0M473.0 649.0h0M484.0 649.0h0M506.0 649.0h0M528.0 649.0h0M539.0 649.0h0M561.0 649.0h0M572.0 649.0h0M583.0 649.0h0M616.0 649.0h0M627.0 649.0h0M693.0 649.0h0M704.0 649.0h0M506.0 660.0h0M660.0 660.0h0M671.0 660.0h0M682.0 660.0h0M550.0 671.0h0M561.0 671.0h0M638.0 671.0h0M649.0 671.0h0M660.0 671.0h0"/>
+      <g class="routes"><path class="route" d="M236.4 453 Q175.10000000000002 435.1 193.8 417.2"/><path class="route" d="M236.4 453 Q163.2 329.0 170 205"/><path class="route" d="M236.4 453 Q305.2 358.7 294 264.4"/><path class="route" d="M236.4 453 Q387.6 417.6 458.8 382.2"/><path class="route" d="M236.4 453 Q184.5 286.8 212.6 120.6"/></g>
+      <g class="pin home" data-c="SG" transform="translate(236.4 453)" tabindex="0" role="button" aria-label="Singapore: show details"><circle class="pulse" r="10"/><circle class="dot" r="9"/><text y="-16" text-anchor="middle">Singapore</text></g><g class="pin" data-c="MY" transform="translate(193.8 417.2)" tabindex="0" role="button" aria-label="Malaysia: show details"><circle class="pulse" r="10"/><circle class="dot" r="7"/><text y="-16" text-anchor="middle">Malaysia</text></g><g class="pin" data-c="TH" transform="translate(170 205)" tabindex="0" role="button" aria-label="Thailand: show details"><circle class="pulse" r="10"/><circle class="dot" r="7"/><text y="-16" text-anchor="middle">Thailand</text></g><g class="pin" data-c="VN" transform="translate(294 264.4)" tabindex="0" role="button" aria-label="Vietnam: show details"><circle class="pulse" r="10"/><circle class="dot" r="7"/><text y="-16" text-anchor="middle">Vietnam</text></g><g class="pin" data-c="BN" transform="translate(458.8 382.2)" tabindex="0" role="button" aria-label="Brunei: show details"><circle class="pulse" r="10"/><circle class="dot" r="7"/><text y="-16" text-anchor="middle">Brunei</text></g><g class="pin" data-c="LA" transform="translate(212.6 120.6)" tabindex="0" role="button" aria-label="Laos: show details"><circle class="pulse" r="10"/><circle class="dot" r="7"/><text y="-16" text-anchor="middle">Laos</text></g>
+    </svg></div>
+  </div>
 </div></section>
 
 <section class="band fwband" id="framework"><div class="wrap">
@@ -507,6 +695,65 @@ a.inl{color:var(--green);font-weight:600;text-underline-offset:3px}
     </ol>
   </div>
   <div class="fw-cta"><a class="btn pri" href="#signup" id="toFw">Bring this workshop to your team</a><span class="muted">Keynote, half-day or full-day hands-on formats.</span></div>
+  <div class="spot" id="spot">
+    <div class="spot-head">
+      <div><span class="eyebrow">Try it</span><h3>Spot the Shadow AI</h3><p class="muted">There are 4 risks hiding in this office. Tap what looks risky.</p></div>
+      <div class="spot-score" aria-live="polite"><b id="spotN">0</b><span>/ 4 found</span></div>
+    </div>
+    <div class="spot-stage">
+      <svg viewBox="0 0 800 420" role="img" aria-label="An office scene with a computer, a phone, a printer and a colleague. Four security risks are hidden in it.">
+        <g stroke="#3b6b58" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="300" y="30" width="170" height="110" rx="6"/><path d="M385 30v110M300 85h170"/>
+          <circle cx="560" cy="62" r="24"/><path d="M560 48v14l10 6"/>
+          <path d="M740 300c-20-40 10-70 0-110M740 300c30-30 20-80 40-100M740 300c-30-20-50-50-50-90"/><path d="M722 300h36l-6 50h-24z" fill="#12251d"/>
+        </g>
+        <path d="M20 360h760" stroke="#24463a" stroke-width="2"/>
+        <g stroke="#5fd394" stroke-width="2.5" fill="#12251d" stroke-linejoin="round" stroke-linecap="round">
+          <!-- desk -->
+          <path d="M40 300h330M60 300v60M350 300v60" fill="none"/>
+          <!-- monitor + chatbot -->
+          <rect x="80" y="120" width="200" height="134" rx="8"/>
+          <path d="M170 254v28h-30h60" fill="none"/>
+          <rect x="92" y="132" width="176" height="110" rx="4" fill="#0b1511"/>
+          <rect x="92" y="132" width="176" height="20" rx="4" fill="#1d3a2d" stroke="none"/>
+          <text x="100" y="146" fill="#c9d8d1" font-size="10" font-weight="700" stroke="none">FreeChat AI · public</text>
+          <rect x="104" y="160" width="110" height="14" rx="7" fill="#1d3a2d" stroke="none"/>
+          <rect x="140" y="182" width="116" height="30" rx="7" fill="#2b4b3e" stroke="none"/>
+          <text x="148" y="195" fill="#fff" font-size="9" stroke="none">Summarise this contract:</text>
+          <text x="148" y="206" fill="#ffd166" font-size="9" font-weight="700" stroke="none">ACME_MSA_CONFIDENTIAL.pdf</text>
+          <rect x="104" y="220" width="152" height="14" rx="7" fill="none"/>
+          <!-- sticky note -->
+          <path d="M262 108h42v40h-42z" fill="#ffd166" stroke="#c9a24a" transform="rotate(8 283 128)"/>
+          <text x="266" y="126" fill="#5a4300" font-size="10" font-weight="800" stroke="none" transform="rotate(8 283 128)">pw:</text>
+          <text x="266" y="139" fill="#5a4300" font-size="9" font-weight="700" stroke="none" transform="rotate(8 283 128)">Admin123</text>
+          <!-- keyboard & mug -->
+          <rect x="120" y="286" width="110" height="12" rx="3"/>
+          <path d="M290 270h20v22a5 5 0 0 1-5 5h-10a5 5 0 0 1-5-5z"/>
+          <!-- person with phone -->
+          <circle cx="470" cy="186" r="24"/>
+          <path d="M432 360v-90c0-28 16-46 38-46s38 18 38 46v90" />
+          <path d="M440 262l26 22M500 262l-26 22" fill="none"/>
+          <rect x="454" y="264" width="34" height="56" rx="6" fill="#0b1511" transform="rotate(-8 471 292)"/>
+          <g transform="rotate(-8 471 292)" stroke="none"><rect x="458" y="270" width="26" height="9" rx="2" fill="#ff8a8a"/><text x="459" y="277" font-size="6" font-weight="800" fill="#3a0000">FreeAI</text><rect x="458" y="284" width="26" height="4" rx="2" fill="#2b4b3e"/><rect x="458" y="292" width="20" height="4" rx="2" fill="#2b4b3e"/><rect x="458" y="300" width="24" height="4" rx="2" fill="#2b4b3e"/></g>
+          <!-- printer -->
+          <rect x="580" y="230" width="130" height="80" rx="8"/>
+          <rect x="596" y="216" width="98" height="16" rx="4"/>
+          <path d="M580 310h130v50H580z"/>
+          <path d="M604 252h82" fill="none"/>
+          <path d="M606 288h80l6 34h-92z" fill="#f4f7f5" stroke="#c9d8d1"/>
+          <text x="614" y="303" font-size="9" font-weight="800" fill="#b3261e" stroke="none">CONFIDENTIAL</text>
+          <text x="614" y="315" font-size="8" fill="#44564e" stroke="none">Payroll · Nov</text>
+        </g>
+      </svg>
+      <button class="hs" data-k="0" style="left:23%;top:44%" aria-label="Check the computer screen"></button>
+      <button class="hs" data-k="1" style="left:35.4%;top:30%" aria-label="Check the yellow sticky note"></button>
+      <button class="hs" data-k="2" style="left:58.8%;top:69%" aria-label="Check the colleague's phone"></button>
+      <button class="hs" data-k="3" style="left:81.2%;top:73%" aria-label="Check the printer tray"></button>
+    </div>
+    <div class="spot-tip" id="spotTip" aria-live="polite">Tap anything that looks risky.</div>
+    <div class="spot-done" id="spotDone" hidden><b>All 4 found. You've got good instincts.</b> Most teams miss at least two, and that's exactly what my workshop fixes. <a class="btn pri" href="#signup" id="toSpot">Book the workshop</a> <button class="btn sec" type="button" id="spotReset">Play again</button></div>
+  </div>
+
 </div></section>
 
 <section class="band alt" id="speaking"><div class="wrap">
@@ -590,6 +837,18 @@ a.inl{color:var(--green);font-weight:600;text-underline-offset:3px}
   <span class="eyebrow">Calculator</span>
   <h2>Productivity ROI calculator</h2>
   <p class="lead">How much is manual document work costing your team? Pick your market — the defaults load from official wage data and local research, with every source listed below. Then make it yours.</p>
+  <div class="ba" id="ba">
+    <div class="ba-head"><div><span class="eyebrow">See the difference</span><h3>Drag to automate an invoice</h3><p class="muted">One supplier invoice, before and after. Drag the handle across.</p></div>
+      <div class="ba-stats" aria-live="polite"><div><b id="baSteps">7</b><span>steps</span></div><div><b id="baDays">9</b><span>days to approve</span></div><div><b id="baPaper">15</b><span>sheets of paper</span></div><div><b id="baTouch">12</b><span>people touches</span></div></div></div>
+    <div class="ba-stage" id="baStage">
+      <div class="ba-layer ba-before"><span class="ba-tag bad">Before · manual</span><svg viewBox="0 0 800 300" aria-hidden="true"><g class="ba-manual"><path class="ba-path bad" d="M70 90 L190 200 L310 90 L430 200 L550 90 L670 200 L740 70"/><g class="n bad" transform="translate(70 90)"><rect x="-46" y="-34" width="92" height="68" rx="14"/><g class="gl"><rect x="-16" y="-14" width="32" height="22" rx="3"/><path d="M-16-12l16 11 16-11"/></g><text y="52" text-anchor="middle">Email arrives</text></g><g class="n bad" transform="translate(190 200)"><rect x="-46" y="-34" width="92" height="68" rx="14"/><g class="gl"><rect x="-16" y="-8" width="32" height="16" rx="3"/><path d="M-10-8v-10h20v10M-10 8v8h20v-8"/></g><text y="52" text-anchor="middle">Print it</text></g><g class="n bad" transform="translate(310 90)"><rect x="-46" y="-34" width="92" height="68" rx="14"/><g class="gl"><path d="M-6-18h12v12h-12zM-14-6h28v8h-28zM-16 8h32"/></g><text y="52" text-anchor="middle">Stamp & sign</text></g><g class="n bad" transform="translate(430 200)"><rect x="-46" y="-34" width="92" height="68" rx="14"/><g class="gl"><rect x="-18" y="-12" width="36" height="24" rx="3"/><path d="M-18-12l18 14 18-14"/><path d="M-26 0h-6M-26 6h-10" /></g><text y="52" text-anchor="middle">Courier to HQ</text></g><g class="n bad" transform="translate(550 90)"><rect x="-46" y="-34" width="92" height="68" rx="14"/><g class="gl"><path d="M-18-4h36v18h-36zM-18-4l6-12h24l6 12M-6-4v6h12v-6"/><path d="M-12-20h20M-10-24h16"/></g><text y="52" text-anchor="middle">Stuck in inbox</text></g><g class="n bad" transform="translate(670 200)"><rect x="-46" y="-34" width="92" height="68" rx="14"/><g class="gl"><circle r="14"/><path d="M0-8v8l6 4"/><path d="M14-14l6-4M-14-14l-6-4"/></g><text y="52" text-anchor="middle">Chase by email</text></g><g class="n bad" transform="translate(740 70)"><rect x="-46" y="-34" width="92" height="68" rx="14"/><g class="gl"><rect x="-14" y="-18" width="28" height="36" rx="3"/><path d="M-8-8h16M-8 0h16M-8 8h10"/></g><text y="52" text-anchor="middle">File in cabinet</text></g><g class="papers-pile"><path d="M250 268h40l-4 8h-40zM262 258h40l-4 8h-40zM240 278h40l-4 8h-40z"/></g></g></svg></div>
+      <div class="ba-layer ba-after" id="baAfter"><span class="ba-tag good">After · automated</span><svg viewBox="0 0 800 300" aria-hidden="true"><g class="ba-auto"><path class="ba-path good" d="M90 150 H690"/><circle class="flowdot" r="6"><animateMotion dur="2.6s" repeatCount="indefinite" path="M90 150 H690"/></circle><g class="n good" transform="translate(90 150)"><rect x="-46" y="-34" width="92" height="68" rx="14"/><g class="gl"><rect x="-16" y="-16" width="32" height="32" rx="6"/><path d="M-16-4h32" stroke="#ffd166"/><path d="M-8-10h16M-8 4h16M-8 10h10"/></g><text y="52" text-anchor="middle">Capture</text></g><g class="n good" transform="translate(290 150)"><rect x="-46" y="-34" width="92" height="68" rx="14"/><g class="gl"><rect x="-16" y="-14" width="32" height="28" rx="8"/><circle cx="-6" cy="-1" r="2.5"/><circle cx="6" cy="-1" r="2.5"/><path d="M-6 7h12M0-14v-6"/></g><text y="52" text-anchor="middle">AI reads & matches</text></g><g class="n good" transform="translate(490 150)"><rect x="-46" y="-34" width="92" height="68" rx="14"/><g class="gl"><rect x="-11" y="-18" width="22" height="36" rx="5"/><path d="M-5 0l4 4 7-8" stroke="#9ff0c0"/></g><text y="52" text-anchor="middle">Approve on phone</text></g><g class="n good" transform="translate(690 150)"><rect x="-46" y="-34" width="92" height="68" rx="14"/><g class="gl"><rect x="-14" y="-6" width="28" height="22" rx="4"/><path d="M-8-6v-6a8 8 0 0 1 16 0v6"/><circle cy="5" r="3"/></g><text y="52" text-anchor="middle">Stored securely</text></g></g></svg></div>
+      <div class="ba-handle" id="baHandle" aria-hidden="true"><span>⟷</span></div>
+      <input type="range" id="baRange" min="0" max="100" value="12" aria-label="Slide from manual to automated invoice process">
+    </div>
+    <p class="fine">Illustrative example of a typical manual invoice approval versus an automated one. Your numbers will differ, so try the calculator below.</p>
+  </div>
+
   <div class="market" id="market" role="radiogroup" aria-label="Market" data-m="sg"><span class="pill" aria-hidden="true"></span><button role="radio" aria-checked="true" data-m="sg">Singapore · SGD</button><button role="radio" aria-checked="false" data-m="my">Malaysia · MYR</button></div>
   <div class="calc">
     <div>
@@ -684,6 +943,34 @@ a.inl{color:var(--green);font-weight:600;text-underline-offset:3px}
 </div></section>
 
 <a class="totop" id="toTop" href="#top" aria-label="Back to top"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7"/></svg><svg class="prog" viewBox="0 0 52 52" aria-hidden="true"><circle cx="26" cy="26" r="24"/></svg></a>
+<div class="buddy" id="buddy">
+  <div class="bubble" id="bubble" role="status" aria-live="polite"><span id="bubbleTxt"></span><button type="button" id="bubbleX" aria-label="Hide tips">&times;</button></div>
+  <button class="buddy-btn" id="buddyBtn" type="button" aria-label="Tech-Savvy Dad: tap for a tip">
+    <svg viewBox="0 0 120 120" aria-hidden="true">
+      <circle cx="60" cy="60" r="58" fill="#12251d" stroke="#5fd394" stroke-width="3"/>
+      <clipPath id="bClip"><circle cx="60" cy="60" r="56"/></clipPath>
+      <g clip-path="url(#bClip)">
+        <!-- body: blazer + tee -->
+        <path d="M18 124c2-26 18-38 42-38s40 12 42 38z" fill="#7d8a86"/>
+        <path d="M46 88l14 30 14-30c-4-2-9-3-14-3s-10 1-14 3z" fill="#141414"/>
+        <path d="M46 88l8 18-6 2zM74 88l-8 18 6 2z" fill="#5f6b67"/>
+        <!-- neck & head -->
+        <rect x="52" y="72" width="16" height="16" rx="6" fill="#c98e62"/>
+        <ellipse cx="60" cy="52" rx="23" ry="26" fill="#d9a074"/>
+        <path d="M36 46c0-18 11-28 25-28 15 0 25 9 25 26-5-7-13-11-24-11-12 0-21 5-26 13z" fill="#1a1a1a"/>
+        <ellipse cx="37" cy="55" rx="4" ry="6" fill="#c98e62"/><ellipse cx="83" cy="55" rx="4" ry="6" fill="#c98e62"/>
+        <!-- glasses -->
+        <g fill="none" stroke="#1a1a1a" stroke-width="2.6"><rect x="40" y="46" width="16" height="12" rx="4"/><rect x="64" y="46" width="16" height="12" rx="4"/><path d="M56 51h8M40 50l-4-1M80 50l4-1"/></g>
+        <g id="pupils"><circle class="eye" cx="48" cy="52" r="2.6" fill="#1a1a1a"/><circle class="eye" cx="72" cy="52" r="2.6" fill="#1a1a1a"/></g>
+        <path d="M51 66c5 5 13 5 18 0" fill="none" stroke="#6b3a1f" stroke-width="2.4" stroke-linecap="round"/>
+        <!-- waving arm -->
+        <g id="wave" class="wave"><path d="M92 104c4-14 6-24 10-34" stroke="#7d8a86" stroke-width="11" stroke-linecap="round" fill="none"/><circle cx="103" cy="66" r="7" fill="#d9a074"/></g>
+        <!-- teh tarik mug -->
+        <g transform="translate(22 92)"><path d="M0 0h18v16a5 5 0 0 1-5 5H5a5 5 0 0 1-5-5z" fill="#f4efe6"/><path d="M0 0h18v5H0z" fill="#c8915a"/><path d="M18 4h3a4 4 0 0 1 0 8h-3" fill="none" stroke="#f4efe6" stroke-width="2.4"/></g>
+      </g>
+    </svg>
+  </button>
+</div>
 <footer>
   <div class="fgrid2">
     <div><p class="fname">Let's make paper disappear.</p><p class="muted" style="margin:0">Halid Bin Ayob · Tech-Savvy Dad · Singapore</p></div>
@@ -934,6 +1221,134 @@ $("form").addEventListener("submit",async e=>{
   }finally{$("sub").disabled=false;$("sub").textContent="Send my details"}
 });
 }
+</script>
+<script>
+/* ===== interactive story segments ===== */
+(()=>{
+const RM=matchMedia("(prefers-reduced-motion:reduce)").matches;
+const clamp=(v,a=0,b=1)=>Math.max(a,Math.min(b,v));
+const $$=id=>document.getElementById(id);
+const NS="http://www.w3.org/2000/svg";
+
+/* 1. paper-to-paperless scroll story */
+const story=$$("story"),papersG=$$("papers");
+if(story&&papersG){
+  const N=12,papers=[];
+  for(let i=0;i<N;i++){
+    const g=document.createElementNS(NS,"g");
+    g.innerHTML='<rect x="-20" y="-26" width="40" height="52" rx="3"/><path d="M-12-14h24M-12-6h24M-12 2h18M-12 10h22" fill="none"/>';
+    const stack=i<8;
+    const x0=stack?262+(i%2)*6-(i%3)*3:200+ (i-8)*44, y0=stack?318-i*4:322-((i-8)%2)*6;
+    const r0=stack?(i%2?-3:4):[-18,12,-8,20][i-8];
+    papers.push({g,x0,y0,r0,d:i*0.032});
+    papersG.appendChild(g);
+  }
+  const steps=[...$$("storySteps").children],cnt=$$("storyCount"),tick=$$("lapTick"),busy=$$("lapBusy"),cop=$$("copier"),glow=$$("vaultGlow"),vn=$$("vaultN");
+  const VX=470,VY=92;let lastP=-1;
+  const draw=p=>{
+    let left=0;
+    papers.forEach(o=>{
+      const t=clamp((p-0.22-o.d)/0.32);
+      const e=t<.5?2*t*t:1-Math.pow(-2*t+2,2)/2;
+      const cx=o.x0+60,cy=o.y0-240;
+      const x=(1-e)*(1-e)*o.x0+2*(1-e)*e*cx+e*e*VX, y=(1-e)*(1-e)*o.y0+2*(1-e)*e*cy+e*e*VY;
+      const s=1-0.75*e, r=o.r0*(1-e)+e*360*(o.d*10%2?1:-1)*0.15;
+      o.g.setAttribute("transform",`translate(${x.toFixed(1)} ${y.toFixed(1)}) rotate(${r.toFixed(1)}) scale(${s.toFixed(3)})`);
+      o.g.style.opacity=t>.88?((1-t)/.12).toFixed(2):1;
+      if(t<1)left++;
+    });
+    const si=p<.2?0:p<.48?1:p<.8?2:3;
+    steps.forEach((li,i)=>li.classList.toggle("on",i===si));
+    cnt.textContent=left;cnt.classList.toggle("zero",left===0);
+    cop.style.opacity=(1-clamp((p-.25)/.4)*.7).toFixed(2);
+    const done=left===0;tick.style.opacity=done?1:0;busy.style.opacity=done?0:1;
+    glow.setAttribute("opacity",(.15+.65*(N-left)/N).toFixed(2));
+    vn.textContent=(N-left)+" stored";
+  };
+  const onScroll=()=>{const r=story.getBoundingClientRect(),span=r.height-innerHeight;const p=RM?1:clamp(-r.top/(span||1));if(Math.abs(p-lastP)>.001){lastP=p;draw(p)}};
+  addEventListener("scroll",()=>requestAnimationFrame(onScroll),{passive:true});addEventListener("resize",onScroll);onScroll();
+}
+
+/* 2. spot the Shadow AI */
+const spot=$$("spot");
+if(spot){
+  const TIPS=[
+    ["Confidential contract pasted into a public AI chatbot.","Public tools may keep or learn from what you paste. Use an approved, governed AI that works inside your own systems."],
+    ["Password on a sticky note.","Anyone walking past can log in as this person. Use a password manager and single sign-on."],
+    ["Client data in an unapproved AI app on a personal phone.","Free AI apps often send data to servers you can't see. Give staff an approved option so they don't need to."],
+    ["Payroll printout left on the printer tray.","Old-school leaks still happen. Use secure pull-printing and keep documents digital and access-controlled."]];
+  const hs=[...spot.querySelectorAll(".hs")],n=$$("spotN"),tip=$$("spotTip"),done=$$("spotDone"),stage=spot.querySelector(".spot-stage");let found=0,misses=0;
+  hs.forEach(b=>b.addEventListener("click",e=>{
+    e.stopPropagation();if(b.classList.contains("found"))return;
+    b.classList.add("found");b.classList.remove("hint");b.setAttribute("aria-label",b.getAttribute("aria-label")+" (found)");found++;n.textContent=found;
+    const t=TIPS[+b.dataset.k];tip.innerHTML=`<b>Risk ${found}/4: ${t[0]}</b> ${t[1]}`;
+    if(found===4){done.hidden=false}
+  }));
+  stage.addEventListener("click",e=>{
+    if(e.target.closest(".hs"))return;
+    const r=stage.getBoundingClientRect(),m=document.createElement("span");m.className="spot-miss";m.style.left=(e.clientX-r.left)+"px";m.style.top=(e.clientY-r.top)+"px";stage.appendChild(m);setTimeout(()=>m.remove(),700);
+    misses++;tip.textContent="Not quite. Keep looking: screens, notes, phones and paper.";
+    if(misses>=3){const h=hs.find(b=>!b.classList.contains("found"));if(h){h.classList.add("hint");tip.textContent="Here's a hint: look at the glowing spot.";misses=0}}
+  });
+  $$("spotReset").addEventListener("click",()=>{hs.forEach(b=>{b.classList.remove("found","hint");b.setAttribute("aria-label",b.getAttribute("aria-label").replace(" (found)",""))});found=0;misses=0;n.textContent=0;done.hidden=true;tip.textContent="Tap anything that looks risky."});
+  $$("toSpot").addEventListener("click",()=>{const c=document.querySelector('input[value="Speaking or workshop"]');if(c)c.checked=true});
+}
+
+/* 3. APAC map */
+const mapCard=$$("mapCard");
+if(mapCard){
+  const D={"SG": {"n": "Singapore", "city": "Home base", "items": [["Keynote", "Shadow AI: The Hidden Cost Between Innovation and Exposure", "Finance ReImagined 2026"], ["Workshop", "AI to your data, not data to AI", "National Library"], ["Panel", "When You Step Away, Who Steps In?", "Masjid Darul Ghufran"], ["Webinar", "Say goodbye to manual data entry", "IDP partner webinars"]]}, "MY": {"n": "Malaysia", "city": "Kuala Lumpur", "items": [["Keynote", "Shadow AI: The Hidden Cost Between Innovation and Exposure", "Finance ReImagined KL 2026"], ["Tech spotlight", "Simplifying Requisition: From Chaos to Clarity", "DigitalCFO Asia Symposium 2025"]]}, "TH": {"n": "Thailand", "city": "Bangkok", "items": [["Keynote", "Shadow AI: The Hidden Cost Between Innovation and Exposure", "Finance ReImagined Bangkok 2026"], ["Tech spotlight", "Simplifying Requisition: From Chaos to Clarity", "DigitalCFO Asia Symposium 2025"]]}, "VN": {"n": "Vietnam", "city": "Ho Chi Minh City", "items": [["Webinar", "Say goodbye to manual data entry", "IDP webinars with partners"]]}, "BN": {"n": "Brunei", "city": "Bandar Seri Begawan", "items": [["Coverage", "Partner and enterprise conversations", "Part of my APAC South region"]]}, "LA": {"n": "Laos", "city": "Vientiane", "items": [["Coverage", "Partner and enterprise conversations", "Part of my APAC South region"]]}};
+  const pins=[...document.querySelectorAll(".pin")];
+  const esc=s=>s.replace(/[&<>]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;"}[c]));
+  const show=k=>{const c=D[k];pins.forEach(p=>p.classList.toggle("on",p.dataset.c===k));
+    mapCard.innerHTML=`<h4>${esc(c.n)}</h4><div class="city">${esc(c.city)}</div><ul>${c.items.map(i=>`<li><i>${esc(i[0])}</i>${esc(i[1])}<small>${esc(i[2])}</small></li>`).join("")}</ul>`};
+  pins.forEach(p=>{p.addEventListener("click",()=>show(p.dataset.c));p.addEventListener("mouseenter",()=>{if(matchMedia("(hover:hover)").matches)show(p.dataset.c)});p.addEventListener("keydown",e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();show(p.dataset.c)}})});
+  show("SG");
+}
+
+/* 4. before / after slider */
+const ba=$$("ba");
+if(ba){
+  const rng=$$("baRange"),stage=$$("baStage"),out={steps:[$$("baSteps"),7,3],days:[$$("baDays"),9,1],paper:[$$("baPaper"),15,0],touch:[$$("baTouch"),12,2]};
+  const set=v=>{const cut=100-v;stage.style.setProperty("--cut",cut+"%");const f=v/100;
+    for(const k in out){const [el,a,b]=out[k];el.textContent=Math.round(a+(b-a)*f);el.classList.toggle("good",f>.6)}};
+  rng.addEventListener("input",()=>set(+rng.value));set(+rng.value);
+  if(!RM){const io2=new IntersectionObserver(es=>{if(es[0].isIntersecting){io2.disconnect();let v=12;const id=setInterval(()=>{v+=1.5;if(v>=50){v=50;clearInterval(id)}rng.value=v;set(v)},16)}},{threshold:.5});io2.observe(stage)}
+}
+
+/* 5. Tech-Savvy Dad buddy */
+const buddy=$$("buddy");
+if(buddy){
+  const bub=$$("bubble"),txt=$$("bubbleTxt"),btn=$$("buddyBtn"),eyes=[...buddy.querySelectorAll(".eye")];
+  let muted=false;try{muted=sessionStorage.getItem("buddyOff")==="1"}catch(e){}
+  const TIPS={
+    top:["Hi, I'm Halid 👋 Scroll down, the paper is about to fly."],
+    story:["Keep scrolling and watch the desk clear itself."],
+    about:["Fun fact: I started out fixing copiers."],
+    work:["Tap a country on the map to see where I've spoken."],
+    framework:["Can you find all 4 Shadow AI risks below?"],
+    speaking:["Press play for a 30-second taste of the keynote."],
+    channels:["Pick your platform, I post on all five."],
+    "kind-words":["Kind words from people I've worked with."],
+    rates:["Want my rate card? Leave your details, I'll reply personally."],
+    roi:["Drag the slider, then try the calculator with your own numbers."],
+    signup:["Tell me what you have in mind. I read every message."],
+    faq:["Still curious? Tap a question."]};
+  let cur="",hideT,idx=0;
+  const say=(m,ms=6000)=>{if(muted)return;txt.textContent=m;bub.classList.add("show");clearTimeout(hideT);hideT=setTimeout(()=>bub.classList.remove("show"),ms)};
+  const secs=[...document.querySelectorAll("header[id],section[id]")];
+  const sio=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting&&e.target.id!==cur){cur=e.target.id;const t=TIPS[cur];if(t&&buddy.classList.contains("show"))say(t[0])}}),{rootMargin:"-45% 0px -45% 0px"});
+  secs.forEach(s=>sio.observe(s));
+  const onS=()=>{const vis=scrollY>innerHeight*.6;if(vis&&!buddy.classList.contains("show")){buddy.classList.add("show","hello");setTimeout(()=>buddy.classList.remove("hello"),2200);const t=TIPS[cur];if(t)say(t[0])}else if(!vis){buddy.classList.remove("show");bub.classList.remove("show")}};
+  addEventListener("scroll",onS,{passive:true});onS();
+  btn.addEventListener("click",()=>{muted=false;try{sessionStorage.removeItem("buddyOff")}catch(e){}buddy.classList.add("hello");setTimeout(()=>buddy.classList.remove("hello"),2200);const all=Object.values(TIPS).flat();idx=(idx+1)%all.length;say(all[idx],7000)});
+  $$("bubbleX").addEventListener("click",e=>{e.stopPropagation();muted=true;try{sessionStorage.setItem("buddyOff","1")}catch(_){}bub.classList.remove("show")});
+  if(!RM&&matchMedia("(hover:hover)").matches){
+    addEventListener("pointermove",e=>{const r=btn.getBoundingClientRect(),cx=r.left+r.width/2,cy=r.top+r.height*.43,dx=e.clientX-cx,dy=e.clientY-cy,d=Math.hypot(dx,dy)||1,k=Math.min(2.4,d/60);
+      eyes.forEach(el=>el.setAttribute("transform",`translate(${(dx/d*k).toFixed(2)} ${(dy/d*k).toFixed(2)})`))},{passive:true});
+  }
+}
+})();
 </script>
 </body>
 </html>
