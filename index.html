@@ -84,6 +84,24 @@ input[type=number],input[type=text],input[type=email],select,textarea{width:100%
 .kv dt{color:var(--soft)}.kv dd{margin:0;font-weight:700;text-align:right;white-space:nowrap}
 .bar{height:12px;border-radius:6px;background:var(--bg);overflow:hidden;margin:6px 0 14px}.bar i{display:block;height:100%;background:var(--green);transition:width .3s}
 .bar.cost i{background:var(--accent)}
+/* stage ring */
+.ring3d{position:relative;height:440px;perspective:1500px;margin:8px 0 6px;touch-action:pan-y;cursor:grab;user-select:none}
+.ring3d.drag{cursor:grabbing}
+.ring{position:absolute;left:50%;top:50%;width:0;height:0;transform-style:preserve-3d}
+.ring figure{position:absolute;margin:0;width:var(--cw);height:calc(var(--cw)*1.33);left:calc(var(--cw)/-2);top:calc(var(--cw)*-.665);border-radius:18px;overflow:hidden;border:2px solid var(--line);background:var(--card);box-shadow:0 20px 40px rgba(0,0,0,.45);backface-visibility:hidden;transition:border-color .3s,filter .3s;filter:brightness(.6)}
+.ring figure.front{border-color:var(--green);filter:none}
+.ring button.pic{all:unset;display:block;width:100%;height:100%;cursor:zoom-in}
+.ring button.pic:focus-visible{outline:3px solid var(--accent);outline-offset:-3px}
+.ring img{width:100%;height:100%;object-fit:cover;display:block;pointer-events:none}
+.ring3d{--cw:240px}@media(max-width:600px){.ring3d{--cw:160px;height:320px}}
+.ringbar{display:flex;align-items:center;justify-content:center;gap:14px;flex-wrap:wrap;margin-bottom:clamp(28px,4vw,48px)}
+.ringcap{min-width:0;flex:1 1 260px;max-width:460px;text-align:center;font-weight:600;color:var(--green)}
+.ringcap span{display:block;color:var(--soft);font-weight:500;font-size:14px}
+.rbtn{width:48px;height:48px;border-radius:50%;border:2px solid var(--green);background:transparent;color:var(--green);font:700 20px "Plus Jakarta Sans",sans-serif;cursor:pointer;flex:none}
+.rbtn:hover{background:var(--green);color:#08130e}.rbtn:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+.lightbox{position:fixed;inset:0;z-index:50;background:rgba(5,10,8,.92);display:none;align-items:center;justify-content:center;padding:24px;flex-direction:column;gap:14px}
+.lightbox.open{display:flex}.lightbox img{max-width:min(1200px,100%);max-height:78vh;border-radius:14px;object-fit:contain}
+.lightbox p{color:var(--ink);text-align:center;margin:0}.lightbox .rbtn{position:absolute;top:16px;right:16px}
 /* form */
 .form{max-width:720px}
 .fgrid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:0 18px}
@@ -188,9 +206,14 @@ footer .wrap{display:flex;gap:16px;flex-wrap:wrap;justify-content:space-between}
   </div>
 </div></section>
 
-<section class="band alt" id="speaking"><div class="wrap two">
+<section class="band alt" id="speaking"><div class="wrap">
+  <h2>On stage</h2>
+  <p class="lead" style="margin-bottom:8px">Keynotes, panels and hands-on workshops across Singapore, Malaysia, Thailand and beyond. Drag to spin, or tap a photo to see it full size.</p>
+  <div class="ring3d" id="ring3d" aria-roledescription="carousel" aria-label="Photos of Halid speaking at events"><div class="ring" id="ring"></div></div>
+  <div class="ringbar"><button class="rbtn" id="rPrev" aria-label="Previous photo">&#8592;</button><p class="ringcap" id="ringcap" aria-live="polite"></p><button class="rbtn" id="rNext" aria-label="Next photo">&#8594;</button></div>
+</div><div class="wrap two">
   <div>
-    <h2>Speaking &amp; workshops</h2>
+    <h3 style="font-size:28px">Speaking &amp; workshops</h3>
     <p class="lead">I speak on Shadow AI, secure AI with your own data, document automation, and building an authentic LinkedIn presence. Hands-on beats slides — most sessions end with people trying it themselves.</p>
     <a class="btn sec" href="#signup" id="toSpeak">Invite me to speak</a>
   </div>
@@ -295,6 +318,7 @@ footer .wrap{display:flex;gap:16px;flex-wrap:wrap;justify-content:space-between}
   <span>© 2026 Halid Bin Ayob · Tech-Savvy Dad · Singapore</span>
   <a href="https://www.linkedin.com/in/techsavvy-dad">Connect on LinkedIn</a>
 </div></footer>
+<div class="lightbox" id="lb" role="dialog" aria-modal="true" aria-label="Photo"><button class="rbtn" id="lbClose" aria-label="Close">&#10005;</button><img id="lbImg" alt=""><p id="lbCap"></p></div>
 
 <script>
 {
@@ -329,6 +353,56 @@ let includeRoi=false;
 $("toCollab").addEventListener("click",()=>{const c=document.querySelector('input[value="Creator collaboration"]');if(c)c.checked=true;const m=$("fm");if(!m.value)m.value="I'd like your rate card for: ";});
 $("toSpeak").addEventListener("click",()=>{const c=document.querySelector('input[value="Speaking or workshop"]');if(c)c.checked=true;});
 $("toForm").addEventListener("click",()=>{includeRoi=true;const m=$("fm");if(!m.value)m.value=`My ROI estimate: ${last.hours} hours/year saved, net benefit ${fmt(last.net)} in year one.`});
+
+
+// stage ring
+const STAGE=[
+ ["shadow-ai-sg","Shadow AI: The Hidden Cost Between Innovation and Exposure","Finance Reimagined, Singapore 2026","50% 40%"],
+ ["digitalcfo-kl","Transforming finance with intelligent documents","4th DigitalCFO Asia Malaysia Symposium, Kuala Lumpur 2025","30% 40%"],
+ ["docuworld-aura","Live DocuWare Aura demo","DocuWorld 2026","40% 30%"],
+ ["tech-for-parents","Panel: When You Step Away, Who Steps In?","Ready, Set, Parent! 2026","78% 62%"],
+ ["finance-reimagined-bkk","AI and the future finance team","5th Finance Reimagined Thailand, Bangkok 2026","45% 55%"],
+ ["ai-governance","AI to your data, not data to AI","Hands-on AI governance workshop, Singapore 2026","14% 45%"],
+ ["linkedin-talk","Advocating work on LinkedIn","LinkedIn personal branding talk, Singapore 2026","42% 55%"],
+ ["docuworld-laugh","Partner session","DocuWorld 2026","50% 30%"]
+];
+const ring=$("ring"),stage=$("ring3d"),cap=$("ringcap"),N=STAGE.length,STEP=360/N;
+ring.innerHTML=STAGE.map((s,i)=>`<figure data-i="${i}"><button class="pic" aria-label="Enlarge: ${s[1]}, ${s[2]}"><img src="img/stage/${s[0]}.jpg" alt="Halid speaking — ${s[1]}, ${s[2]}" loading="${i<3?'eager':'lazy'}" style="object-position:${s[3]}"></button></figure>`).join("");
+const figs=[...ring.children];
+const reduce=matchMedia("(prefers-reduced-motion: reduce)").matches;
+let angle=0,target=null,paused=false,dragX=null,dragA=0,moved=false,lastT=performance.now();
+function radius(){const w=parseFloat(getComputedStyle(stage).getPropertyValue("--cw"))||240;return w/2/Math.tan(Math.PI/N)+24}
+function frontIndex(){return ((Math.round(-angle/STEP)%N)+N)%N}
+let shown=-1;
+function render(){
+  const r=radius();
+  figs.forEach((f,i)=>f.style.transform=`rotateY(${i*STEP}deg) translateZ(${r}px)`);
+  ring.style.transform=`translateZ(${-r}px) rotateY(${angle}deg)`;
+  const fi=frontIndex();
+  if(fi!==shown){shown=fi;figs.forEach((f,i)=>f.classList.toggle("front",i===fi));cap.textContent="";cap.append(STAGE[fi][1]);const s=document.createElement("span");s.textContent=STAGE[fi][2];cap.append(s)}
+}
+function tick(t){
+  const dt=Math.min(t-lastT,64);lastT=t;
+  if(target!==null){const d=target-angle;angle+=d*Math.min(1,dt/140);if(Math.abs(d)<.05){angle=target;target=null}}
+  else if(!paused&&dragX===null&&!reduce)angle-=dt*.012;
+  render();requestAnimationFrame(tick);
+}
+function go(dir){const base=Math.round(angle/STEP)*STEP;target=base-dir*STEP}
+$("rNext").addEventListener("click",()=>go(1));$("rPrev").addEventListener("click",()=>go(-1));
+stage.addEventListener("mouseenter",()=>paused=true);stage.addEventListener("mouseleave",()=>paused=false);
+stage.addEventListener("focusin",()=>paused=true);stage.addEventListener("focusout",()=>paused=false);
+stage.addEventListener("keydown",e=>{if(e.key==="ArrowRight"){go(1);e.preventDefault()}if(e.key==="ArrowLeft"){go(-1);e.preventDefault()}});
+stage.addEventListener("pointerdown",e=>{dragX=e.clientX;dragA=angle;moved=false;target=null;stage.classList.add("drag")});
+addEventListener("pointermove",e=>{if(dragX===null)return;const dx=e.clientX-dragX;if(Math.abs(dx)>4)moved=true;angle=dragA+dx*.35});
+addEventListener("pointerup",()=>{if(dragX===null)return;dragX=null;stage.classList.remove("drag");target=Math.round(angle/STEP)*STEP});
+const lb=$("lb");
+function openLb(i){const s=STAGE[i];$("lbImg").src=`img/stage/${s[0]}.jpg`;$("lbImg").alt=`Halid speaking — ${s[1]}`;$("lbCap").textContent=s[1]+" · "+s[2];lb.classList.add("open");$("lbClose").focus()}
+ring.addEventListener("click",e=>{const f=e.target.closest("figure");if(!f||moved)return;const i=+f.dataset.i;if(i!==frontIndex()){target=-i*STEP+Math.round((angle+i*STEP)/360)*360;return}openLb(i)});
+function closeLb(){lb.classList.remove("open")}
+$("lbClose").addEventListener("click",closeLb);lb.addEventListener("click",e=>{if(e.target===lb)closeLb()});
+addEventListener("keydown",e=>{if(e.key==="Escape")closeLb()});
+addEventListener("resize",render);
+render();requestAnimationFrame(tick);
 
 // Enquiries are emailed via FormSubmit (formsubmit.co). Each route is a FormSubmit alias that forwards to a Gmail "+" inbox.
 // First match wins when several boxes are ticked.
