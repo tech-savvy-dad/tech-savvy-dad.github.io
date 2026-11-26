@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Halid Bin Ayob · Tech-Savvy Dad</title>
+<meta name="description" content="Halid Bin Ayob — Regional Sales Director, DocuWare APAC South, and Tech-Savvy Dad. Document workflows, partnerships, speaking and collaborations.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+/* VOICE: warm, grounded, confident — a regular dad who knows enterprise tech
+   IDEA: a document's journey — paper in, clean digital flow out (his own career arc)
+   PICTURE: paper stack flowing through a pipeline into a secure cloud vault
+   COLOUR and TYPE: deep forest night ground, light green headings, white body; Plus Jakarta Sans only
+   LAYOUT: full website — nav, hero scene, story, journey, work, ROI tool, sign-up, footer */
+:root{color-scheme:dark;--bg:#0b1511;--bg2:#10201a;--card:#142a21;--line:#24463a;--ink:#ffffff;--soft:#c9d8d1;--green:#9ff0c0;--green2:#5fd394;--accent:#ffd166}
+*{box-sizing:border-box;min-width:0}
+html{scroll-behavior:smooth;scroll-padding-top:72px}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}
+body{margin:0;background:var(--bg);color:var(--ink);font:16.5px/1.6 "Plus Jakarta Sans",ui-sans-serif,sans-serif;overflow-x:clip}
+h1,h2,h3{color:var(--green);font-weight:800;line-height:1.08;text-wrap:balance;margin:0 0 .5em}
+h1{font-size:clamp(40px,6vw,64px)}h2{font-size:clamp(30px,4vw,44px)}h3{font-size:20px;line-height:1.25}
+p{margin:0 0 1em;max-width:68ch}a{color:var(--green)}
+.band{padding:clamp(40px,6vw,88px) max(5vw,16px)}.wrap{max-width:1240px;margin:0 auto}
+.alt{background:var(--bg2)}
+.lead{font-size:clamp(17px,1.6vw,19px);color:var(--soft)}
+.muted{color:var(--soft);font-size:14px}
+/* nav */
+nav{position:sticky;top:0;z-index:10;background:rgba(11,21,17,.88);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;align-items:center;gap:20px;flex-wrap:wrap;padding:12px max(5vw,16px)}
+.brand{font-weight:800;color:var(--green);text-decoration:none;font-size:18px;margin-right:auto}
+.links{display:flex;gap:4px;flex-wrap:wrap}
+.links a{color:var(--ink);text-decoration:none;font-weight:600;font-size:15px;padding:10px 12px;border-radius:10px}
+.links a:hover,.links a:focus-visible{background:var(--card);color:var(--green)}
+@media(max-width:700px){.links a:not(.cta-s){display:none}}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:0 22px;border-radius:999px;font:700 16px "Plus Jakarta Sans",sans-serif;text-decoration:none;border:2px solid var(--green);cursor:pointer}
+.btn.pri{background:var(--green);color:#08130e}.btn.sec{background:transparent;color:var(--green)}
+.btn:hover{filter:brightness(1.08)}.btn:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+.cta-s{background:var(--green);color:#08130e!important}
+/* hero */
+.hero .wrap{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:clamp(24px,4vw,56px);align-items:center}
+.tag{display:inline-block;background:var(--card);border:1px solid var(--line);color:var(--green);font-weight:700;font-size:14px;padding:6px 14px;border-radius:999px;margin-bottom:18px}
+.actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:24px}
+.fig{position:relative;min-height:380px}.fig>svg{position:absolute;inset:0;width:100%;height:100%}
+.stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:18px;overflow:hidden;margin-top:clamp(32px,5vw,56px)}
+.stats div{background:var(--bg);padding:20px}
+.stats b{display:block;font-size:clamp(26px,3vw,36px);color:var(--green);line-height:1.1;white-space:nowrap}
+.stats span{color:var(--soft);font-size:14px}
+@media(max-width:860px){.hero .wrap{grid-template-columns:1fr}.fig{min-height:300px}.stats{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@keyframes flow{to{stroke-dashoffset:-40}}.flow{stroke-dasharray:6 14;animation:flow 1.6s linear infinite}
+@keyframes bob{50%{transform:translateY(-6px)}}.bob{animation:bob 4s ease-in-out infinite}
+/* story + journey */
+.two{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(24px,5vw,72px)}
+@media(max-width:860px){.two{grid-template-columns:1fr}}
+.steps{list-style:none;margin:0;padding:0;position:relative}
+.steps:before{content:"";position:absolute;left:15px;top:8px;bottom:8px;width:2px;background:var(--line)}
+.steps li{position:relative;padding:0 0 26px 52px}
+.steps li:before{content:"";position:absolute;left:6px;top:4px;width:20px;height:20px;border-radius:50%;background:var(--bg2);border:3px solid var(--green2)}
+.steps li:last-child:before{background:var(--green)}
+.steps h3{margin-bottom:4px}.steps p{color:var(--soft);margin:0}
+/* cards */
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:18px;margin-top:28px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:26px}
+.card p{color:var(--soft);margin:0}.card svg{width:44px;height:44px;margin-bottom:14px}
+.talks{list-style:none;padding:0;margin:20px 0 0;display:grid;gap:10px}
+.talks li{display:grid;grid-template-columns:7.5em minmax(0,1fr);gap:14px;padding:14px 0;border-bottom:1px solid var(--line)}
+.talks time{color:var(--green);font-weight:700;white-space:nowrap}
+/* calculator */
+.calc{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(20px,3vw,40px);margin-top:28px;align-items:start}
+@media(max-width:860px){.calc{grid-template-columns:1fr}}
+.field{margin-bottom:18px}
+label{display:block;font-weight:600;margin-bottom:6px}
+.row{display:flex;gap:14px;align-items:center}
+input[type=range]{flex:1;accent-color:var(--green);height:44px}
+input[type=number],input[type=text],input[type=email],select,textarea{width:100%;font:16px "Plus Jakarta Sans",sans-serif;color:var(--ink);background:var(--bg);border:1.5px solid var(--line);border-radius:12px;padding:11px 14px;min-height:48px}
+.row input[type=number]{width:7.5em;flex:none;text-align:right}
+.presets{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:22px}
+.chip{min-height:44px;padding:0 16px;border-radius:999px;border:1.5px solid var(--line);background:var(--card);color:var(--ink);font:600 15px "Plus Jakarta Sans",sans-serif;cursor:pointer}
+.chip[aria-pressed=true]{border-color:var(--green);color:var(--green)}
+.result{position:sticky;top:90px;background:linear-gradient(160deg,#173a2c,#0f241b);border:1px solid var(--green2);border-radius:24px;padding:clamp(22px,3vw,34px)}
+.big{font-size:clamp(40px,6vw,64px);font-weight:800;color:var(--green);line-height:1;margin:6px 0 4px;white-space:nowrap}
+.kv{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:10px 16px;margin:22px 0;padding-top:18px;border-top:1px solid var(--line)}
+.kv dt{color:var(--soft)}.kv dd{margin:0;font-weight:700;text-align:right;white-space:nowrap}
+.bar{height:12px;border-radius:6px;background:var(--bg);overflow:hidden;margin:6px 0 14px}.bar i{display:block;height:100%;background:var(--green);transition:width .3s}
+.bar.cost i{background:var(--accent)}
+/* form */
+.form{max-width:720px}
+.fgrid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:0 18px}
+@media(max-width:600px){.fgrid{grid-template-columns:1fr}.talks li{grid-template-columns:1fr;gap:2px}}
+fieldset{border:0;padding:0;margin:0 0 18px}legend{font-weight:600;margin-bottom:8px}
+.checks{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));gap:8px}
+.checks label,.consent{display:flex;gap:10px;align-items:flex-start;font-weight:500;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px 14px;margin:0;cursor:pointer}
+input[type=checkbox]{width:20px;height:20px;accent-color:var(--green);flex:none;margin-top:3px}
+.req{color:var(--accent)}
+.note{border-radius:14px;padding:16px 18px;margin-top:16px;display:none}
+.note.ok{display:block;background:#173a2c;border:1px solid var(--green2)}
+.note.warn{display:block;background:#2e2712;border:1px solid var(--accent)}
+.note pre{white-space:pre-wrap;font:14px/1.5 "Plus Jakarta Sans",sans-serif;background:var(--bg);padding:12px;border-radius:10px;margin:10px 0}
+footer{border-top:1px solid var(--line);padding:32px max(5vw,16px);color:var(--soft);font-size:14px}
+footer .wrap{display:flex;gap:16px;flex-wrap:wrap;justify-content:space-between}
+</style>
+</head>
+<body>
+<nav><div class="wrap">
+  <a class="brand" href="#top">Halid Bin Ayob</a>
+  <div class="links"><a href="#about">About</a><a href="#work">Work</a><a href="#speaking">Speaking</a><a href="#rates">Rates</a><a href="#roi">ROI calculator</a><a class="cta-s" href="#signup">Get in touch</a></div>
+</div></nav>
+
+<header class="band hero" id="top"><div class="wrap">
+  <div>
+    <span class="tag">Tech-Savvy Dad · Singapore</span>
+    <h1>From fixing copiers to making paper disappear.</h1>
+    <p class="lead">I'm Halid — Regional Sales Director for DocuWare across APAC South. I help businesses and channel partners in Singapore, Malaysia, Thailand, Vietnam, Brunei and Laos turn document-heavy work into simple, secure digital workflows. Off the clock, I'm a regular working dad who shares what I learn on LinkedIn.</p>
+    <div class="actions"><a class="btn pri" href="#roi">Calculate your ROI</a><a class="btn sec" href="#signup">Work with me</a></div>
+  </div>
+  <div class="fig" aria-label="Illustration: a stack of paper documents flowing through an automation pipeline into a secure cloud vault">
+    <svg viewBox="0 0 560 400" preserveAspectRatio="xMidYMid meet" role="img">
+      <defs>
+        <linearGradient id="g1" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1d4a38"/><stop offset="1" stop-color="#0f261d"/></linearGradient>
+        <linearGradient id="g2" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#9ff0c0"/><stop offset="1" stop-color="#3fb57a"/></linearGradient>
+        <g id="paper"><rect width="74" height="94" rx="6" fill="#f4f7f5"/><rect x="12" y="16" width="44" height="6" rx="3" fill="#b9c8c0"/><rect x="12" y="32" width="50" height="5" rx="2.5" fill="#d6e0da"/><rect x="12" y="44" width="38" height="5" rx="2.5" fill="#d6e0da"/><rect x="12" y="56" width="46" height="5" rx="2.5" fill="#d6e0da"/></g>
+        <g id="tile"><rect width="58" height="40" rx="9" fill="#173a2c" stroke="#5fd394" stroke-width="2"/><rect x="10" y="11" width="24" height="5" rx="2.5" fill="#9ff0c0"/><rect x="10" y="23" width="36" height="4" rx="2" fill="#5fd394" opacity=".6"/></g>
+      </defs>
+      <ellipse cx="280" cy="360" rx="250" ry="22" fill="#0e2119"/>
+      <!-- paper stack -->
+      <g transform="translate(40 190)"><use href="#paper" transform="rotate(-8) translate(-6 14)" opacity=".7"/><use href="#paper" transform="rotate(4) translate(8 4)" opacity=".85"/><use href="#paper"/></g>
+      <text x="76" y="318" text-anchor="middle" fill="#c9d8d1" font-size="15" font-weight="600" font-family="Plus Jakarta Sans">Paper in</text>
+      <!-- pipeline -->
+      <path d="M130 236 C190 236 190 200 245 200" fill="none" stroke="#24463a" stroke-width="16" stroke-linecap="round"/>
+      <path class="flow" d="M130 236 C190 236 190 200 245 200" fill="none" stroke="#9ff0c0" stroke-width="4" stroke-linecap="round"/>
+      <!-- engine -->
+      <g class="bob"><rect x="245" y="140" width="120" height="120" rx="26" fill="url(#g1)" stroke="#5fd394" stroke-width="2"/>
+      <circle cx="305" cy="200" r="30" fill="none" stroke="url(#g2)" stroke-width="8"/><circle cx="305" cy="200" r="10" fill="#9ff0c0"/>
+      <path d="M305 160v12M305 228v12M265 200h12M333 200h12" stroke="#9ff0c0" stroke-width="6" stroke-linecap="round"/></g>
+      <text x="305" y="290" text-anchor="middle" fill="#c9d8d1" font-size="15" font-weight="600" font-family="Plus Jakarta Sans">Capture · Index · Approve</text>
+      <!-- outputs -->
+      <path class="flow" d="M365 180 C400 180 400 110 430 110" fill="none" stroke="#9ff0c0" stroke-width="3"/>
+      <path class="flow" d="M365 200 H430" fill="none" stroke="#9ff0c0" stroke-width="3"/>
+      <path class="flow" d="M365 220 C400 220 400 290 430 290" fill="none" stroke="#9ff0c0" stroke-width="3"/>
+      <use href="#tile" x="432" y="90"/><use href="#tile" x="432" y="180"/><use href="#tile" x="432" y="270"/>
+      <!-- vault cloud -->
+      <g transform="translate(400 18)"><path d="M28 54 a22 22 0 0 1 6-43 a28 28 0 0 1 52 4 a20 20 0 0 1 10 39z" fill="#173a2c" stroke="#9ff0c0" stroke-width="2"/>
+      <rect x="50" y="26" width="22" height="18" rx="4" fill="#9ff0c0"/><path d="M54 26v-5a7 7 0 0 1 14 0v5" fill="none" stroke="#9ff0c0" stroke-width="3"/></g>
+      <text x="520" y="370" text-anchor="end" fill="#c9d8d1" font-size="15" font-weight="600" font-family="Plus Jakarta Sans">Secure, searchable, done</text>
+    </svg>
+  </div>
+</div>
+<div class="wrap"><div class="stats">
+  <div><b>20+ yrs</b><span>in enterprise organisations since 2006</span></div>
+  <div><b>6</b><span>APAC South markets covered</span></div>
+  <div><b>16,000+</b><span>LinkedIn followers</span></div>
+  <div><b>Top 200</b><span>LinkedIn creators in Singapore (Favikon)</span></div>
+</div></div>
+</header>
+
+<section class="band alt" id="about"><div class="wrap two">
+  <div>
+    <h2>A regular dad who stumbled into tech leadership.</h2>
+    <p>I started as a copier technician. As offices went paperless, I taught myself the software that replaced the paper and became a hybrid engineer handling both hardware and software calls. That curiosity took me into regional marketing, product training and partner enablement — and eventually into sales leadership in MNC settings.</p>
+    <p>I was DocuWare's first Singapore-based team member. My job isn't to "lead" sales — it's to stand beside our partners, strategise with them, and back them in front of customers until they can run on their own.</p>
+    <p>Online I'm <b>Tech-Savvy Dad</b>: practical stories about digital transformation, work efficiency and career growth, told the way you'd share them over teh tarik. The follower count is nice. The messages from people who landed a job or felt seen matter more.</p>
+  </div>
+  <div>
+    <h3 style="margin-bottom:22px">The journey so far</h3>
+    <ol class="steps">
+      <li><h3>Copier technician</h3><p>Hands-on with print hardware, in the field with customers every day.</p></li>
+      <li><h3>Hybrid engineer</h3><p>Learned the software side as offices went digital — hardware and software calls alike.</p></li>
+      <li><h3>Regional marketer &amp; trainer</h3><p>Product training and enablement for partners across Southeast Asia.</p></li>
+      <li><h3>Sales leadership</h3><p>Enterprise sales and channel strategy in MNC settings.</p></li>
+      <li><h3>DocuWare, APAC South</h3><p>Since May 2025 — building the partner ecosystem and enterprise presence from Singapore.</p></li>
+    </ol>
+  </div>
+</div></section>
+
+<section class="band" id="work"><div class="wrap">
+  <h2>What I work on</h2>
+  <p class="lead">Four threads, one idea: technology should give people time back.</p>
+  <div class="grid">
+    <div class="card"><svg viewBox="0 0 44 44" fill="none" stroke="#9ff0c0" stroke-width="2.5" stroke-linecap="round"><rect x="6" y="8" width="22" height="28" rx="3"/><path d="M12 16h10M12 22h10M12 28h6"/><path d="M30 20l8 4-8 4" /></svg>
+      <h3>Document workflows with DocuWare</h3><p>Purchase-to-pay, invoice automation, HR records, intelligent document processing and Aura — governed AI that lets teams ask their own documents questions, with an audit trail.</p></div>
+    <div class="card"><svg viewBox="0 0 44 44" fill="none" stroke="#9ff0c0" stroke-width="2.5" stroke-linecap="round"><circle cx="14" cy="16" r="6"/><circle cx="30" cy="16" r="6"/><path d="M4 36c2-7 6-10 10-10s8 3 8 3 4-3 8-3 8 3 10 10"/></svg>
+      <h3>Channel partner growth</h3><p>Recruiting and enabling ISVs and VARs. Grew the network to 8 authorised partners, and guided one Singapore partner from Base to Silver in 9 months.</p></div>
+    <div class="card"><svg viewBox="0 0 44 44" fill="none" stroke="#9ff0c0" stroke-width="2.5" stroke-linecap="round"><rect x="6" y="8" width="32" height="22" rx="3"/><path d="M16 36h12M22 30v6"/><path d="M14 22l5-5 4 4 7-7"/></svg>
+      <h3>LinkedIn &amp; personal branding</h3><p>Workshops, profile audits and coaching through Linqista — helping professionals show up, not show off.</p></div>
+    <div class="card"><svg viewBox="0 0 44 44" fill="none" stroke="#9ff0c0" stroke-width="2.5" stroke-linecap="round"><path d="M22 38s-14-8-14-19a8 8 0 0 1 14-5 8 8 0 0 1 14 5c0 11-14 19-14 19z"/></svg>
+      <h3>Community</h3><p>Grassroots work in Zhenghua, mentoring sessions, Read With Dad on YouTube, and networking meetups that turn online connections into real friendships.</p></div>
+  </div>
+</div></section>
+
+<section class="band alt" id="speaking"><div class="wrap two">
+  <div>
+    <h2>Speaking &amp; workshops</h2>
+    <p class="lead">I speak on Shadow AI, secure AI with your own data, document automation, and building an authentic LinkedIn presence. Hands-on beats slides — most sessions end with people trying it themselves.</p>
+    <a class="btn sec" href="#signup" id="toSpeak">Invite me to speak</a>
+  </div>
+  <ul class="talks">
+    <li><time>15 Oct 2026</time><span><b>Shadow AI: The Hidden Cost Between Innovation and Exposure</b><br><span class="muted">Technology Spotlight, Finance ReImagined Malaysia 2026, Kuala Lumpur</span></span></li>
+    <li><time>Oct 2026</time><span><b>Say goodbye to manual data entry</b><br><span class="muted">IDP webinars with partners for Vietnam and Singapore audiences</span></span></li>
+    <li><time>4 Nov 2026</time><span><b>AI to your data, not data to AI</b><br><span class="muted">Hands-on DocuWare Aura workshop, National Library, Singapore</span></span></li>
+    <li><time>19 Nov 2026</time><span><b>The Modern Business Engine — IDP and P2P</b><br><span class="muted">Partner co-hosted webinar</span></span></li>
+    <li><time>Ongoing</time><span><b>Show Up, Not Show Off</b><br><span class="muted">Mentoring on building an authentic LinkedIn personal brand</span></span></li>
+  </ul>
+</div></section>
+
+<section class="band" id="rates"><div class="wrap">
+  <h2>Work with me</h2>
+  <p class="lead">Creator collaborations, speaking and LinkedIn LIVE sessions. Every brief is different, so I tailor each package to your audience, goals and budget. Share a few details and I'll reach out personally with options and my rate card.</p>
+  <div class="grid">
+    <div class="card"><h3>Sponsored content</h3><p>Story-led LinkedIn posts written in my own voice, reshares, TikTok POV videos and Instagram cross-posts — single pieces or bundles across platforms.</p></div>
+    <div class="card"><h3>Speaking &amp; workshops</h3><p>Panels, keynotes and hands-on workshops on AI at work, secure AI, digitalisation, careers and LinkedIn personal branding.</p></div>
+    <div class="card"><h3>LinkedIn LIVE</h3><p>45-minute featured guest interviews, co-hosted sessions, sponsored segments and series sponsorships, with replay clips for your own channels.</p></div>
+  </div>
+  <div class="actions"><a class="btn pri" href="#signup" id="toCollab">Request my rate card</a></div>
+  <p class="muted" style="margin-top:16px">Special rates are available for non-profits and community events. All paid content is clearly labelled as a partnership.</p>
+</div></section>
+
+<section class="band alt" id="roi"><div class="wrap">
+  <h2>Productivity ROI calculator</h2>
+  <p class="lead">How much is manual document work costing your team? Move the sliders — the estimate updates as you go.</p>
+  <div class="calc">
+    <div>
+      <div class="presets" role="group" aria-label="Scenario presets">
+        <button class="chip" data-p="sme" aria-pressed="true">Small business</button>
+        <button class="chip" data-p="mid" aria-pressed="false">Mid-size team</button>
+        <button class="chip" data-p="ent" aria-pressed="false">Enterprise dept</button>
+      </div>
+      <div class="field"><label for="staff">People handling documents</label><div class="row"><input type="range" id="staffR" min="1" max="300" aria-label="People handling documents"><input type="number" id="staff" min="1" max="5000"></div></div>
+      <div class="field"><label for="hrs">Hours per person per week on searching, filing, keying-in and chasing approvals</label><div class="row"><input type="range" id="hrsR" min="1" max="30" aria-label="Hours per week"><input type="number" id="hrs" min="0" max="60" step="0.5"></div></div>
+      <div class="field"><label for="rate">Loaded hourly cost per person (SGD)</label><div class="row"><input type="range" id="rateR" min="10" max="150" aria-label="Hourly cost"><input type="number" id="rate" min="1" max="1000"></div></div>
+      <div class="field"><label for="save">Share of that time automation could save (%)</label><div class="row"><input type="range" id="saveR" min="5" max="80" aria-label="Time saved percent"><input type="number" id="save" min="0" max="100"></div></div>
+      <div class="field"><label for="paper">Monthly print, paper, courier &amp; storage costs (SGD)</label><div class="row"><input type="range" id="paperR" min="0" max="10000" step="50" aria-label="Monthly paper costs"><input type="number" id="paper" min="0" max="1000000" step="50"></div></div>
+      <div class="field"><label for="inv">Estimated yearly solution investment (SGD)</label><div class="row"><input type="range" id="invR" min="0" max="200000" step="500" aria-label="Yearly investment"><input type="number" id="inv" min="0" max="10000000" step="500"></div></div>
+      <p class="muted">Your inputs, not a quote. Investment depends on users, modules and deployment — ask me for a proper sizing.</p>
+    </div>
+    <div class="result" aria-live="polite">
+      <div class="muted">Estimated net benefit, year one</div>
+      <div class="big" id="net">SGD 0</div>
+      <div id="roiLine" class="lead" style="margin:0">—</div>
+      <dl class="kv">
+        <dt>Hours given back per year</dt><dd id="hSaved">0</dd>
+        <dt>Equivalent full-time staff</dt><dd id="fte">0</dd>
+        <dt>Labour value recovered</dt><dd id="labour">0</dd>
+        <dt>Paper &amp; storage savings (60%)</dt><dd id="paperS">0</dd>
+        <dt>Payback period</dt><dd id="payback">—</dd>
+      </dl>
+      <div class="muted">Gross yearly savings</div><div class="bar"><i id="bS"></i></div>
+      <div class="muted">Yearly investment</div><div class="bar cost"><i id="bI"></i></div>
+      <a class="btn pri" href="#signup" id="toForm" style="width:100%;margin-top:8px">Send me these numbers</a>
+    </div>
+  </div>
+  <p class="muted" style="margin-top:22px">Method: hours saved = people × hours/week × 48 working weeks × % saved. FTE assumes 1,760 hours a year. Paper savings assume 60% of those monthly costs go away once documents are digital. Illustrative only.</p>
+</div></section>
+
+<section class="band" id="signup"><div class="wrap two">
+  <div>
+    <h2>Curious about working together?</h2>
+    <p class="lead">Whether it's fixing a document headache, partnering, a talk or a collaboration — tell me a little about you and what you have in mind. I'll reach out personally to find the right next step.</p>
+    <p>People usually get in touch about:</p>
+    <ul class="lead" style="padding-left:1.2em;margin:0 0 1em">
+      <li>Digitising invoices, HR files and approvals with DocuWare</li>
+      <li>Becoming a DocuWare partner</li>
+      <li>Speaking, workshops and LinkedIn LIVE sessions</li>
+      <li>Creator collaborations</li>
+    </ul>
+    <p class="muted">Prefer to chat first? Message me on LinkedIn: <a href="https://www.linkedin.com/in/techsavvy-dad">linkedin.com/in/techsavvy-dad</a></p>
+  </div>
+  <form class="form" id="form" novalidate>
+    <div class="fgrid">
+      <div class="field"><label for="fn">Full name <span class="req">*</span></label><input id="fn" type="text" autocomplete="name" required></div>
+      <div class="field"><label for="fe">Work email <span class="req">*</span></label><input id="fe" type="email" autocomplete="email" required></div>
+      <div class="field"><label for="fc">Company <span class="req">*</span></label><input id="fc" type="text" autocomplete="organization" required></div>
+      <div class="field"><label for="fr">Your role</label><input id="fr" type="text" autocomplete="organization-title"></div>
+      <div class="field"><label for="fl">Country</label><select id="fl"><option>Singapore</option><option>Malaysia</option><option>Thailand</option><option>Vietnam</option><option>Brunei</option><option>Laos</option><option>Other</option></select></div>
+      <div class="field"><label for="fs">Company size</label><select id="fs"><option>1–49</option><option selected>50–199</option><option>200–999</option><option>1,000+</option></select></div>
+    </div>
+    <fieldset><legend>What would you like to talk about?</legend><div class="checks">
+      <label><input type="checkbox" name="i" value="Invoice & AP automation">Invoice &amp; AP automation</label>
+      <label><input type="checkbox" name="i" value="HR & employee documents">HR &amp; employee documents</label>
+      <label><input type="checkbox" name="i" value="Intelligent document processing">Intelligent document processing</label>
+      <label><input type="checkbox" name="i" value="Secure AI on our documents (Aura)">Secure AI on our documents</label>
+      <label><input type="checkbox" name="i" value="Becoming a DocuWare partner">Becoming a DocuWare partner</label>
+      <label><input type="checkbox" name="i" value="Speaking or workshop">Speaking or a workshop</label>
+      <label><input type="checkbox" name="i" value="Creator collaboration">Creator collaboration</label>
+    </div></fieldset>
+    <div class="field"><label for="fm">Anything you'd like me to know?</label><textarea id="fm" rows="4"></textarea></div>
+    <label class="consent" style="margin-bottom:18px"><input type="checkbox" id="fk" required><span>I agree to be contacted about my enquiry and for my details to be used for that purpose only. <span class="req">*</span></span></label>
+    <div aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden"><label for="fw">Leave this field empty</label><input id="fw" name="_honey" type="text" tabindex="-1" autocomplete="off"></div>
+    <button class="btn pri" type="submit" id="sub">Send my details</button>
+    <div class="note" id="note" role="status"></div>
+  </form>
+</div></section>
+
+<footer><div class="wrap">
+  <span>© 2026 Halid Bin Ayob · Tech-Savvy Dad · Singapore</span>
+  <a href="https://www.linkedin.com/in/techsavvy-dad">Connect on LinkedIn</a>
+</div></footer>
+
+<script>
+{
+const $=id=>document.getElementById(id);
+const P={sme:{staff:8,hrs:6,rate:30,save:40,paper:600,inv:12000},mid:{staff:40,hrs:7,rate:40,save:45,paper:2500,inv:45000},ent:{staff:150,hrs:8,rate:55,save:50,paper:8000,inv:140000}};
+const keys=["staff","hrs","rate","save","paper","inv"];
+const fmt=n=>"SGD "+Math.round(n).toLocaleString("en-SG");
+let last={};
+function setAll(v){keys.forEach(k=>{$(k).value=v[k];$(k+"R").value=v[k]});calc()}
+function calc(){
+  const v={};keys.forEach(k=>v[k]=Math.max(0,parseFloat($(k).value)||0));
+  const hours=v.staff*v.hrs*48*v.save/100,labour=hours*v.rate,paperS=v.paper*12*0.6,gross=labour+paperS,net=gross-v.inv;
+  $("net").textContent=(net<0?"−":"")+fmt(Math.abs(net));
+  $("roiLine").textContent=v.inv>0?`${Math.round(net/v.inv*100)}% return on investment`:"Enter an investment to see ROI";
+  $("hSaved").textContent=Math.round(hours).toLocaleString("en-SG")+" hrs";
+  $("fte").textContent=(hours/1760).toFixed(1);
+  $("labour").textContent=fmt(labour);$("paperS").textContent=fmt(paperS);
+  $("payback").textContent=gross>0&&v.inv>0?(v.inv/(gross/12)).toFixed(1)+" months":"—";
+  const m=Math.max(gross,v.inv,1);$("bS").style.width=gross/m*100+"%";$("bI").style.width=v.inv/m*100+"%";
+  last={...v,hours:Math.round(hours),gross:Math.round(gross),net:Math.round(net)};
+  try{localStorage.setItem("roi",JSON.stringify(v))}catch(e){}
+}
+keys.forEach(k=>{
+  $(k+"R").addEventListener("input",e=>{$(k).value=e.target.value;clearP();calc()});
+  $(k).addEventListener("input",e=>{$(k+"R").value=e.target.value;clearP();calc()});
+});
+function clearP(){document.querySelectorAll(".chip").forEach(c=>c.setAttribute("aria-pressed","false"))}
+document.querySelectorAll(".chip").forEach(c=>c.addEventListener("click",()=>{clearP();c.setAttribute("aria-pressed","true");setAll(P[c.dataset.p])}));
+let saved=null;try{saved=JSON.parse(localStorage.getItem("roi"))}catch(e){}
+if(saved&&keys.every(k=>k in saved)){clearP();setAll(saved)}else setAll(P.sme);
+let includeRoi=false;
+$("toCollab").addEventListener("click",()=>{const c=document.querySelector('input[value="Creator collaboration"]');if(c)c.checked=true;const m=$("fm");if(!m.value)m.value="I'd like your rate card for: ";});
+$("toSpeak").addEventListener("click",()=>{const c=document.querySelector('input[value="Speaking or workshop"]');if(c)c.checked=true;});
+$("toForm").addEventListener("click",()=>{includeRoi=true;const m=$("fm");if(!m.value)m.value=`My ROI estimate: ${last.hours} hours/year saved, net benefit ${fmt(last.net)} in year one.`});
+
+// Enquiries are emailed via FormSubmit (formsubmit.co). Each route is a FormSubmit alias that forwards to a Gmail "+" inbox.
+// First match wins when several boxes are ticked.
+const ROUTES=[
+  ["partner","ea22892853ef364cc142416b4351d093",["Becoming a DocuWare partner"]],
+  ["docuware","4b4c30be848b02ee6c382b1c9d6263dc",["Invoice & AP automation","HR & employee documents","Intelligent document processing","Secure AI on our documents (Aura)"]],
+  ["speaking","7738005ea33869885b714b02a8f28b44",["Speaking or workshop"]],
+  ["creator","d69cb45ec12e08766a4004e5721e07af",["Creator collaboration"]]
+];
+const FALLBACK=["enquiry","e2df16a279fe324e5f8141a47468414c"];
+function routeFor(interests){for(const [tag,key,vals] of ROUTES)if(interests.some(i=>vals.includes(i)))return [tag,key];return FALLBACK}
+const loadedAt=Date.now();
+const note=$("note");
+function show(cls,title,body){note.className="note "+cls;note.textContent="";const h=document.createElement("b");h.textContent=title;note.append(h);if(body){const p=document.createElement("pre");p.textContent=body;note.append(p);const b=document.createElement("button");b.type="button";b.className="btn sec";b.textContent="Copy details";b.onclick=async()=>{try{await navigator.clipboard.writeText(body);b.textContent="Copied"}catch(e){b.textContent="Select the text above to copy"}};const a=document.createElement("a");a.className="btn pri";a.style.marginLeft="8px";a.href="https://www.linkedin.com/in/techsavvy-dad";a.textContent="Message me on LinkedIn";note.append(b,a)}}
+$("form").addEventListener("submit",async e=>{
+  e.preventDefault();
+  if($("fw").value||Date.now()-loadedAt<4000){show("ok","Thanks! I'll reach out personally within two working days.");$("form").reset();return}
+  const req=["fn","fe","fc"];let bad=req.find(id=>!$(id).value.trim());
+  if(!bad&&!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test($("fe").value.trim()))bad="fe";
+  if(bad){show("warn","Please fill in your name, a valid work email and your company.");$(bad).focus();return}
+  if(!$("fk").checked){show("warn","Please tick the consent box so I can contact you.");$("fk").focus();return}
+  const rec={name:$("fn").value.trim(),email:$("fe").value.trim(),company:$("fc").value.trim(),role:$("fr").value.trim(),country:$("fl").value,size:$("fs").value,
+    interests:[...document.querySelectorAll('input[name=i]:checked')].map(x=>x.value),message:$("fm").value.trim(),roi:includeRoi?last:null,at:new Date().toISOString()};
+  const text=`Name: ${rec.name}\nEmail: ${rec.email}\nCompany: ${rec.company}\nRole: ${rec.role}\nCountry: ${rec.country} · Size: ${rec.size}\nInterests: ${rec.interests.join(", ")||"—"}\nMessage: ${rec.message||"—"}`;
+  $("sub").disabled=true;$("sub").textContent="Sending…";
+  try{
+    const [tag,key]=routeFor(rec.interests);
+    const r=await fetch("https://formsubmit.co/ajax/"+key,{method:"POST",headers:{"Content-Type":"application/json",Accept:"application/json"},
+      body:JSON.stringify({_subject:"["+tag+"] Website enquiry from "+rec.name+" ("+rec.company+")",_replyto:rec.email,_template:"table",_captcha:"false",_honey:$("fw").value,Name:rec.name,Email:rec.email,Company:rec.company,Role:rec.role,Country:rec.country,"Company size":rec.size,Interests:rec.interests.join(", "),Message:rec.message,ROI:rec.roi?JSON.stringify(rec.roi):""})});
+    if(!r.ok)throw new Error("send");
+    show("ok","Thanks, "+rec.name.split(" ")[0]+"! Got your details — I'll reach out personally within two working days.");
+    $("form").reset();includeRoi=false;
+  }catch(err){
+    show("warn","Almost there — copy your details below and send them to me on LinkedIn, and I'll get back to you personally:",text);
+  }finally{$("sub").disabled=false;$("sub").textContent="Send my details"}
+});
+}
+</script>
+</body>
+</html>
