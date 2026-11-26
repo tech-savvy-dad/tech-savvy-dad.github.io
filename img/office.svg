@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 520" fill="none" stroke="#9ff0c0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <!-- floor line -->
+  <path d="M0 500H1600"/>
+  <!-- window with blinds -->
+  <rect x="70" y="60" width="260" height="200" rx="6"/>
+  <path d="M200 60v200M70 160h260"/>
+  <path d="M84 78h100M84 92h100M84 106h100M84 120h100M84 134h100M216 78h100M216 92h100M216 106h100M216 120h100M216 134h100"/>
+  <path d="M110 200c20-18 40-18 60 0M240 210c16-14 34-14 50 0"/>
+  <!-- tall plant -->
+  <path d="M120 500v-14h60v14M126 486l6-60h36l6 60"/>
+  <path d="M150 426c0-60-30-90-60-110M150 426c0-50 20-80 56-100M150 426c-6-40-30-60-56-62M150 426c10-36 34-50 60-50M150 426V300"/>
+  <path d="M90 316c10 2 18 8 22 16M206 326c-10 0-18 4-24 12M150 300c-8 6-10 14-8 22"/>
+  <!-- filing cabinet -->
+  <rect x="250" y="330" width="120" height="170" rx="6"/>
+  <path d="M250 386h120M250 442h120M292 356h36M292 412h36M292 468h36"/>
+  <!-- paper stack on cabinet -->
+  <path d="M266 330v-10h70v10M262 320v-10h76v10M270 310v-10h62v10"/>
+  <!-- wall clock -->
+  <circle cx="470" cy="110" r="44"/><path d="M470 80v30l20 14M470 70v6M470 144v6M430 110h6M504 110h6"/>
+  <!-- pinned board with notes -->
+  <rect x="560" y="60" width="220" height="140" rx="6"/>
+  <rect x="580" y="78" width="54" height="46" rx="2"/><rect x="650" y="84" width="54" height="46" rx="2"/><rect x="718" y="76" width="44" height="40" rx="2"/>
+  <rect x="596" y="136" width="70" height="46" rx="2"/><rect x="684" y="132" width="78" height="52" rx="2"/>
+  <path d="M590 92h34M590 104h26M660 98h34M660 110h22M694 148h56M694 160h44M694 172h50"/>
+  <circle cx="607" cy="78" r="3"/><circle cx="677" cy="84" r="3"/><circle cx="740" cy="76" r="3"/><circle cx="631" cy="136" r="3"/><circle cx="723" cy="132" r="3"/>
+  <!-- pendant lamp -->
+  <path d="M960 0v70M920 110c0-24 18-40 40-40s40 16 40 40z M950 110c0 8 4 12 10 12s10-4 10-12"/>
+  <!-- desk -->
+  <path d="M760 360h440M770 360v140M1190 360v140M780 372h160M780 372v128M940 372v128M780 414h160M780 456h160M850 393h20M850 435h20M850 477h20"/>
+  <!-- monitor -->
+  <rect x="980" y="210" width="190" height="122" rx="8"/>
+  <path d="M1060 332l-8 28h56l-8-28"/>
+  <path d="M1000 232h80M1000 248h120M1000 264h96M1000 290h40l14-18 16 30 14-20 12 8h40"/>
+  <!-- laptop -->
+  <path d="M800 350l14-60h112l14 60zM790 360h160"/>
+  <path d="M826 304h80M832 318h66"/>
+  <!-- mug with steam -->
+  <path d="M1120 360v-30h34v30zM1154 338c12 0 12 16 0 16"/>
+  <path d="M1128 318c-6-8 6-12 0-20M1142 318c-6-8 6-12 0-20"/>
+  <!-- document tray -->
+  <path d="M960 360l6-16h80l6 16M968 344l4-10h72l4 10"/>
+  <!-- office chair -->
+  <path d="M1250 300c0-14 10-22 26-22h40c16 0 26 8 26 22v70h-92z"/>
+  <path d="M1240 380h112M1296 380v60M1256 470l40-30 40 30M1250 476a6 6 0 1 0 12 0a6 6 0 1 0-12 0M1330 476a6 6 0 1 0 12 0a6 6 0 1 0-12 0M1290 486a6 6 0 1 0 12 0a6 6 0 1 0-12 0"/>
+  <!-- bookshelf -->
+  <rect x="1400" y="90" width="160" height="410" rx="6"/>
+  <path d="M1400 180h160M1400 270h160M1400 360h160M1400 430h160"/>
+  <path d="M1414 180v-64h16v64M1434 180v-74h14v74M1452 180v-58h18v58M1490 180l12-60 14 4-12 56M1414 270v-60h20v60M1440 270v-70h14v70M1460 270v-52h40v52M1508 270v-64h14v64M1414 360h60v-20h-60zM1420 340h48v-14h-48zM1490 360v-66h16v66M1512 360v-56h14v56M1534 360v-72h14v72"/>
+  <path d="M1420 430v-50h30v50M1460 430v-40h50v40M1470 400h30"/>
+  <!-- small plant on shelf -->
+  <path d="M1500 500v-34h40v34M1520 466c-4-16-16-24-28-24M1520 466c2-18 12-26 26-28M1520 466v-34"/>
+</svg>

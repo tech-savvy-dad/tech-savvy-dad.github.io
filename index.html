@@ -266,6 +266,27 @@ details.sources summary:focus-visible{outline:3px solid var(--accent);outline-of
 }
 .swipe{display:none;align-items:center;gap:8px;color:var(--soft);font-size:13px;font-weight:600;margin:6px 0 0}
 .swipe::after{content:"";width:28px;height:2px;border-radius:2px;background:linear-gradient(90deg,var(--green2),transparent)}
+
+/* office line-art scene */
+.band::after{content:"";position:absolute;left:0;right:0;bottom:0;height:clamp(200px,30vw,420px);z-index:-1;pointer-events:none;background:url(img/office.svg) center bottom/auto 100% repeat-x;opacity:.055}
+.band.alt::after{transform:scaleX(-1)}
+.hero::after{opacity:.11;height:clamp(220px,34vw,460px)}
+#signup::after{opacity:.09}
+#roi::after{opacity:.04}
+@media(max-width:700px){.band::after{height:190px;background-size:auto 100%;background-position:30% bottom}.hero::after{opacity:.13}}
+/* marquee pills keep their width */
+.mtrack span{flex:none}
+/* glare only where there is a mouse */
+@media(hover:none){.result .glare{display:none}}
+/* roomier mobile swipe cards */
+@media(max-width:700px){
+  .grid>*,.tgrid>*,.hsteps>li{flex:0 0 88%}
+  .card,.tcard{padding:20px}
+  .card h3{font-size:19px}
+  .card p{font-size:15.5px;line-height:1.55}
+  .ico{width:48px;height:48px;margin-bottom:12px}
+  .stats div{padding:16px}
+}
 </style>
 </head>
 <body>
