@@ -183,7 +183,7 @@ body{background:radial-gradient(1200px 600px at 85% -10%,rgba(95,211,148,.10),tr
 @media(prefers-reduced-motion:reduce){.mtrack{animation:none;flex-wrap:wrap;width:auto;justify-content:center}}
 .stats div{transition:background .3s}.stats div:hover{background:#0f1f18}
 /* about: portrait + live timeline */
-.portrait{position:relative;margin-top:26px;border-radius:22px;overflow:hidden;border:1px solid var(--line);aspect-ratio:4/3;box-shadow:0 30px 60px rgba(0,0,0,.45);transform:perspective(900px) rotateY(-4deg);transition:transform .6s cubic-bezier(.2,.8,.2,1)}
+.aboutpic{display:flex;align-items:center;height:100%}.portrait{position:relative;margin:0;width:100%;border-radius:22px;overflow:hidden;border:1px solid var(--line);aspect-ratio:4/3;box-shadow:0 30px 60px rgba(0,0,0,.45);transform:perspective(900px) rotateY(-4deg);transition:transform .6s cubic-bezier(.2,.8,.2,1)}
 .portrait:hover{transform:perspective(900px) rotateY(0)}
 .portrait img{width:100%;height:100%;object-fit:cover;object-position:50% 25%;display:block}
 .portrait figcaption{position:absolute;left:14px;bottom:14px;padding:8px 14px;border-radius:999px;background:rgba(11,21,17,.82);backdrop-filter:blur(6px);font-weight:600;font-size:14px}
@@ -193,8 +193,8 @@ body{background:radial-gradient(1200px 600px at 85% -10%,rgba(95,211,148,.10),tr
 .steps .yr{display:inline-block;font-size:12px;font-weight:700;color:var(--green2);margin-bottom:2px}
 /* talks by year */
 .years{display:grid;gap:clamp(26px,4vw,44px);margin-top:clamp(26px,4vw,40px)}
-.year{display:grid;grid-template-columns:150px minmax(0,1fr);gap:clamp(16px,3vw,40px);align-items:start}
-.yr-big{position:sticky;top:96px;font-size:clamp(44px,6vw,72px);font-weight:800;line-height:1;color:transparent;-webkit-text-stroke:1.5px var(--green2);background:linear-gradient(180deg,var(--green),var(--green2));-webkit-background-clip:text;background-clip:text}
+.year{display:grid;grid-template-columns:200px minmax(0,1fr);gap:clamp(16px,3vw,40px);align-items:start}
+.yr-big{position:sticky;top:96px;font-size:clamp(44px,5.4vw,68px);font-weight:800;line-height:1;letter-spacing:-.02em;color:transparent;background:linear-gradient(180deg,var(--green) 30%,#2f7a55);-webkit-background-clip:text;background-clip:text}.yr-big small{display:block;margin-top:8px;font-size:14px;font-weight:600;letter-spacing:0;color:var(--soft);-webkit-text-fill-color:var(--soft)}
 .tgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));gap:16px}
 .tcard{padding:22px}
 .tcard h3{font-size:18px;margin:10px 0 6px}
@@ -222,6 +222,17 @@ footer{background:#08110d;padding:clamp(36px,5vw,56px) max(5vw,16px) 28px}
 .flinks{display:flex;flex-wrap:wrap;gap:8px 18px;justify-content:flex-end}
 .flinks a{color:var(--ink);text-decoration:none;font-weight:600}.flinks a:hover{color:var(--green)}
 @media(max-width:700px){.fgrid2{grid-template-columns:1fr}.flinks{justify-content:flex-start}}
+
+.journey{margin-top:clamp(40px,6vw,72px)}.journey h3{font-size:22px;margin-bottom:26px}
+@media(min-width:861px){
+.hsteps{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:20px}
+.hsteps:before{left:10px;right:10px;top:15px;bottom:auto;width:auto;height:2px}
+.hsteps::after{left:10px;top:15px;height:2px!important;width:calc((100% - 20px) * var(--p,0))!important;transition:width .15s linear}
+.hsteps li{padding:48px 14px 18px;border-radius:16px;background:linear-gradient(160deg,#16302580,#12251d80);border:1px solid var(--line);transition:transform .3s,border-color .3s}
+.hsteps li:before{left:14px;top:6px}
+.hsteps li:hover{transform:translateY(-5px);border-color:var(--green2)}
+.hsteps li.lit{border-color:#2f6b50}
+}
 </style>
 </head>
 <body>
@@ -287,18 +298,20 @@ footer{background:#08110d;padding:clamp(36px,5vw,56px) max(5vw,16px) 28px}
     <p>I started as a copier technician. As offices went paperless, I taught myself the software that replaced the paper and became a hybrid engineer handling both hardware and software calls. That curiosity took me into regional marketing, product training and partner enablement — and eventually into sales leadership in MNC settings.</p>
     <p>I was DocuWare's first Singaporean hire, and its first team member based here. My job isn't to "lead" sales — it's to stand beside our partners, strategise with them, and back them in front of customers until they can run on their own.</p>
     <p>Online I'm <b>Tech-Savvy Dad</b>: practical stories about digital transformation, work efficiency and career growth, told the way you'd share them over teh tarik. The follower count is nice. The messages from people who landed a job or felt seen matter more.</p>
+    
+  </div>
+  <div class="aboutpic">
     <figure class="portrait"><img src="img/stage/docuworld-laugh.jpg" alt="Halid laughing on stage with a microphone at DocuWorld 2026" loading="lazy"><figcaption>DocuWorld 2026</figcaption></figure>
   </div>
-  <div>
-    <h3 style="margin-bottom:22px">The journey so far</h3>
-    <ol class="steps">
+</div>
+<div class="wrap journey"><h3>The journey so far</h3>
+<ol class="steps hsteps">
       <li><span class="yr">Where it started</span><h3>Copier technician</h3><p>Hands-on with print hardware, in the field with customers every day.</p></li>
-      <li><h3>Hybrid engineer</h3><p>Learned the software side as offices went digital — hardware and software calls alike.</p></li>
-      <li><h3>Regional marketer &amp; trainer</h3><p>Product training and enablement for partners across Southeast Asia.</p></li>
-      <li><h3>Sales leadership</h3><p>Enterprise sales and channel strategy in MNC settings.</p></li>
+      <li><span class="yr">Going digital</span><h3>Hybrid engineer</h3><p>Learned the software side as offices went digital — hardware and software calls alike.</p></li>
+      <li><span class="yr">Across Southeast Asia</span><h3>Regional marketer &amp; trainer</h3><p>Product training and enablement for partners across Southeast Asia.</p></li>
+      <li><span class="yr">MNC settings</span><h3>Sales leadership</h3><p>Enterprise sales and channel strategy in MNC settings.</p></li>
       <li><span class="yr">Since May 2025</span><h3>DocuWare, APAC South</h3><p>Building the partner ecosystem and enterprise presence from Singapore.</p></li>
     </ol>
-  </div>
 </div></section>
 
 <section class="band" id="work"><div class="wrap">
@@ -330,14 +343,14 @@ footer{background:#08110d;padding:clamp(36px,5vw,56px) max(5vw,16px) 28px}
     <a class="btn sec" href="#signup" id="toSpeak">Invite me to speak</a>
   </div>
   <div class="years">
-    <div class="year"><div class="yr-big">2026</div><div class="tgrid">
+    <div class="year"><div class="yr-big">2026<small>5 sessions</small></div><div class="tgrid">
       <article class="card tcard"><span class="ttype">Keynote · Tech spotlight</span><h3>Shadow AI: The Hidden Cost Between Innovation and Exposure</h3><p class="muted">Finance ReImagined 2026 by DigitalCFO Asia — three cities, one conversation about AI risk in finance.</p><div class="cities"><span>Singapore</span><span>Bangkok</span><span>Kuala Lumpur</span></div></article>
       <article class="card tcard"><span class="ttype alt2">Hands-on workshop</span><h3>AI to your data, not data to AI</h3><p class="muted">DocuWare Aura workshop for business leaders on safe, governed AI over their own documents.</p><div class="cities"><span>National Library, Singapore</span></div></article>
       <article class="card tcard"><span class="ttype alt3">Panel</span><h3>When You Step Away, Who Steps In?</h3><p class="muted">Ready, Set, Parent! — raising children with confidence in the digital age, alongside Ustaz Syakir Pasuni.</p><div class="cities"><span>Masjid Darul Ghufran, Singapore</span></div></article>
       <article class="card tcard"><span class="ttype">Webinar</span><h3>The Modern Business Engine — IDP and P2P</h3><p class="muted">Partner co-hosted session on intelligent document processing and purchase-to-pay.</p><div class="cities"><span>Online</span></div></article>
       <article class="card tcard"><span class="ttype">Webinar</span><h3>Say goodbye to manual data entry</h3><p class="muted">IDP webinars with partners for Vietnamese and Singaporean businesses.</p><div class="cities"><span>Vietnam</span><span>Singapore</span></div></article>
     </div></div>
-    <div class="year"><div class="yr-big">2025</div><div class="tgrid">
+    <div class="year"><div class="yr-big">2025<small>2 cities</small></div><div class="tgrid">
       <article class="card tcard"><span class="ttype">Tech spotlight</span><h3>Simplifying Requisition: From Chaos to Clarity</h3><p class="muted">How intelligent automation brings transparency and speed to procurement — DigitalCFO Asia Symposium 2025.</p><div class="cities"><span>Bangkok</span><span>Kuala Lumpur</span></div></article>
     </div></div>
   </div>
