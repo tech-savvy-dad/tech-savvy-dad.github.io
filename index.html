@@ -152,6 +152,27 @@ input[type=number],input[type=text],input[type=email],select,textarea{width:100%
 .q .qm{position:absolute;top:-14px;right:18px;font-size:120px;line-height:1;color:var(--green);opacity:.16;font-weight:800;pointer-events:none}
 .q blockquote{margin:0;font-size:16.5px;line-height:1.65;color:var(--ink);flex:1}
 .q figcaption{display:grid;gap:2px;padding-top:14px;border-top:1px solid var(--line)}.q figcaption b{color:var(--green)}.q figcaption span{color:var(--soft);font-size:14px}.q figcaption small{color:var(--soft);font-size:12px;opacity:.8}
+.fwband{background:radial-gradient(800px 380px at 85% 10%,rgba(95,211,148,.12),transparent 60%),radial-gradient(700px 360px at 5% 90%,rgba(120,130,140,.10),transparent 60%),#0b1511}
+.fw{margin-top:30px}
+.fw-rail{display:flex;align-items:center;gap:14px;margin-bottom:22px;font-weight:700;font-size:14px}
+.fw-l{color:#8b9a93;letter-spacing:.02em}.fw-r{display:inline-flex;align-items:center;gap:6px;color:var(--green)}
+.fw-track{flex:1;height:6px;border-radius:6px;background:linear-gradient(90deg,#2a3530,#1d3a2d);overflow:hidden;position:relative}
+.fw-track i{position:absolute;inset:0;transform-origin:left;transform:scaleX(0);background:linear-gradient(90deg,#55615b,#5fd394 55%,#9ff0c0);box-shadow:0 0 18px rgba(159,240,192,.6);transition:transform 1.6s cubic-bezier(.2,.8,.2,1)}
+.fw.in .fw-track i{transform:scaleX(1)}
+.fw4{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;counter-reset:none}
+.fw4 li{position:relative;background:linear-gradient(160deg,#16302566,#12251d);border:1px solid var(--line);border-radius:20px;padding:22px 20px 20px;opacity:.35;filter:grayscale(.8);transform:translateY(14px);transition:opacity .6s,filter .6s,transform .6s,border-color .3s;transition-delay:calc(var(--i)*.35s + .2s)}
+.fw.in .fw4 li{opacity:1;filter:none;transform:none}
+.fw4 li:hover{border-color:var(--green2)}
+.fw-dot{position:absolute;top:-13px;left:20px;width:28px;height:28px;border-radius:50%;display:grid;place-items:center;font-weight:800;font-size:14px;background:#0b1511;color:var(--green);border:2px solid var(--green)}
+.fw-ico{width:48px;height:48px;border-radius:14px;display:grid;place-items:center;margin:8px 0 14px;background:linear-gradient(145deg,#1f4a39,#12271e);border:1px solid var(--line)}
+.fw-ico svg{width:26px;height:26px}
+.fw4 h3{margin:0;font-size:20px;color:var(--green)}.fw-sub{margin:2px 0 10px;color:var(--soft);font-weight:600;font-size:14px}
+.fw4 li>p:not(.fw-sub){margin:0 0 12px;font-size:15px;line-height:1.6}
+.fw4 small{display:block;padding-top:10px;border-top:1px dashed var(--line);color:var(--soft);font-size:12.5px}
+.fw-cta{display:flex;flex-wrap:wrap;align-items:center;gap:14px 18px;margin-top:28px}
+@media(max-width:980px){.fw4{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:700px){.fw4{gap:14px 10px}.fw4 li{padding:20px 14px 14px}.fw4 li>p:not(.fw-sub){font-size:13.5px}.fw4 small{display:none}.fw4 h3{font-size:17px}.fw-ico{width:40px;height:40px;margin:6px 0 10px}.fw-ico svg{width:22px;height:22px}.fw-rail{font-size:12.5px;gap:10px}}
+@media(prefers-reduced-motion:reduce){.fw4 li{opacity:1;filter:none;transform:none}.fw-track i{transform:none}}
 .ringcap{min-width:0;flex:1 1 260px;max-width:460px;text-align:center;font-weight:600;color:var(--green)}
 .ringcap span{display:block;color:var(--soft);font-weight:500;font-size:14px}
 .rbtn{width:48px;height:48px;border-radius:50%;border:2px solid var(--green);background:transparent;color:var(--green);font:700 20px "Plus Jakarta Sans",sans-serif;cursor:pointer;flex:none}
@@ -463,6 +484,22 @@ a.inl{color:var(--green);font-weight:600;text-underline-offset:3px}
   </div>
 </div></section>
 
+<section class="band fwband" id="framework"><div class="wrap">
+  <span class="eyebrow">Signature framework</span>
+  <h2>From Shadow AI to Secure AI</h2>
+  <p class="lead">The 4S framework I use in talks and workshops for teams already using AI — with or without permission. Safe, practical, people-first.</p>
+  <div class="fw" id="fw">
+    <div class="fw-rail" aria-hidden="true"><span class="fw-l">Shadow AI</span><div class="fw-track"><i></i></div><span class="fw-r"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/><path d="M8.5 12l2.5 2.5 4.5-5"/></svg>Secure AI</span></div>
+    <ol class="fw4">
+    <li style="--i:0"><span class="fw-dot" aria-hidden="true">1</span><div class="fw-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="#9ff0c0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12z"/></svg></div><h3>See it</h3><p class="fw-sub">Surface the Shadow AI</p><p>Find out which AI tools people already use, and what company data is going into them. No blame — just visibility.</p><small>In practice: Quick staff pulse survey and a tool inventory</small></li>
+    <li style="--i:1"><span class="fw-dot" aria-hidden="true">2</span><div class="fw-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="#9ff0c0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg></div><h3>Set guardrails</h3><p class="fw-sub">Simple rules people follow</p><p>A one-page AI policy: what data never leaves, which tools are approved, who to ask. Short enough to remember.</p><small>In practice: Data classes, approved-tools list, owner</small></li>
+    <li style="--i:2"><span class="fw-dot" aria-hidden="true">3</span><div class="fw-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="#9ff0c0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="6" rx="7" ry="3"/><path d="M5 6v6c0 1.7 3.1 3 7 3s7-1.3 7-3V6"/><path d="M5 12v6c0 1.7 3.1 3 7 3s7-1.3 7-3v-6"/></svg></div><h3>Shift AI to your data</h3><p class="fw-sub">Not your data to AI</p><p>Use governed AI inside the systems that already hold your documents — respecting access rights, with an audit trail.</p><small>In practice: Permission-aware AI over your own content</small></li>
+    <li style="--i:3"><span class="fw-dot" aria-hidden="true">4</span><div class="fw-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="#9ff0c0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17l6-6 4 4 8-8"/><path d="M14 7h7v7"/></svg></div><h3>Scale with people</h3><p class="fw-sub">Skills before software</p><p>Hands-on sessions, champions in each team and a few measured wins. Adoption grows when people feel safe, not watched.</p><small>In practice: Workshops, champions, time-saved metrics</small></li>
+    </ol>
+  </div>
+  <div class="fw-cta"><a class="btn pri" href="#signup" id="toFw">Bring this workshop to your team</a><span class="muted">Keynote, half-day or full-day hands-on formats.</span></div>
+</div></section>
+
 <section class="band alt" id="speaking"><div class="wrap">
   <span class="eyebrow">Speaking</span>
   <h2>On stage</h2>
@@ -473,7 +510,7 @@ a.inl{color:var(--green);font-weight:600;text-underline-offset:3px}
   <div class="spk-intro">
     <div><h3 style="font-size:clamp(26px,3vw,34px)">Speaking &amp; workshops</h3>
     <p class="lead" style="margin:0">I speak on Shadow AI and how to work securely with AI, workplace productivity, business process automation, change management, parenting in a digital age and building an authentic LinkedIn presence. Hands-on beats slides — most sessions end with people trying it themselves.</p>
-    <ul class="topics" aria-label="Speaking topics"><li>Secure AI at work</li><li>Shadow AI &amp; AI governance</li><li>Productivity &amp; efficiency</li><li>Business process management</li><li>Change management</li><li>Digital transformation</li><li>LinkedIn for B2B</li></ul></div>
+    <ul class="topics" aria-label="Speaking topics"><li><a href="#framework" style="color:inherit;text-decoration:none">Secure AI at work · 4S framework</a></li><li>Shadow AI &amp; AI governance</li><li>Productivity &amp; efficiency</li><li>Business process management</li><li>Change management</li><li>Digital transformation</li><li>LinkedIn for B2B</li></ul></div>
     <a class="btn sec" href="#signup" id="toSpeak">Invite me to speak</a>
   </div>
   <p class="swipe">Swipe through each year</p>
@@ -746,6 +783,7 @@ if(saved&&MK[saved.mk]&&saved.v&&keys.every(k=>k in saved.v)){mk=saved.mk;render
 let includeRoi=false;
 $("toCollab").addEventListener("click",()=>{const c=document.querySelector('input[value="Creator collaboration"]');if(c)c.checked=true;const m=$("fm");if(!m.value)m.value="I'd like your rate card for: ";});
 $("toSpeak").addEventListener("click",()=>{const c=document.querySelector('input[value="Speaking or workshop"]');if(c)c.checked=true;});
+$("toFw").addEventListener("click",()=>{const c=document.querySelector('input[value="Speaking or workshop"]');if(c)c.checked=true;});
 $("toForm").addEventListener("click",()=>{includeRoi=true;const c=$("fl");if(c)c.value=M().name;const m=$("fm");if(!m.value)m.value=`My ROI estimate (${M().name}): ${last.hours} hours/year saved, net benefit ${fmt(last.net)} in year one.`});
 
 
@@ -780,6 +818,9 @@ document.querySelectorAll(".src").forEach(a=>a.addEventListener("click",()=>{con
   const onS=()=>{const h=document.documentElement,max=h.scrollHeight-innerHeight,y=scrollY;tt.classList.toggle("show",y>innerHeight*.8);tt.style.setProperty("--off",151-151*(max>0?y/max:0))};
   addEventListener("scroll",onS,{passive:true});onS();
   tt.addEventListener("click",e=>{e.preventDefault();scrollTo({top:0,behavior:matchMedia("(prefers-reduced-motion:reduce)").matches?"auto":"smooth"});history.replaceState(null,"",location.pathname+location.search);document.querySelector(".skip,nav a")?.focus({preventScroll:true})});
+
+  const fwEl=document.getElementById("fw");
+  if(fwEl){const fio=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){fwEl.classList.add("in");fio.disconnect()}}),{threshold:.25});fio.observe(fwEl)}
   const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add("in");io.unobserve(e.target)}}),{rootMargin:"0px 0px -8% 0px"});
   targets.forEach(el=>io.observe(el));
   document.querySelectorAll(".card").forEach(c=>c.addEventListener("pointermove",e=>{const r=c.getBoundingClientRect();c.style.setProperty("--mx",e.clientX-r.left+"px");c.style.setProperty("--my",e.clientY-r.top+"px")}));
