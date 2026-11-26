@@ -233,6 +233,39 @@ footer{background:#08110d;padding:clamp(36px,5vw,56px) max(5vw,16px) 28px}
 .hsteps li:hover{transform:translateY(-5px);border-color:var(--green2)}
 .hsteps li.lit{border-color:#2f6b50}
 }
+
+/* collapsible sources */
+details.sources{padding:0}
+details.sources summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:16px;justify-content:space-between;padding:18px clamp(18px,2.5vw,28px);min-height:56px}
+details.sources summary::-webkit-details-marker{display:none}
+details.sources summary b{display:block;color:var(--green);font-size:17px}
+.sum-sub{display:block;color:var(--soft);font-size:14px;margin-top:2px}
+.chev{flex:none;width:36px;height:36px;border-radius:50%;border:1.5px solid var(--green2);position:relative;transition:transform .3s}
+.chev::before{content:"";position:absolute;left:12px;top:10px;width:9px;height:9px;border-right:2px solid var(--green);border-bottom:2px solid var(--green);transform:rotate(45deg)}
+details.sources[open] .chev{transform:rotate(180deg)}
+details.sources[open] summary{border-bottom:1px solid var(--line)}
+details.sources ol,details.sources .as{margin-left:clamp(18px,2.5vw,28px);margin-right:clamp(18px,2.5vw,28px)}
+details.sources ol{margin-top:16px}details.sources .as{margin-bottom:20px}
+details.sources summary:focus-visible{outline:3px solid var(--accent);outline-offset:-3px;border-radius:18px}
+/* marquee never stacks */
+@media(prefers-reduced-motion:reduce){.mtrack{flex-wrap:nowrap;width:auto;justify-content:flex-start;overflow-x:auto;padding-bottom:6px}.mtrack .dup{display:none}.marquee{mask-image:none;-webkit-mask-image:none}}
+/* mobile: swipe rows instead of long stacks */
+@media(max-width:700px){
+  .band{padding-top:44px;padding-bottom:44px}
+  .grid,.tgrid,.hsteps{display:flex!important;overflow-x:auto;scroll-snap-type:x mandatory;gap:12px;margin-left:calc(-1*max(5vw,16px));margin-right:calc(-1*max(5vw,16px));padding:4px max(5vw,16px) 14px;scrollbar-width:none}
+  .grid::-webkit-scrollbar,.tgrid::-webkit-scrollbar,.hsteps::-webkit-scrollbar{display:none}
+  .grid>*,.tgrid>*,.hsteps>li{flex:0 0 82%;scroll-snap-align:start}
+  .hsteps::before,.hsteps::after{display:none}
+  .hsteps li{padding:46px 16px 18px;border-radius:16px;background:linear-gradient(160deg,#16302580,#12251d80);border:1px solid var(--line)}
+  .hsteps li:before{left:16px;top:14px}
+  .swipe{display:flex!important}
+  .card:hover{transform:none}
+  .year{gap:10px}.yr-big{font-size:44px}
+  .marquee{margin-top:20px}
+  .portrait{aspect-ratio:16/11}
+}
+.swipe{display:none;align-items:center;gap:8px;color:var(--soft);font-size:13px;font-weight:600;margin:6px 0 0}
+.swipe::after{content:"";width:28px;height:2px;border-radius:2px;background:linear-gradient(90deg,var(--green2),transparent)}
 </style>
 </head>
 <body>
@@ -287,7 +320,7 @@ footer{background:#08110d;padding:clamp(36px,5vw,56px) max(5vw,16px) 28px}
   <div><b>Top 200</b><span>LinkedIn creators in Singapore (Favikon)</span></div>
 </div>
 <div class="marquee" aria-label="Stages and rooms Halid has spoken at"><span class="lbl">On stages and in rooms at</span><div class="mtrack">
-<span><b>Finance ReImagined</b> Singapore</span><span><b>Finance ReImagined</b> Bangkok</span><span><b>Finance ReImagined</b> Kuala Lumpur</span><span><b>DigitalCFO Asia</b> Malaysia Symposium</span><span><b>DigitalCFO Asia</b> Thailand Symposium</span><span><b>DocuWorld</b> 2026</span><span><b>National Library</b> Singapore</span><span><b>Masjid Darul Ghufran</b></span><span><b>Partner webinars</b> across APAC</span><span><b>Finance ReImagined</b> Singapore</span><span><b>Finance ReImagined</b> Bangkok</span><span><b>Finance ReImagined</b> Kuala Lumpur</span><span><b>DigitalCFO Asia</b> Malaysia Symposium</span><span><b>DigitalCFO Asia</b> Thailand Symposium</span><span><b>DocuWorld</b> 2026</span><span><b>National Library</b> Singapore</span><span><b>Masjid Darul Ghufran</b></span><span><b>Partner webinars</b> across APAC</span>
+<span><b>Finance ReImagined</b> Singapore</span><span><b>Finance ReImagined</b> Bangkok</span><span><b>Finance ReImagined</b> Kuala Lumpur</span><span><b>DigitalCFO Asia</b> Malaysia Symposium</span><span><b>DigitalCFO Asia</b> Thailand Symposium</span><span><b>DocuWorld</b> 2026</span><span><b>National Library</b> Singapore</span><span><b>Masjid Darul Ghufran</b></span><span><b>Partner webinars</b> across APAC</span><span class="dup" aria-hidden="true"><b>Finance ReImagined</b> Singapore</span><span class="dup" aria-hidden="true"><b>Finance ReImagined</b> Bangkok</span><span class="dup" aria-hidden="true"><b>Finance ReImagined</b> Kuala Lumpur</span><span class="dup" aria-hidden="true"><b>DigitalCFO Asia</b> Malaysia Symposium</span><span class="dup" aria-hidden="true"><b>DigitalCFO Asia</b> Thailand Symposium</span><span class="dup" aria-hidden="true"><b>DocuWorld</b> 2026</span><span class="dup" aria-hidden="true"><b>National Library</b> Singapore</span><span class="dup" aria-hidden="true"><b>Masjid Darul Ghufran</b></span><span class="dup" aria-hidden="true"><b>Partner webinars</b> across APAC</span>
 </div></div></div>
 </header>
 
@@ -305,6 +338,7 @@ footer{background:#08110d;padding:clamp(36px,5vw,56px) max(5vw,16px) 28px}
   </div>
 </div>
 <div class="wrap journey"><h3>The journey so far</h3>
+<p class="swipe">Swipe to follow the journey</p>
 <ol class="steps hsteps">
       <li><span class="yr">Where it started</span><h3>Copier technician</h3><p>Hands-on with print hardware, in the field with customers every day.</p></li>
       <li><span class="yr">Going digital</span><h3>Hybrid engineer</h3><p>Learned the software side as offices went digital — hardware and software calls alike.</p></li>
@@ -318,6 +352,7 @@ footer{background:#08110d;padding:clamp(36px,5vw,56px) max(5vw,16px) 28px}
   <span class="eyebrow">Work</span>
   <h2>What I work on</h2>
   <p class="lead">Four threads, one idea: technology should give people time back.</p>
+  <p class="swipe">Swipe for more</p>
   <div class="grid">
     <div class="card"><div class="ico"><svg viewBox="0 0 44 44" fill="none" stroke="#9ff0c0" stroke-width="2.5" stroke-linecap="round"><rect x="6" y="8" width="22" height="28" rx="3"/><path d="M12 16h10M12 22h10M12 28h6"/><path d="M30 20l8 4-8 4" /></svg></div>
       <h3>Document workflows with DocuWare</h3><p>Purchase-to-pay, invoice automation, HR records, intelligent document processing and Aura — governed AI that lets teams ask their own documents questions, with an audit trail.</p><span class="kpi">Aura · IDP · P2P</span></div>
@@ -360,6 +395,7 @@ footer{background:#08110d;padding:clamp(36px,5vw,56px) max(5vw,16px) 28px}
   <span class="eyebrow">Collaborate</span>
   <h2>Work with me</h2>
   <p class="lead">Creator collaborations, speaking and LinkedIn LIVE sessions. Every brief is different, so I tailor each package to your audience, goals and budget. Share a few details and I'll reach out personally with options and my rate card.</p>
+  <p class="swipe">Swipe for more</p>
   <div class="grid">
     <div class="card"><div class="ico"><svg viewBox="0 0 44 44" fill="none" stroke="#9ff0c0" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="7" width="30" height="30" rx="6"/><path d="M14 17h16M14 23h16M14 29h9"/></svg></div><h3>Sponsored content</h3><p>Story-led LinkedIn posts written in my own voice, reshares, TikTok POV videos and Instagram cross-posts — single pieces or bundles across platforms.</p></div>
     <div class="card"><div class="ico"><svg viewBox="0 0 44 44" fill="none" stroke="#9ff0c0" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="17" y="6" width="10" height="18" rx="5"/><path d="M11 20a11 11 0 0 0 22 0M22 31v7M16 38h12"/></svg></div><h3>Speaking &amp; workshops</h3><p>Panels, keynotes and hands-on workshops on AI at work, secure AI, digitalisation, careers and LinkedIn personal branding.</p></div>
@@ -405,11 +441,11 @@ footer{background:#08110d;padding:clamp(36px,5vw,56px) max(5vw,16px) 28px}
       <a class="btn pri" href="#signup" id="toForm" style="width:100%">Send me these numbers</a>
     </div></div>
   </div>
-  <div class="sources" id="sources">
-    <h3 id="srcTitle">Where the Singapore defaults come from</h3>
+  <details class="sources" id="sources">
+    <summary><span><b id="srcTitle">Where the Singapore defaults come from</b><span class="sum-sub">Official wage data, working-hours law and local research. Tap to see the sources.</span></span><span class="chev" aria-hidden="true"></span></summary>
     <ol id="srcList"></ol>
     <p class="as"><b style="color:var(--ink)">Assumptions:</b> 48 working weeks a year; automation saves the share of admin time you set (default 40%); 60% of paper, print, courier and storage costs fall away once documents are digital; full-time equivalent = normal weekly hours × 48. Defaults are starting points — replace them with your own numbers. Illustrative only, not a quote.</p>
-  </div>
+  </details>
 </div></section>
 
 <section class="band" id="signup"><div class="wrap two">
@@ -563,6 +599,8 @@ $("toForm").addEventListener("click",()=>{includeRoi=true;const c=$("fl");if(c)c
 
 
 
+// open the sources panel from the numbered markers
+document.querySelectorAll(".src").forEach(a=>a.addEventListener("click",()=>{const d=document.getElementById("sources");if(d)d.open=true}));
 // ===== visual upgrade behaviours =====
 (()=>{
   const RM=matchMedia("(prefers-reduced-motion: reduce)").matches;
