@@ -4,6 +4,10 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Halid Bin Ayob · Tech-Savvy Dad</title>
+<link rel="icon" type="image/png" href="favicon.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="theme-color" content="#0b1511">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Person","name":"Halid Bin Ayob","alternateName":"Tech-Savvy Dad","jobTitle":"Regional Sales Director, APAC South","worksFor":{"@type":"Organization","name":"DocuWare"},"address":{"@type":"PostalAddress","addressCountry":"SG"},"image":"https://tech-savvy-dad.github.io/img/halid-avatar.jpg","url":"https://tech-savvy-dad.github.io/","sameAs":["https://www.linkedin.com/in/techsavvy-dad","https://www.tiktok.com/@techsavvy_dad","https://www.instagram.com/tech_savvy_dad"]}</script>
 <meta name="description" content="Halid Bin Ayob — Regional Sales Director, DocuWare APAC South, and Tech-Savvy Dad. Document workflows, partnerships, speaking and collaborations.">
 <link rel="canonical" href="https://tech-savvy-dad.github.io/">
 <meta property="og:type" content="website">
@@ -287,17 +291,51 @@ details.sources summary:focus-visible{outline:3px solid var(--accent);outline-of
   .ico{width:48px;height:48px;margin-bottom:12px}
   .stats div{padding:16px}
 }
+
+/* skip link */
+.skip{position:absolute;left:-9999px;top:8px;z-index:100;background:var(--green);color:#08130e;padding:10px 16px;border-radius:10px;font-weight:700}
+.skip:focus{left:12px}
+/* hero identity */
+.me{display:flex;align-items:center;gap:14px;margin-bottom:18px}
+.me img{width:72px;height:72px;border-radius:50%;object-fit:cover;border:3px solid var(--green);box-shadow:0 0 0 6px rgba(159,240,192,.12),0 12px 30px rgba(0,0,0,.4)}
+.me b{display:block;color:var(--ink);font-size:17px}.me span{color:var(--green);font-size:14px;font-weight:600}
+/* mobile menu */
+.menu-btn{display:none;width:44px;height:44px;border-radius:12px;border:1.5px solid var(--line);background:var(--card);cursor:pointer;flex-direction:column;align-items:center;justify-content:center;gap:5px;order:2}
+.menu-btn span{display:block;width:18px;height:2px;border-radius:2px;background:var(--green);transition:transform .3s,opacity .3s}
+nav.open .menu-btn span:nth-child(1){transform:translateY(7px) rotate(45deg)}nav.open .menu-btn span:nth-child(2){opacity:0}nav.open .menu-btn span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+@media(max-width:700px){
+  .menu-btn{display:flex}
+  nav .wrap{flex-wrap:nowrap}
+  .links{order:1}
+  nav.open .links{position:absolute;left:0;right:0;top:100%;display:grid;gap:2px;padding:10px max(5vw,16px) 16px;background:rgba(11,21,17,.97);border-bottom:1px solid var(--line);backdrop-filter:blur(10px)}
+  nav.open .links a:not(.cta-s){display:block!important;padding:14px 12px;font-size:17px}
+  nav.open .links a.cta-s{text-align:center;margin-top:6px}
+  nav:not(.open) .links a.cta-s{padding:10px 12px}
+  .me img{width:64px;height:64px}
+}
+/* collapsible calculator inputs */
+details.tune{border:1px solid var(--line);border-radius:18px;background:rgba(11,21,17,.5);margin-bottom:12px}
+details.tune summary{list-style:none;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:14px;padding:16px 18px;min-height:56px}
+details.tune summary::-webkit-details-marker{display:none}
+details.tune summary b{display:block;color:var(--green);font-size:17px}
+details.tune[open] .chev{transform:rotate(180deg)}
+details.tune[open] summary{border-bottom:1px solid var(--line)}
+.tune-body{padding:18px 18px 6px}
+details.tune summary:focus-visible{outline:3px solid var(--accent);outline-offset:-3px;border-radius:18px}
+@media(max-width:700px){.iso{height:230px}.calc{gap:16px}}
 </style>
 </head>
 <body>
-<nav><div class="wrap">
+<a class="skip" href="#about">Skip to content</a>
+<nav id="nav"><div class="wrap">
   <a class="brand" href="#top">Halid Bin Ayob</a>
-  <div class="links"><a href="#about">About</a><a href="#work">Work</a><a href="#speaking">Speaking</a><a href="#rates">Rates</a><a href="#roi">ROI calculator</a><a class="cta-s" href="#signup">Get in touch</a></div>
+  <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="navLinks" aria-label="Open menu"><span></span><span></span><span></span></button>
+  <div class="links" id="navLinks"><a href="#about">About</a><a href="#work">Work</a><a href="#speaking">Speaking</a><a href="#rates">Rates</a><a href="#roi">ROI calculator</a><a class="cta-s" href="#signup">Get in touch</a></div>
 </div></nav>
 
 <header class="band hero" id="top"><div class="wrap top">
   <div>
-    <span class="tag">Tech-Savvy Dad · Singapore</span>
+    <div class="me"><img src="img/halid-avatar.jpg" alt="Halid Bin Ayob" width="72" height="72"><div><b>Halid Bin Ayob</b><span>Tech-Savvy Dad · Singapore</span></div></div>
     <h1>From fixing copiers to making paper disappear.</h1>
     <p class="lead">I'm Halid — Regional Sales Director for DocuWare across APAC South. I help businesses and channel partners in Singapore, Malaysia, Thailand, Vietnam, Brunei and Laos turn document-heavy work into simple, secure digital workflows. Off the clock, I'm a regular working dad who shares what I learn on LinkedIn.</p>
     <div class="actions"><a class="btn pri" href="#roi">Calculate your ROI</a><a class="btn sec" href="#signup">Work with me</a></div>
@@ -389,7 +427,7 @@ details.sources summary:focus-visible{outline:3px solid var(--accent);outline-of
 <section class="band alt" id="speaking"><div class="wrap">
   <span class="eyebrow">Speaking</span>
   <h2>On stage</h2>
-  <p class="lead" style="margin-bottom:8px">Keynotes, panels and hands-on workshops across Singapore, Malaysia, Thailand and beyond. Drag to spin, or tap a photo to see it full size.</p>
+  <p class="muted" style="margin-bottom:8px">Drag to spin, or tap a photo to see it full size.</p>
   <div class="ring3d" id="ring3d" aria-roledescription="carousel" aria-label="Photos of Halid speaking at events"><div class="ring" id="ring"></div></div>
   <div class="ringbar"><button class="rbtn" id="rPrev" aria-label="Previous photo">&#8592;</button><p class="ringcap" id="ringcap" aria-live="polite"></p><button class="rbtn" id="rNext" aria-label="Next photo">&#8594;</button></div>
 </div><div class="wrap">
@@ -439,6 +477,9 @@ details.sources summary:focus-visible{outline:3px solid var(--accent);outline-of
         <button class="chip" data-p="mid" aria-pressed="false">Mid-size team</button>
         <button class="chip" data-p="ent" aria-pressed="false">Enterprise dept</button>
       </div>
+      <details class="tune" id="tune" open>
+        <summary><span><b>Adjust the numbers</b><span class="sum-sub">Team size, admin hours, hourly cost, time saved, paper costs and investment</span></span><span class="chev" aria-hidden="true"></span></summary>
+        <div class="tune-body">
       <div class="field"><label for="staff">People handling documents</label><div class="row"><input type="range" id="staffR" min="1" max="300" aria-label="People handling documents"><input type="number" id="staff" min="1" max="5000"></div></div>
       <div class="field"><label for="hrs">Hours per person per week on admin — searching, filing, keying-in, chasing approvals<a class="src" href="#src-1" aria-label="Source 1">1</a></label><div class="row"><input type="range" id="hrsR" min="1" max="30" step="0.5" aria-label="Hours per week"><input type="number" id="hrs" min="0" max="60" step="0.5"></div><p class="hint" id="hrsHint"></p></div>
       <div class="field"><label for="rate">Hourly cost per person (<span class="cur">SGD</span>)<a class="src" href="#src-2" aria-label="Source 2">2</a><a class="src" href="#src-3" aria-label="Source 3">3</a></label><div class="row"><input type="range" id="rateR" min="5" max="150" aria-label="Hourly cost"><input type="number" id="rate" min="1" max="1000"></div><p class="hint" id="rateHint"></p></div>
@@ -446,6 +487,8 @@ details.sources summary:focus-visible{outline:3px solid var(--accent);outline-of
       <div class="field"><label for="paper">Monthly print, paper, courier &amp; storage costs (<span class="cur">SGD</span>)<span class="tag2">your figure</span></label><div class="row"><input type="range" id="paperR" min="0" max="30000" step="50" aria-label="Monthly paper costs"><input type="number" id="paper" min="0" max="1000000" step="50"></div></div>
       <div class="field"><label for="inv">Estimated yearly solution investment (<span class="cur">SGD</span>)<span class="tag2">your figure</span></label><div class="row"><input type="range" id="invR" min="0" max="500000" step="500" aria-label="Yearly investment"><input type="number" id="inv" min="0" max="10000000" step="500"></div></div>
       <p class="muted">Your inputs, not a quote. Investment depends on users, modules and deployment — ask me for a proper sizing.</p>
+        </div>
+      </details>
     </div>
     <div class="result" id="result" aria-live="polite"><div class="face"><span class="glare"></span>
       <div class="rhead">
@@ -508,7 +551,7 @@ details.sources summary:focus-visible{outline:3px solid var(--accent);outline-of
 <footer>
   <div class="fgrid2">
     <div><p class="fname">Let's make paper disappear.</p><p class="muted" style="margin:0">Halid Bin Ayob · Tech-Savvy Dad · Singapore</p></div>
-    <nav class="flinks" aria-label="Footer"><a href="#about">About</a><a href="#work">Work</a><a href="#speaking">Speaking</a><a href="#roi">ROI calculator</a><a href="#signup">Get in touch</a><a href="https://www.linkedin.com/in/techsavvy-dad">LinkedIn</a></nav>
+    <nav class="flinks" aria-label="Footer"><a href="#about">About</a><a href="#work">Work</a><a href="#speaking">Speaking</a><a href="#roi">ROI calculator</a><a href="#signup">Get in touch</a><a href="https://www.linkedin.com/in/techsavvy-dad">LinkedIn</a><a href="https://www.tiktok.com/@techsavvy_dad">TikTok</a><a href="https://www.instagram.com/tech_savvy_dad">Instagram</a></nav>
   </div>
   <div class="wrap" style="border-top:1px solid var(--line);padding-top:18px;color:var(--soft);font-size:14px">© 2026 Halid Bin Ayob. All rights reserved.</div>
 </footer>
@@ -623,6 +666,17 @@ $("toForm").addEventListener("click",()=>{includeRoi=true;const c=$("fl");if(c)c
 
 // open the sources panel from the numbered markers
 document.querySelectorAll(".src").forEach(a=>a.addEventListener("click",()=>{const d=document.getElementById("sources");if(d)d.open=true}));
+
+// mobile menu
+(()=>{const nav=document.getElementById("nav"),btn=document.getElementById("menuBtn");if(!btn)return;
+ btn.addEventListener("click",()=>{const o=nav.classList.toggle("open");btn.setAttribute("aria-expanded",o);btn.setAttribute("aria-label",o?"Close menu":"Open menu")});
+ document.querySelectorAll("#navLinks a").forEach(a=>a.addEventListener("click",()=>{nav.classList.remove("open");btn.setAttribute("aria-expanded","false")}));
+ addEventListener("keydown",e=>{if(e.key==="Escape"&&nav.classList.contains("open")){nav.classList.remove("open");btn.setAttribute("aria-expanded","false");btn.focus()}});
+})();
+// calculator inputs collapsed on phones
+(()=>{const t=document.getElementById("tune");if(t&&matchMedia("(max-width:700px)").matches)t.open=false;
+ document.querySelectorAll(".chip").forEach(c=>c.addEventListener("click",()=>{}));})();
+
 // ===== visual upgrade behaviours =====
 (()=>{
   const RM=matchMedia("(prefers-reduced-motion: reduce)").matches;
