@@ -175,7 +175,7 @@ input[type=number],input[type=text],input[type=email],select,textarea{width:100%
 @media(prefers-reduced-motion:reduce){.fw4 li{opacity:1;filter:none;transform:none}.fw-track i{transform:none}}
 .vidwrap{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:clamp(20px,3vw,40px);align-items:center;margin-bottom:clamp(36px,5vw,56px)}
 .vid-copy h3{font-size:clamp(22px,2.4vw,28px);margin:0 0 10px;color:var(--green)}
-.vid{position:relative;display:block;width:100%;aspect-ratio:16/9;padding:0;border:1px solid var(--line);border-radius:20px;overflow:hidden;cursor:pointer;background:#000;box-shadow:0 30px 60px rgba(0,0,0,.45)}
+.vid{position:relative;display:block;width:100%;aspect-ratio:16/9;padding:0;border:1px solid var(--line);border-radius:20px;overflow:hidden;background:#000;box-shadow:0 30px 60px rgba(0,0,0,.45)}
 .vid img{width:100%;height:100%;object-fit:cover;opacity:.85;transition:transform .6s,opacity .3s}.vid:hover img{transform:scale(1.04);opacity:1}
 .vid .play{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:76px;height:76px;border-radius:50%;display:grid;place-items:center;background:var(--green);color:#08130e;box-shadow:0 0 0 10px rgba(159,240,192,.18),0 10px 30px rgba(0,0,0,.4);transition:transform .3s}
 .vid:hover .play{transform:translate(-50%,-50%) scale(1.08)}.vid:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
@@ -299,6 +299,12 @@ input[type=number],input[type=text],input[type=email],select,textarea{width:100%
 @media(max-width:700px){.buddy-btn{width:58px;height:58px}.bubble{max-width:200px;font-size:13px;margin-bottom:30px}}
 @media print{.buddy{display:none}}
 
+.vid video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+.vid .cap{position:absolute;left:50%;bottom:44px;transform:translateX(-50%);max-width:88%;padding:6px 12px;border-radius:10px;background:rgba(0,0,0,.62);color:#fff;font-weight:700;font-size:clamp(13px,1.6vw,17px);line-height:1.35;text-align:center;opacity:0;transition:opacity .25s;pointer-events:none}
+.vid .cap.on{opacity:1}
+.vid .snd{position:absolute;left:12px;bottom:12px;display:inline-flex;align-items:center;gap:8px;padding:8px 14px;border-radius:999px;border:0;background:var(--green);color:#08130e;font:700 14px "Plus Jakarta Sans",sans-serif;cursor:pointer;box-shadow:0 6px 18px rgba(0,0,0,.4)}
+.vid .snd[aria-pressed="true"]{background:#0b1511cc;color:var(--green);border:1px solid var(--green2)}
+.vid .snd:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
 .ringcap{min-width:0;flex:1 1 260px;max-width:460px;text-align:center;font-weight:600;color:var(--green)}
 .ringcap span{display:block;color:var(--soft);font-weight:500;font-size:14px}
 .rbtn{width:48px;height:48px;border-radius:50%;border:2px solid var(--green);background:transparent;color:var(--green);font:700 20px "Plus Jakarta Sans",sans-serif;cursor:pointer;flex:none}
@@ -764,8 +770,8 @@ a.inl{color:var(--green);font-weight:600;text-underline-offset:3px}
   <div class="ringbar"><p class="ringcap" id="ringcap" aria-live="polite"></p><div class="rnav"><button class="rbtn" id="rPrev" aria-label="Previous photo">&#8592;</button><span class="rdots" id="rdots" aria-hidden="true"></span><button class="rbtn" id="rNext" aria-label="Next photo">&#8594;</button></div></div>
 </div><div class="wrap">
   <div class="vidwrap rv">
-    <div class="vid-copy"><span class="eyebrow">Watch the keynote</span><h3>Shadow AI: The Hidden Cost Between Innovation and Exposure</h3><p class="muted">A 30-second taste of the keynote on why your team is already using AI — and how to make it safe without slowing anyone down.</p><p style="margin:14px 0 0"><a class="btn sec" href="#signup" id="toVid">Book this talk</a></p></div>
-    <button class="vid" id="vid" data-id="1g_-bnvYfPo" data-start="60" data-end="90" aria-label="Play video: Shadow AI keynote by Halid Bin Ayob"><img src="https://i.ytimg.com/vi/1g_-bnvYfPo/hqdefault.jpg" alt="" loading="lazy" width="480" height="360"><span class="play" aria-hidden="true"><svg viewBox="0 0 24 24" width="30" height="30"><path d="M8 5.5v13l11-6.5z" fill="currentColor"/></svg></span><span class="dur">30-sec highlight</span></button>
+    <div class="vid-copy"><span class="eyebrow">Watch the keynote</span><h3>Shadow AI: The Hidden Cost Between Innovation and Exposure</h3><p class="muted">A 30-second taste of the keynote, zoomed in from the stage, on why your team is already using AI — and how to make it safe without slowing anyone down.</p><p style="margin:14px 0 0"><a class="btn sec" href="#signup" id="toVid">Book this talk</a></p></div>
+    <div class="vid" id="vid"><video id="kv" src="media/keynote-30s.mp4" poster="media/keynote-poster.jpg" muted loop playsinline preload="metadata" aria-label="30-second highlight of Halid's Shadow AI keynote"></video><div class="cap" id="kcap" aria-hidden="true"></div><button class="snd" id="ksnd" type="button" aria-pressed="false"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9v6h4l5 4V5L8 9z"/><path id="ksndW" d="M16 9l5 6M21 9l-5 6"/></svg><span>Tap for sound</span></button><span class="dur">30-sec highlight</span></div>
   </div>
   <div class="spk-intro">
     <div><h3 style="font-size:clamp(26px,3vw,34px)">Speaking &amp; workshops</h3>
@@ -976,7 +982,7 @@ a.inl{color:var(--green);font-weight:600;text-underline-offset:3px}
     <div><p class="fname">Let's make paper disappear.</p><p class="muted" style="margin:0">Halid Bin Ayob · Tech-Savvy Dad · Singapore</p></div>
     <nav class="flinks" aria-label="Footer"><a href="#about">About</a><a href="#work">Work</a><a href="#speaking">Speaking</a><a href="#roi">ROI calculator</a><a href="#faq">FAQ</a><a href="#signup">Get in touch</a><a href="https://www.linkedin.com/in/techsavvy-dad">LinkedIn</a><a href="https://www.tiktok.com/@techsavvy_dad">TikTok</a><a href="https://www.youtube.com/@tech_savvy_dad">YouTube</a><a href="https://www.instagram.com/tech_savvy_dad">Instagram</a><a href="https://www.threads.com/@tech_savvy_dad">Threads</a></nav>
   </div>
-  <div class="wrap" style="border-top:1px solid var(--line);padding-top:18px;color:var(--soft);font-size:14px">© 2026 Halid Bin Ayob. All rights reserved.<p class="fine" style="margin:8px 0 0">Privacy: enquiry details are used only to respond to you, sent via FormSubmit, never sold or shared, and deleted on request (email via the form). This site sets no tracking cookies; it loads fonts from Google Fonts and, only if you press play, a YouTube video (privacy-enhanced mode), and the ROI calculator saves your inputs only in your own browser. Views shared here are my own.</p></div>
+  <div class="wrap" style="border-top:1px solid var(--line);padding-top:18px;color:var(--soft);font-size:14px">© 2026 Halid Bin Ayob. All rights reserved.<p class="fine" style="margin:8px 0 0">Privacy: enquiry details are used only to respond to you, sent via FormSubmit, never sold or shared, and deleted on request (email via the form). This site sets no tracking cookies; it loads fonts from Google Fonts, and the ROI calculator saves your inputs only in your own browser. Views shared here are my own.</p></div>
 </footer>
 <div class="lightbox" id="lb" role="dialog" aria-modal="true" aria-label="Photo"><button class="rbtn" id="lbClose" aria-label="Close">&#10005;</button><img id="lbImg" alt=""><p id="lbCap"></p></div>
 
@@ -1123,8 +1129,14 @@ document.querySelectorAll(".src").forEach(a=>a.addEventListener("click",()=>{con
   const fwEl=document.getElementById("fw");
   if(fwEl){const fio=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){fwEl.classList.add("in");fio.disconnect()}}),{threshold:.25});fio.observe(fwEl)}
 
-  const vb=document.getElementById("vid");
-  if(vb)vb.addEventListener("click",()=>{const f=document.createElement("iframe");f.src="https://www.youtube-nocookie.com/embed/"+vb.dataset.id+"?autoplay=1&rel=0&modestbranding=1&start="+(vb.dataset.start||0)+"&end="+(vb.dataset.end||"");f.title="Shadow AI keynote by Halid Bin Ayob";f.allow="autoplay; encrypted-media; picture-in-picture; fullscreen";f.allowFullscreen=true;vb.replaceChildren(f);vb.style.cursor="default"},{once:true});
+  const kv=document.getElementById("kv");
+  if(kv){
+    const CUES=[[0,6,"How many of us here today are confident to say that no one in the organisation…"],[6,14.5,"…has pasted confidential data into an AI platform? Anybody?"],[15,19,"Anybody confident? Wow."],[19,21.7,"That means there's Shadow AI, right?"],[21.9,26,"My message today: Shadow AI is never going away."],[26,29.6,"They're not going away. Everybody has pressure."]];
+    const cap=document.getElementById("kcap"),snd=document.getElementById("ksnd"),lbl=snd.querySelector("span"),wv=document.getElementById("ksndW");let last=-1;
+    kv.addEventListener("timeupdate",()=>{const t=kv.currentTime,k=CUES.findIndex(c=>t>=c[0]&&t<c[1]);if(k!==last){last=k;if(k<0)cap.classList.remove("on");else{cap.textContent=CUES[k][2];cap.classList.add("on")}}});
+    const vio=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){if(!matchMedia("(prefers-reduced-motion:reduce)").matches||!kv.muted)kv.play().catch(()=>{})}else kv.pause()}),{threshold:.4});vio.observe(kv);
+    snd.addEventListener("click",()=>{if(kv.muted){kv.muted=false;kv.currentTime=0;kv.play().catch(()=>{});snd.setAttribute("aria-pressed","true");lbl.textContent="Sound on";wv.setAttribute("d","M16 8.5a5 5 0 0 1 0 7M18.5 6a8.5 8.5 0 0 1 0 12")}else{kv.muted=true;snd.setAttribute("aria-pressed","false");lbl.textContent="Tap for sound";wv.setAttribute("d","M16 9l5 6M21 9l-5 6")}});
+  }
   const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add("in");io.unobserve(e.target)}}),{rootMargin:"0px 0px -8% 0px"});
   targets.forEach(el=>io.observe(el));
   document.querySelectorAll(".card").forEach(c=>c.addEventListener("pointermove",e=>{const r=c.getBoundingClientRect();c.style.setProperty("--mx",e.clientX-r.left+"px");c.style.setProperty("--my",e.clientY-r.top+"px")}));
