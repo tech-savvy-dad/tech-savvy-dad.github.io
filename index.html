@@ -208,7 +208,7 @@ input[type=number],input[type=text],input[type=email],select,textarea{width:100%
   .story-meter{margin-top:6px}.story-meter b{font-size:24px}
   .story-scene svg{max-height:46vh}
 }
-@media(prefers-reduced-motion:reduce){.story{height:auto}.story-sticky{position:static;height:auto;padding:60px 0}}
+
 
 /* ---------- 2. spot the risk ---------- */
 .spot{margin-top:44px;background:#0f1f18;border:1px solid var(--line);border-radius:24px;padding:clamp(18px,3vw,30px)}
@@ -267,9 +267,9 @@ input[type=number],input[type=text],input[type=email],select,textarea{width:100%
 .ba-stage{position:relative;margin-top:18px;border-radius:16px;overflow:hidden;border:1px solid var(--line);background:#0b1511;aspect-ratio:8/3;touch-action:pan-y}
 .ba-layer{position:absolute;inset:0}.ba-layer svg{width:100%;height:100%;display:block}
 .ba-before{background:repeating-linear-gradient(135deg,#1a1512 0 14px,#16120f 14px 28px)}
-.ba-after{background:radial-gradient(500px 200px at 60% 50%,#14301f,#0b1511);clip-path:inset(0 0 0 var(--cut,88%))}
+.ba-after{background:radial-gradient(500px 200px at 40% 50%,#14301f,#0b1511);clip-path:inset(0 calc(100% - var(--cut,12%)) 0 0)}
 .ba-tag{position:absolute;top:10px;padding:3px 10px;border-radius:999px;font-size:12px;font-weight:800;z-index:2}
-.ba-before .ba-tag{left:10px;background:#3a2620;color:#ffb38a}.ba-after .ba-tag{right:10px;background:#1f4a39;color:var(--green)}
+.ba-before .ba-tag{right:10px;background:#3a2620;color:#ffb38a}.ba-after .ba-tag{left:10px;background:#1f4a39;color:var(--green)}
 .n rect{stroke-width:2.5}.n .gl{fill:none;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
 .n text{font-size:13px;font-weight:700}
 .n.bad rect{fill:#241a16;stroke:#c9805e}.n.bad .gl{stroke:#ffb38a}.n.bad text{fill:#ffcfb5}
@@ -277,7 +277,7 @@ input[type=number],input[type=text],input[type=email],select,textarea{width:100%
 .ba-path{fill:none;stroke-width:3}.ba-path.bad{stroke:#c9805e;stroke-dasharray:8 7}.ba-path.good{stroke:var(--green2)}
 .papers-pile path{fill:#f4f7f5;stroke:#c9d8d1;stroke-width:1}
 .flowdot{fill:var(--accent)}
-.ba-handle{position:absolute;top:0;bottom:0;left:var(--cut,88%);width:3px;margin-left:-1.5px;background:var(--green);box-shadow:0 0 18px rgba(159,240,192,.7);pointer-events:none;z-index:3}
+.ba-handle{position:absolute;top:0;bottom:0;left:var(--cut,12%);width:3px;margin-left:-1.5px;background:var(--green);box-shadow:0 0 18px rgba(159,240,192,.7);pointer-events:none;z-index:3}
 .ba-handle span{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:44px;height:44px;border-radius:50%;background:var(--green);color:#08130e;display:grid;place-items:center;font-weight:800;font-size:20px;box-shadow:0 6px 20px rgba(0,0,0,.4)}
 .ba-stage input{position:absolute;inset:0;width:100%;height:100%;opacity:0;cursor:ew-resize;margin:0;z-index:4}
 .ba-stage input:focus-visible~.ba-handle span,.ba-stage:has(input:focus-visible) .ba-handle span{outline:3px solid var(--accent);outline-offset:3px}
@@ -844,7 +844,7 @@ a.inl{color:var(--green);font-weight:600;text-underline-offset:3px}
   <h2>Productivity ROI calculator</h2>
   <p class="lead">How much is manual document work costing your team? Pick your market — the defaults load from official wage data and local research, with every source listed below. Then make it yours.</p>
   <div class="ba" id="ba">
-    <div class="ba-head"><div><span class="eyebrow">See the difference</span><h3>Drag to automate an invoice</h3><p class="muted">One supplier invoice, before and after. Drag the handle across.</p></div>
+    <div class="ba-head"><div><span class="eyebrow">See the difference</span><h3>Drag to automate an invoice</h3><p class="muted">One supplier invoice. Drag the handle right to automate it.</p></div>
       <div class="ba-stats" aria-live="polite"><div><b id="baSteps">7</b><span>steps</span></div><div><b id="baDays">9</b><span>days to approve</span></div><div><b id="baPaper">15</b><span>sheets of paper</span></div><div><b id="baTouch">12</b><span>people touches</span></div></div></div>
     <div class="ba-stage" id="baStage">
       <div class="ba-layer ba-before"><span class="ba-tag bad">Before · manual</span><svg viewBox="0 0 800 300" aria-hidden="true"><g class="ba-manual"><path class="ba-path bad" d="M70 90 L190 200 L310 90 L430 200 L550 90 L670 200 L740 70"/><g class="n bad" transform="translate(70 90)"><rect x="-46" y="-34" width="92" height="68" rx="14"/><g class="gl"><rect x="-16" y="-14" width="32" height="22" rx="3"/><path d="M-16-12l16 11 16-11"/></g><text y="52" text-anchor="middle">Email arrives</text></g><g class="n bad" transform="translate(190 200)"><rect x="-46" y="-34" width="92" height="68" rx="14"/><g class="gl"><rect x="-16" y="-8" width="32" height="16" rx="3"/><path d="M-10-8v-10h20v10M-10 8v8h20v-8"/></g><text y="52" text-anchor="middle">Print it</text></g><g class="n bad" transform="translate(310 90)"><rect x="-46" y="-34" width="92" height="68" rx="14"/><g class="gl"><path d="M-6-18h12v12h-12zM-14-6h28v8h-28zM-16 8h32"/></g><text y="52" text-anchor="middle">Stamp & sign</text></g><g class="n bad" transform="translate(430 200)"><rect x="-46" y="-34" width="92" height="68" rx="14"/><g class="gl"><rect x="-18" y="-12" width="36" height="24" rx="3"/><path d="M-18-12l18 14 18-14"/><path d="M-26 0h-6M-26 6h-10" /></g><text y="52" text-anchor="middle">Courier to HQ</text></g><g class="n bad" transform="translate(550 90)"><rect x="-46" y="-34" width="92" height="68" rx="14"/><g class="gl"><path d="M-18-4h36v18h-36zM-18-4l6-12h24l6 12M-6-4v6h12v-6"/><path d="M-12-20h20M-10-24h16"/></g><text y="52" text-anchor="middle">Stuck in inbox</text></g><g class="n bad" transform="translate(670 200)"><rect x="-46" y="-34" width="92" height="68" rx="14"/><g class="gl"><circle r="14"/><path d="M0-8v8l6 4"/><path d="M14-14l6-4M-14-14l-6-4"/></g><text y="52" text-anchor="middle">Chase by email</text></g><g class="n bad" transform="translate(740 70)"><rect x="-46" y="-34" width="92" height="68" rx="14"/><g class="gl"><rect x="-14" y="-18" width="28" height="36" rx="3"/><path d="M-8-8h16M-8 0h16M-8 8h10"/></g><text y="52" text-anchor="middle">File in cabinet</text></g><g class="papers-pile"><path d="M250 268h40l-4 8h-40zM262 258h40l-4 8h-40zM240 278h40l-4 8h-40z"/></g></g></svg></div>
@@ -1277,8 +1277,8 @@ if(story&&papersG){
     glow.setAttribute("opacity",(.15+.65*(N-left)/N).toFixed(2));
     vn.textContent=(N-left)+" stored";
   };
-  const onScroll=()=>{const r=story.getBoundingClientRect(),span=r.height-innerHeight;const p=RM?1:clamp(-r.top/(span||1));if(Math.abs(p-lastP)>.001){lastP=p;draw(p)}};
-  addEventListener("scroll",()=>requestAnimationFrame(onScroll),{passive:true});addEventListener("resize",onScroll);onScroll();
+  const onScroll=()=>{const r=story.getBoundingClientRect(),span=r.height-innerHeight;const p=clamp(-r.top/(span||1));if(Math.abs(p-lastP)>.001){lastP=p;draw(p)}};
+  addEventListener("scroll",()=>requestAnimationFrame(onScroll),{passive:true});addEventListener("resize",onScroll);addEventListener("pageshow",()=>{lastP=-1;onScroll()});addEventListener("load",()=>{lastP=-1;onScroll()});onScroll();
 }
 
 /* 2. spot the Shadow AI */
@@ -1322,7 +1322,7 @@ if(mapCard){
 const ba=$$("ba");
 if(ba){
   const rng=$$("baRange"),stage=$$("baStage"),out={steps:[$$("baSteps"),7,3],days:[$$("baDays"),9,1],paper:[$$("baPaper"),15,0],touch:[$$("baTouch"),12,2]};
-  const set=v=>{const cut=100-v;stage.style.setProperty("--cut",cut+"%");const f=v/100;
+  const set=v=>{stage.style.setProperty("--cut",v+"%");const f=v/100;
     for(const k in out){const [el,a,b]=out[k];el.textContent=Math.round(a+(b-a)*f);el.classList.toggle("good",f>.6)}};
   rng.addEventListener("input",()=>set(+rng.value));set(+rng.value);
   if(!RM){const io2=new IntersectionObserver(es=>{if(es[0].isIntersecting){io2.disconnect();let v=12;const id=setInterval(()=>{v+=1.5;if(v>=50){v=50;clearInterval(id)}rng.value=v;set(v)},16)}},{threshold:.5});io2.observe(stage)}
