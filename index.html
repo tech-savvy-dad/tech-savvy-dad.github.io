@@ -7,7 +7,7 @@
 <link rel="icon" type="image/png" href="favicon.png">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <meta name="theme-color" content="#0b1511">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"Person","name":"Halid Bin Ayob","alternateName":"Tech-Savvy Dad","jobTitle":"Regional Sales Director, APAC South","worksFor":{"@type":"Organization","name":"DocuWare"},"address":{"@type":"PostalAddress","addressCountry":"SG"},"image":"https://tech-savvy-dad.github.io/img/halid-avatar.jpg","url":"https://tech-savvy-dad.github.io/","sameAs":["https://www.linkedin.com/in/techsavvy-dad","https://www.tiktok.com/@techsavvy_dad","https://www.instagram.com/tech_savvy_dad"]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Person","name":"Halid Bin Ayob","alternateName":"Tech-Savvy Dad","jobTitle":"Regional Sales Director, APAC South","worksFor":{"@type":"Organization","name":"DocuWare"},"address":{"@type":"PostalAddress","addressCountry":"SG"},"image":"https://tech-savvy-dad.github.io/img/halid-avatar.jpg","url":"https://tech-savvy-dad.github.io/","sameAs":["https://www.linkedin.com/in/techsavvy-dad","https://www.tiktok.com/@techsavvy_dad","https://www.instagram.com/tech_savvy_dad","https://www.youtube.com/@tech_savvy_dad","https://www.threads.com/@tech_savvy_dad"]}</script>
 <meta name="description" content="Halid Bin Ayob — Regional Sales Director, DocuWare APAC South, and Tech-Savvy Dad. Document workflows, partnerships, speaking and collaborations.">
 <link rel="canonical" href="https://tech-savvy-dad.github.io/">
 <meta property="og:type" content="website">
@@ -325,6 +325,18 @@ details.tune summary:focus-visible{outline:3px solid var(--accent);outline-offse
 @media(max-width:700px){.iso{height:230px}.calc{gap:16px}}
 
 @media(max-width:700px){.rhead{grid-template-columns:minmax(0,1fr) 72px;gap:10px}.rhead .big{font-size:clamp(28px,8.6vw,38px)}.gauge{width:72px;height:72px}}
+
+/* channels */
+.chgrid{grid-template-columns:repeat(auto-fit,minmax(min(100%,210px),1fr))}
+a.ch{display:flex;flex-direction:column;text-decoration:none;color:var(--ink)}
+a.ch p{flex:1}
+a.ch .kpi{align-self:flex-start}
+a.ch .go{margin-top:14px;font-weight:700;color:var(--green);font-size:14px;display:inline-flex;align-items:center;gap:8px}
+a.ch .go::after{content:"";width:16px;height:2px;background:var(--green);transition:width .3s}
+a.ch:hover .go::after{width:28px}
+a.ch:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
+a.inl{color:var(--green);font-weight:600;text-underline-offset:3px}
+@media(max-width:700px){nav.open .links{max-height:calc(100vh - 70px);overflow:auto}}
 </style>
 </head>
 <body>
@@ -332,7 +344,7 @@ details.tune summary:focus-visible{outline:3px solid var(--accent);outline-offse
 <nav id="nav"><div class="wrap">
   <a class="brand" href="#top">Halid Bin Ayob</a>
   <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="navLinks" aria-label="Open menu"><span></span><span></span><span></span></button>
-  <div class="links" id="navLinks"><a href="#about">About</a><a href="#work">Work</a><a href="#speaking">Speaking</a><a href="#rates">Rates</a><a href="#roi">ROI calculator</a><a class="cta-s" href="#signup">Get in touch</a></div>
+  <div class="links" id="navLinks"><a href="#about">About</a><a href="#work">Work</a><a href="#speaking">Speaking</a><a href="#channels">Channels</a><a href="#rates">Rates</a><a href="#roi">ROI calculator</a><a class="cta-s" href="#signup">Get in touch</a></div>
 </div></nav>
 
 <header class="band hero" id="top"><div class="wrap top">
@@ -416,13 +428,13 @@ details.tune summary:focus-visible{outline:3px solid var(--accent);outline-offse
   <p class="swipe">Swipe for more</p>
   <div class="grid">
     <div class="card"><div class="ico"><svg viewBox="0 0 44 44" fill="none" stroke="#9ff0c0" stroke-width="2.5" stroke-linecap="round"><rect x="6" y="8" width="22" height="28" rx="3"/><path d="M12 16h10M12 22h10M12 28h6"/><path d="M30 20l8 4-8 4" /></svg></div>
-      <h3>Document workflows with DocuWare</h3><p>Purchase-to-pay, invoice automation, HR records, intelligent document processing and Aura — governed AI that lets teams ask their own documents questions, with an audit trail.</p><span class="kpi">Aura · IDP · P2P</span></div>
+      <h3>Document workflows with DocuWare</h3><p>Purchase-to-pay, invoice automation, HR records, intelligent document processing and Aura — governed AI that lets teams ask their own documents questions, with an audit trail. <a class="inl" href="https://www.youtube.com/@tech_savvy_dad">See the demos on YouTube</a></p><span class="kpi">Aura · IDP · P2P</span></div>
     <div class="card"><div class="ico"><svg viewBox="0 0 44 44" fill="none" stroke="#9ff0c0" stroke-width="2.5" stroke-linecap="round"><circle cx="14" cy="16" r="6"/><circle cx="30" cy="16" r="6"/><path d="M4 36c2-7 6-10 10-10s8 3 8 3 4-3 8-3 8 3 10 10"/></svg></div>
       <h3>Channel partner growth</h3><p>Recruiting and enabling ISVs and VARs across seven authorised partners. Helped grow two new partners in seven months, and guided a Base partner up to Silver.</p><span class="kpi">7 authorised partners</span></div>
     <div class="card"><div class="ico"><svg viewBox="0 0 44 44" fill="none" stroke="#9ff0c0" stroke-width="2.5" stroke-linecap="round"><rect x="6" y="8" width="32" height="22" rx="3"/><path d="M16 36h12M22 30v6"/><path d="M14 22l5-5 4 4 7-7"/></svg></div>
-      <h3>LinkedIn &amp; personal branding</h3><p>Workshops, profile audits and coaching through Linqista — helping professionals show up, not show off.</p><span class="kpi">Linqista</span></div>
+      <h3>LinkedIn &amp; personal branding</h3><p>Workshops, profile audits and coaching through Linqista — helping professionals show up, not show off. Catch <a class="inl" href="https://www.youtube.com/@tech_savvy_dad">My LinkedIn Is Better Than Yours</a> on YouTube.</p><span class="kpi">Linqista</span></div>
     <div class="card"><div class="ico"><svg viewBox="0 0 44 44" fill="none" stroke="#9ff0c0" stroke-width="2.5" stroke-linecap="round"><path d="M22 38s-14-8-14-19a8 8 0 0 1 14-5 8 8 0 0 1 14 5c0 11-14 19-14 19z"/></svg></div>
-      <h3>Community</h3><p>Grassroots work in Zhenghua, mentoring sessions, Read With Dad on YouTube, and networking meetups that turn online connections into real friendships.</p><span class="kpi">Zhenghua · NHT Family</span></div>
+      <h3>Community</h3><p>Grassroots work in Zhenghua, mentoring sessions, <a class="inl" href="https://www.youtube.com/@tech_savvy_dad">Read With Dad on YouTube</a>, and networking meetups that turn online connections into real friendships.</p><span class="kpi">Zhenghua · NHT Family</span></div>
   </div>
 </div></section>
 
@@ -453,13 +465,27 @@ details.tune summary:focus-visible{outline:3px solid var(--accent);outline-offse
   </div>
 </div></section>
 
+<section class="band alt" id="channels"><div class="wrap">
+  <span class="eyebrow">Channels</span>
+  <h2>Where I show up</h2>
+  <p class="lead">Same person, five different rooms. Pick the one that fits how you like to learn.</p>
+  <p class="swipe">Swipe through the channels</p>
+  <div class="grid chgrid">
+    <a class="card ch" href="https://www.linkedin.com/in/techsavvy-dad"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="#9ff0c0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="4"/><path d="M8 11v6M8 7.5v.01M12 17v-6M12 13a3 3 0 0 1 6 0v4"/></svg></div><h3>LinkedIn</h3><p>Where it started. Everyday moments turned into lessons on work, technology, careers and leadership.</p><span class="kpi">16,800+ followers</span><span class="go">Follow on LinkedIn</span></a>
+    <a class="card ch" href="https://www.tiktok.com/@techsavvy_dad"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="#9ff0c0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3v11.5a3.5 3.5 0 1 1-3.5-3.5"/><path d="M14 3c.5 3 2.5 5 5.5 5.2"/></svg></div><h3>TikTok</h3><p>"The Document Software Guy" fixing office nightmares — POV videos on first jobs, handovers and month-end close.</p><span class="kpi">Top video 112K views</span><span class="go">Watch on TikTok</span></a>
+    <a class="card ch" href="https://www.youtube.com/@tech_savvy_dad"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="#9ff0c0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="5" width="19" height="14" rx="4"/><path d="M10 9.2v5.6l4.8-2.8z"/></svg></div><h3>YouTube</h3><p>Read With Dad with my daughter, My LinkedIn Is Better Than Yours with fellow creators, and quick DocuWare how-tos.</p><span class="kpi">97 videos</span><span class="go">Subscribe on YouTube</span></a>
+    <a class="card ch" href="https://www.instagram.com/tech_savvy_dad"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="#9ff0c0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><path d="M17.5 6.5v.01"/></svg></div><h3>Instagram</h3><p>Reels and stories from the same workplace and family moments, plus life on the road at events.</p><span class="kpi">@tech_savvy_dad</span><span class="go">Follow on Instagram</span></a>
+    <a class="card ch" href="https://www.threads.com/@tech_savvy_dad"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="#9ff0c0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16.5 11.5c-.3-2.7-2-4-4.4-4-2.8 0-4.6 2-4.6 4.6s1.8 4.4 4.5 4.4c2.4 0 4-1.5 4-3.6 0-2.4-2.6-3-4.4-2.6-1.6.3-2 1.6-1.5 2.4.6 1 2.6 1 3.6-.4"/><path d="M19 7a9 9 0 1 0 1 7"/></svg></div><h3>Threads</h3><p>Shorter thoughts and conversations on work, tech and being a working dad.</p><span class="kpi">@tech_savvy_dad</span><span class="go">Follow on Threads</span></a>
+  </div>
+</div></section>
+
 <section class="band" id="rates"><div class="wrap">
   <span class="eyebrow">Collaborate</span>
   <h2>Work with me</h2>
   <p class="lead">Creator collaborations, speaking and LinkedIn LIVE sessions. Every brief is different, so I tailor each package to your audience, goals and budget. Share a few details and I'll reach out personally with options and my rate card.</p>
   <p class="swipe">Swipe for more</p>
   <div class="grid">
-    <div class="card"><div class="ico"><svg viewBox="0 0 44 44" fill="none" stroke="#9ff0c0" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="7" width="30" height="30" rx="6"/><path d="M14 17h16M14 23h16M14 29h9"/></svg></div><h3>Sponsored content</h3><p>Story-led LinkedIn posts written in my own voice, reshares, TikTok POV videos and Instagram cross-posts — single pieces or bundles across platforms.</p></div>
+    <div class="card"><div class="ico"><svg viewBox="0 0 44 44" fill="none" stroke="#9ff0c0" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="7" width="30" height="30" rx="6"/><path d="M14 17h16M14 23h16M14 29h9"/></svg></div><h3>Sponsored content</h3><p>Story-led LinkedIn posts in my own voice, TikTok POV videos, YouTube features, and Instagram and Threads cross-posts — single pieces or bundles across platforms.</p></div>
     <div class="card"><div class="ico"><svg viewBox="0 0 44 44" fill="none" stroke="#9ff0c0" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="17" y="6" width="10" height="18" rx="5"/><path d="M11 20a11 11 0 0 0 22 0M22 31v7M16 38h12"/></svg></div><h3>Speaking &amp; workshops</h3><p>Panels, keynotes and hands-on workshops on AI at work, secure AI, digitalisation, careers and LinkedIn personal branding.</p></div>
     <div class="card"><div class="ico"><svg viewBox="0 0 44 44" fill="none" stroke="#9ff0c0" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="22" cy="22" r="4"/><path d="M14 14a11 11 0 0 0 0 16M30 14a11 11 0 0 1 0 16M9 9a18 18 0 0 0 0 26M35 9a18 18 0 0 1 0 26"/></svg></div><h3>LinkedIn LIVE</h3><p>45-minute featured guest interviews, co-hosted sessions, sponsored segments and series sponsorships, with replay clips for your own channels.</p></div>
   </div>
@@ -553,7 +579,7 @@ details.tune summary:focus-visible{outline:3px solid var(--accent);outline-offse
 <footer>
   <div class="fgrid2">
     <div><p class="fname">Let's make paper disappear.</p><p class="muted" style="margin:0">Halid Bin Ayob · Tech-Savvy Dad · Singapore</p></div>
-    <nav class="flinks" aria-label="Footer"><a href="#about">About</a><a href="#work">Work</a><a href="#speaking">Speaking</a><a href="#roi">ROI calculator</a><a href="#signup">Get in touch</a><a href="https://www.linkedin.com/in/techsavvy-dad">LinkedIn</a><a href="https://www.tiktok.com/@techsavvy_dad">TikTok</a><a href="https://www.instagram.com/tech_savvy_dad">Instagram</a></nav>
+    <nav class="flinks" aria-label="Footer"><a href="#about">About</a><a href="#work">Work</a><a href="#speaking">Speaking</a><a href="#roi">ROI calculator</a><a href="#signup">Get in touch</a><a href="https://www.linkedin.com/in/techsavvy-dad">LinkedIn</a><a href="https://www.tiktok.com/@techsavvy_dad">TikTok</a><a href="https://www.youtube.com/@tech_savvy_dad">YouTube</a><a href="https://www.instagram.com/tech_savvy_dad">Instagram</a><a href="https://www.threads.com/@tech_savvy_dad">Threads</a></nav>
   </div>
   <div class="wrap" style="border-top:1px solid var(--line);padding-top:18px;color:var(--soft);font-size:14px">© 2026 Halid Bin Ayob. All rights reserved.</div>
 </footer>
