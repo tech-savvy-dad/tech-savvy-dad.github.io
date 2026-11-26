@@ -81,8 +81,8 @@ nav .wrap{display:flex;align-items:center;gap:20px;flex-wrap:wrap;padding:12px m
 .talks li{display:grid;grid-template-columns:7.5em minmax(0,1fr);gap:14px;padding:14px 0;border-bottom:1px solid var(--line)}
 .talks time{color:var(--green);font-weight:700;white-space:nowrap}
 /* calculator */
-.calc{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(20px,3vw,40px);margin-top:28px;align-items:start}
-@media(max-width:860px){.calc{grid-template-columns:1fr}}
+.calc{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);gap:clamp(20px,3vw,40px);margin-top:28px;align-items:start}
+@media(max-width:900px){.calc{grid-template-columns:1fr}}
 .field{margin-bottom:18px}
 label{display:block;font-weight:600;margin-bottom:6px}
 .row{display:flex;gap:14px;align-items:center}
@@ -92,12 +92,29 @@ input[type=number],input[type=text],input[type=email],select,textarea{width:100%
 .presets{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:22px}
 .chip{min-height:44px;padding:0 16px;border-radius:999px;border:1.5px solid var(--line);background:var(--card);color:var(--ink);font:600 15px "Plus Jakarta Sans",sans-serif;cursor:pointer}
 .chip[aria-pressed=true]{border-color:var(--green);color:var(--green)}
-.result{position:sticky;top:90px;background:linear-gradient(160deg,#173a2c,#0f241b);border:1px solid var(--green2);border-radius:24px;padding:clamp(22px,3vw,34px)}
-.big{font-size:clamp(40px,6vw,64px);font-weight:800;color:var(--green);line-height:1;margin:6px 0 4px;white-space:nowrap}
-.kv{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:10px 16px;margin:22px 0;padding-top:18px;border-top:1px solid var(--line)}
+.market{display:inline-grid;grid-template-columns:1fr 1fr;background:var(--bg);border:1.5px solid var(--line);border-radius:999px;padding:4px;margin:6px 0 18px;position:relative}
+.market button{position:relative;z-index:1;min-height:44px;padding:0 22px;border:0;border-radius:999px;background:transparent;color:var(--soft);font:700 15px "Plus Jakarta Sans",sans-serif;cursor:pointer;white-space:nowrap}
+.market button[aria-checked=true]{color:#08130e}
+.market .pill{position:absolute;top:4px;bottom:4px;left:4px;width:calc(50% - 4px);border-radius:999px;background:var(--green);transition:transform .35s cubic-bezier(.3,1.4,.5,1)}
+.market[data-m=my] .pill{transform:translateX(100%)}
+.src{display:inline-flex;align-items:center;justify-content:center;min-width:22px;height:22px;padding:0 6px;margin-left:6px;border-radius:11px;background:var(--card);border:1px solid var(--line);color:var(--green);font-size:12px;font-weight:700;text-decoration:none;vertical-align:1px}
+.tag2{display:inline-block;margin-left:6px;padding:1px 8px;border-radius:10px;background:#2e2712;color:var(--accent);font-size:12px;font-weight:600;vertical-align:1px}
+.hint{color:var(--soft);font-size:13px;margin:4px 0 0}
+.result{position:sticky;top:90px;border-radius:24px;transform-style:preserve-3d;transition:transform .25s ease-out;will-change:transform}
+.result .face{position:relative;overflow:hidden;background:linear-gradient(160deg,#173a2c,#0d2018);border:1px solid var(--green2);border-radius:24px;padding:clamp(20px,3vw,32px);box-shadow:0 30px 60px rgba(0,0,0,.45)}
+.result .glare{position:absolute;inset:0;pointer-events:none;background:radial-gradient(circle at var(--gx,30%) var(--gy,0%),rgba(159,240,192,.18),transparent 55%)}
+.big{font-size:clamp(38px,5.6vw,60px);font-weight:800;color:var(--green);line-height:1;margin:6px 0 4px;white-space:nowrap}
+.rhead{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:16px;align-items:center}
+.gauge{width:96px;height:96px}.gauge text{font:800 18px "Plus Jakarta Sans",sans-serif;fill:var(--ink)}.gauge .gl{font:600 10px "Plus Jakarta Sans",sans-serif;fill:var(--soft)}
+.iso{position:relative;height:250px;margin:14px -8px 4px}.iso svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+.kv{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:10px 16px;margin:14px 0 18px;padding-top:16px;border-top:1px solid var(--line)}
 .kv dt{color:var(--soft)}.kv dd{margin:0;font-weight:700;text-align:right;white-space:nowrap}
-.bar{height:12px;border-radius:6px;background:var(--bg);overflow:hidden;margin:6px 0 14px}.bar i{display:block;height:100%;background:var(--green);transition:width .3s}
-.bar.cost i{background:var(--accent)}
+.sources{margin-top:28px;background:var(--bg);border:1px solid var(--line);border-radius:18px;padding:clamp(18px,2.5vw,28px)}
+.sources h3{font-size:19px;margin-bottom:12px}
+.sources ol{margin:0 0 14px;padding-left:1.4em;display:grid;gap:10px}
+.sources li{color:var(--soft);max-width:none}.sources li b{color:var(--ink)}
+.sources .as{color:var(--soft);font-size:14px;margin:0}
+@keyframes floaty{50%{transform:translateY(-6px)}}.isoFloat{animation:floaty 3s ease-in-out infinite}
 /* stage ring */
 .ring3d{position:relative;height:440px;perspective:1500px;margin:8px 0 6px;touch-action:pan-y;cursor:grab;user-select:none}
 .ring3d.drag{cursor:grabbing}
@@ -181,7 +198,7 @@ footer .wrap{display:flex;gap:16px;flex-wrap:wrap;justify-content:space-between}
 <div class="wrap"><div class="stats">
   <div><b>20+ yrs</b><span>in enterprise organisations since 2006</span></div>
   <div><b>6</b><span>APAC South markets covered</span></div>
-  <div><b>16,000+</b><span>LinkedIn followers</span></div>
+  <div><b>16,800+</b><span>LinkedIn followers</span></div>
   <div><b>Top 200</b><span>LinkedIn creators in Singapore (Favikon)</span></div>
 </div></div>
 </header>
@@ -190,7 +207,7 @@ footer .wrap{display:flex;gap:16px;flex-wrap:wrap;justify-content:space-between}
   <div>
     <h2>A regular dad who stumbled into tech leadership.</h2>
     <p>I started as a copier technician. As offices went paperless, I taught myself the software that replaced the paper and became a hybrid engineer handling both hardware and software calls. That curiosity took me into regional marketing, product training and partner enablement — and eventually into sales leadership in MNC settings.</p>
-    <p>I was DocuWare's first Singapore-based team member. My job isn't to "lead" sales — it's to stand beside our partners, strategise with them, and back them in front of customers until they can run on their own.</p>
+    <p>I was DocuWare's first Singaporean hire, and its first team member based here. My job isn't to "lead" sales — it's to stand beside our partners, strategise with them, and back them in front of customers until they can run on their own.</p>
     <p>Online I'm <b>Tech-Savvy Dad</b>: practical stories about digital transformation, work efficiency and career growth, told the way you'd share them over teh tarik. The follower count is nice. The messages from people who landed a job or felt seen matter more.</p>
   </div>
   <div>
@@ -212,7 +229,7 @@ footer .wrap{display:flex;gap:16px;flex-wrap:wrap;justify-content:space-between}
     <div class="card"><svg viewBox="0 0 44 44" fill="none" stroke="#9ff0c0" stroke-width="2.5" stroke-linecap="round"><rect x="6" y="8" width="22" height="28" rx="3"/><path d="M12 16h10M12 22h10M12 28h6"/><path d="M30 20l8 4-8 4" /></svg>
       <h3>Document workflows with DocuWare</h3><p>Purchase-to-pay, invoice automation, HR records, intelligent document processing and Aura — governed AI that lets teams ask their own documents questions, with an audit trail.</p></div>
     <div class="card"><svg viewBox="0 0 44 44" fill="none" stroke="#9ff0c0" stroke-width="2.5" stroke-linecap="round"><circle cx="14" cy="16" r="6"/><circle cx="30" cy="16" r="6"/><path d="M4 36c2-7 6-10 10-10s8 3 8 3 4-3 8-3 8 3 10 10"/></svg>
-      <h3>Channel partner growth</h3><p>Recruiting and enabling ISVs and VARs. Grew the network to 8 authorised partners, and guided one Singapore partner from Base to Silver in 9 months.</p></div>
+      <h3>Channel partner growth</h3><p>Recruiting and enabling ISVs and VARs across seven authorised partners. Helped grow two new partners in seven months, and guided a Base partner up to Silver.</p></div>
     <div class="card"><svg viewBox="0 0 44 44" fill="none" stroke="#9ff0c0" stroke-width="2.5" stroke-linecap="round"><rect x="6" y="8" width="32" height="22" rx="3"/><path d="M16 36h12M22 30v6"/><path d="M14 22l5-5 4 4 7-7"/></svg>
       <h3>LinkedIn &amp; personal branding</h3><p>Workshops, profile audits and coaching through Linqista — helping professionals show up, not show off.</p></div>
     <div class="card"><svg viewBox="0 0 44 44" fill="none" stroke="#9ff0c0" stroke-width="2.5" stroke-linecap="round"><path d="M22 38s-14-8-14-19a8 8 0 0 1 14-5 8 8 0 0 1 14 5c0 11-14 19-14 19z"/></svg>
@@ -232,11 +249,14 @@ footer .wrap{display:flex;gap:16px;flex-wrap:wrap;justify-content:space-between}
     <a class="btn sec" href="#signup" id="toSpeak">Invite me to speak</a>
   </div>
   <ul class="talks">
-    <li><time>15 Oct 2026</time><span><b>Shadow AI: The Hidden Cost Between Innovation and Exposure</b><br><span class="muted">Technology Spotlight, Finance ReImagined Malaysia 2026, Kuala Lumpur</span></span></li>
-    <li><time>Oct 2026</time><span><b>Say goodbye to manual data entry</b><br><span class="muted">IDP webinars with partners for Vietnam and Singapore audiences</span></span></li>
-    <li><time>4 Nov 2026</time><span><b>AI to your data, not data to AI</b><br><span class="muted">Hands-on DocuWare Aura workshop, National Library, Singapore</span></span></li>
     <li><time>19 Nov 2026</time><span><b>The Modern Business Engine — IDP and P2P</b><br><span class="muted">Partner co-hosted webinar</span></span></li>
-    <li><time>Ongoing</time><span><b>Show Up, Not Show Off</b><br><span class="muted">Mentoring on building an authentic LinkedIn personal brand</span></span></li>
+    <li><time>4 Nov 2026</time><span><b>AI to your data, not data to AI</b><br><span class="muted">Hands-on DocuWare Aura workshop, National Library, Singapore</span></span></li>
+    <li><time>15 Oct 2026</time><span><b>Shadow AI: The Hidden Cost Between Innovation and Exposure</b><br><span class="muted">5th Finance ReImagined Malaysia 2026 by DigitalCFO Asia, Kuala Lumpur</span></span></li>
+    <li><time>10 Sep 2026</time><span><b>Shadow AI: The Hidden Cost Between Innovation and Exposure</b><br><span class="muted">5th Finance ReImagined Thailand 2026 by DigitalCFO Asia, Bangkok</span></span></li>
+    <li><time>Aug 2026</time><span><b>Panel: When You Step Away, Who Steps In?</b><br><span class="muted">Ready, Set, Parent! with Ustaz Syakir Pasuni, Masjid Darul Ghufran, Singapore</span></span></li>
+    <li><time>14 May 2026</time><span><b>Shadow AI: The Hidden Cost Between Innovation and Exposure</b><br><span class="muted">5th Finance ReImagined Singapore 2026 by DigitalCFO Asia</span></span></li>
+    <li><time>9 Oct 2025</time><span><b>Simplifying Requisition: From Chaos to Clarity</b><br><span class="muted">4th DigitalCFO Asia Malaysia Symposium 2025, Kuala Lumpur</span></span></li>
+    <li><time>2025</time><span><b>Simplifying Requisition: From Chaos to Clarity</b><br><span class="muted">4th DigitalCFO Asia Thailand Symposium 2025, Bangkok</span></span></li>
   </ul>
 </div></section>
 
@@ -254,26 +274,29 @@ footer .wrap{display:flex;gap:16px;flex-wrap:wrap;justify-content:space-between}
 
 <section class="band alt" id="roi"><div class="wrap">
   <h2>Productivity ROI calculator</h2>
-  <p class="lead">How much is manual document work costing your team? Move the sliders — the estimate updates as you go.</p>
+  <p class="lead">How much is manual document work costing your team? Pick your market — the defaults load from official wage data and local research, with every source listed below. Then make it yours.</p>
+  <div class="market" id="market" role="radiogroup" aria-label="Market" data-m="sg"><span class="pill" aria-hidden="true"></span><button role="radio" aria-checked="true" data-m="sg">Singapore · SGD</button><button role="radio" aria-checked="false" data-m="my">Malaysia · MYR</button></div>
   <div class="calc">
     <div>
-      <div class="presets" role="group" aria-label="Scenario presets">
+      <div class="presets" role="group" aria-label="Team size presets">
         <button class="chip" data-p="sme" aria-pressed="true">Small business</button>
         <button class="chip" data-p="mid" aria-pressed="false">Mid-size team</button>
         <button class="chip" data-p="ent" aria-pressed="false">Enterprise dept</button>
       </div>
       <div class="field"><label for="staff">People handling documents</label><div class="row"><input type="range" id="staffR" min="1" max="300" aria-label="People handling documents"><input type="number" id="staff" min="1" max="5000"></div></div>
-      <div class="field"><label for="hrs">Hours per person per week on searching, filing, keying-in and chasing approvals</label><div class="row"><input type="range" id="hrsR" min="1" max="30" aria-label="Hours per week"><input type="number" id="hrs" min="0" max="60" step="0.5"></div></div>
-      <div class="field"><label for="rate">Loaded hourly cost per person (SGD)</label><div class="row"><input type="range" id="rateR" min="10" max="150" aria-label="Hourly cost"><input type="number" id="rate" min="1" max="1000"></div></div>
-      <div class="field"><label for="save">Share of that time automation could save (%)</label><div class="row"><input type="range" id="saveR" min="5" max="80" aria-label="Time saved percent"><input type="number" id="save" min="0" max="100"></div></div>
-      <div class="field"><label for="paper">Monthly print, paper, courier &amp; storage costs (SGD)</label><div class="row"><input type="range" id="paperR" min="0" max="10000" step="50" aria-label="Monthly paper costs"><input type="number" id="paper" min="0" max="1000000" step="50"></div></div>
-      <div class="field"><label for="inv">Estimated yearly solution investment (SGD)</label><div class="row"><input type="range" id="invR" min="0" max="200000" step="500" aria-label="Yearly investment"><input type="number" id="inv" min="0" max="10000000" step="500"></div></div>
+      <div class="field"><label for="hrs">Hours per person per week on admin — searching, filing, keying-in, chasing approvals<a class="src" href="#src-1" aria-label="Source 1">1</a></label><div class="row"><input type="range" id="hrsR" min="1" max="30" step="0.5" aria-label="Hours per week"><input type="number" id="hrs" min="0" max="60" step="0.5"></div><p class="hint" id="hrsHint"></p></div>
+      <div class="field"><label for="rate">Hourly cost per person (<span class="cur">SGD</span>)<a class="src" href="#src-2" aria-label="Source 2">2</a><a class="src" href="#src-3" aria-label="Source 3">3</a></label><div class="row"><input type="range" id="rateR" min="5" max="150" aria-label="Hourly cost"><input type="number" id="rate" min="1" max="1000"></div><p class="hint" id="rateHint"></p></div>
+      <div class="field"><label for="save">Share of that admin time automation could save (%)<span class="tag2">assumption</span></label><div class="row"><input type="range" id="saveR" min="5" max="80" aria-label="Time saved percent"><input type="number" id="save" min="0" max="100"></div></div>
+      <div class="field"><label for="paper">Monthly print, paper, courier &amp; storage costs (<span class="cur">SGD</span>)<span class="tag2">your figure</span></label><div class="row"><input type="range" id="paperR" min="0" max="30000" step="50" aria-label="Monthly paper costs"><input type="number" id="paper" min="0" max="1000000" step="50"></div></div>
+      <div class="field"><label for="inv">Estimated yearly solution investment (<span class="cur">SGD</span>)<span class="tag2">your figure</span></label><div class="row"><input type="range" id="invR" min="0" max="500000" step="500" aria-label="Yearly investment"><input type="number" id="inv" min="0" max="10000000" step="500"></div></div>
       <p class="muted">Your inputs, not a quote. Investment depends on users, modules and deployment — ask me for a proper sizing.</p>
     </div>
-    <div class="result" aria-live="polite">
-      <div class="muted">Estimated net benefit, year one</div>
-      <div class="big" id="net">SGD 0</div>
-      <div id="roiLine" class="lead" style="margin:0">—</div>
+    <div class="result" id="result" aria-live="polite"><div class="face"><span class="glare"></span>
+      <div class="rhead">
+        <div><div class="muted">Estimated net benefit, year one</div><div class="big" id="net">0</div><div id="roiLine" class="muted" style="font-size:15px">—</div></div>
+        <svg class="gauge" viewBox="0 0 96 96" aria-hidden="true"><circle cx="48" cy="48" r="40" fill="none" stroke="#24463a" stroke-width="9"/><circle id="gArc" cx="48" cy="48" r="40" fill="none" stroke="#9ff0c0" stroke-width="9" stroke-linecap="round" stroke-dasharray="0 252" transform="rotate(-90 48 48)"/><text id="gTxt" x="48" y="52" text-anchor="middle">0%</text><text class="gl" x="48" y="66" text-anchor="middle">ROI</text></svg>
+      </div>
+      <div class="iso" id="iso" role="img" aria-label="3D comparison of weekly admin hours for the whole team, today versus with automation"><svg id="isoSvg"></svg></div>
       <dl class="kv">
         <dt>Hours given back per year</dt><dd id="hSaved">0</dd>
         <dt>Equivalent full-time staff</dt><dd id="fte">0</dd>
@@ -281,12 +304,14 @@ footer .wrap{display:flex;gap:16px;flex-wrap:wrap;justify-content:space-between}
         <dt>Paper &amp; storage savings (60%)</dt><dd id="paperS">0</dd>
         <dt>Payback period</dt><dd id="payback">—</dd>
       </dl>
-      <div class="muted">Gross yearly savings</div><div class="bar"><i id="bS"></i></div>
-      <div class="muted">Yearly investment</div><div class="bar cost"><i id="bI"></i></div>
-      <a class="btn pri" href="#signup" id="toForm" style="width:100%;margin-top:8px">Send me these numbers</a>
-    </div>
+      <a class="btn pri" href="#signup" id="toForm" style="width:100%">Send me these numbers</a>
+    </div></div>
   </div>
-  <p class="muted" style="margin-top:22px">Method: hours saved = people × hours/week × 48 working weeks × % saved. FTE assumes 1,760 hours a year. Paper savings assume 60% of those monthly costs go away once documents are digital. Illustrative only.</p>
+  <div class="sources" id="sources">
+    <h3 id="srcTitle">Where the Singapore defaults come from</h3>
+    <ol id="srcList"></ol>
+    <p class="as"><b style="color:var(--ink)">Assumptions:</b> 48 working weeks a year; automation saves the share of admin time you set (default 40%); 60% of paper, print, courier and storage costs fall away once documents are digital; full-time equivalent = normal weekly hours × 48. Defaults are starting points — replace them with your own numbers. Illustrative only, not a quote.</p>
+  </div>
 </div></section>
 
 <section class="band" id="signup"><div class="wrap two">
@@ -337,45 +362,116 @@ footer .wrap{display:flex;gap:16px;flex-wrap:wrap;justify-content:space-between}
 <script>
 {
 const $=id=>document.getElementById(id);
-const P={sme:{staff:8,hrs:6,rate:30,save:40,paper:600,inv:12000},mid:{staff:40,hrs:7,rate:40,save:45,paper:2500,inv:45000},ent:{staff:150,hrs:8,rate:55,save:50,paper:8000,inv:140000}};
+const MK={
+ sg:{cur:"SGD",sym:"S$",loc:"en-SG",median:5775,week:44,hrs:8,name:"Singapore",
+  presets:{sme:{staff:8,paper:600,inv:12000},mid:{staff:40,paper:2500,inv:45000},ent:{staff:150,paper:8000,inv:140000}},
+  hrsHint:"Default 8 hrs: Singapore office staff spend about 380 hours a year on admin and repetitive tasks (≈ 8 hrs a week).",
+  src:[
+   ["Admin time","Singapore office workers spend 380 hours a year (about 47.5 working days) on administrative or repetitive tasks instead of their main job. Unit4 Global Productivity Study, conducted by DJS Research, 2017.","https://www.asiaone.com/singapore/study-reveals-singapore-office-staff-be-least-productive"],
+   ["Wage","Median gross monthly income of full-time employed residents: S$5,775 in 2025, including employer CPF. Ministry of Manpower, Labour Force in Singapore 2025.","https://stats.mom.gov.sg/iMAS_Tables1/LabourForce/LabourForce_2025/mrsd_2025LabourForce_survey_findings.pdf"],
+   ["Hours","Normal hours of work under Part 4 of the Employment Act: up to 44 hours a week. Ministry of Manpower.","https://www.mom.gov.sg/employment-practices/hours-of-work-overtime-and-rest-days"]]},
+ my:{cur:"MYR",sym:"RM",loc:"en-MY",median:2940,week:45,hrs:7,name:"Malaysia",
+  presets:{sme:{staff:8,paper:1500,inv:30000},mid:{staff:40,paper:6000,inv:110000},ent:{staff:150,paper:20000,inv:340000}},
+  hrsHint:"Default 7 hrs: one in five workers in ASEAN markets including Malaysia lose more than 7 hours a week moving information and reconciling data.",
+  src:[
+   ["Admin time","One in five workers across ASEAN markets surveyed (Indonesia, Malaysia, Singapore, Thailand) lose more than seven hours a week moving information and reconciling data; 76% spend time on admin that causes day-to-day friction. Workday research, published August 2026. Regional figure — no Malaysia-only breakdown was published.","https://itbrief.asia/story/workday-study-finds-ai-tools-add-hours-of-admin-in-asean"],
+   ["Wage","Median monthly salaries & wages of Malaysian citizens: RM2,940 in 2025 (mean RM3,803). Department of Statistics Malaysia, Salaries & Wages Survey Report 2025.","https://www.dosm.gov.my/portal-main/release-content/salaries-and-wages-survey-report-"],
+   ["Hours","Maximum normal working hours: 45 a week under the Employment Act 1955, as amended from 1 January 2023.","https://jobstreet.com.my/career-advice/article/full-time-hours-how-to-compute-for-overtime-work"]]}
+};
 const keys=["staff","hrs","rate","save","paper","inv"];
-const fmt=n=>"SGD "+Math.round(n).toLocaleString("en-SG");
-let last={};
+let mk="sg",preset="sme",last={};
+const M=()=>MK[mk];
+const hourly=m=>Math.round(m.median*12/(m.week*52));
+const fmt=n=>M().cur+" "+Math.round(n).toLocaleString(M().loc);
+function defaults(p){const m=M(),pr=m.presets[p];return{staff:pr.staff,hrs:m.hrs,rate:hourly(m),save:40,paper:pr.paper,inv:pr.inv}}
 function setAll(v){keys.forEach(k=>{$(k).value=v[k];$(k+"R").value=v[k]});calc()}
+function renderMarket(){
+  const m=M();
+  $("market").dataset.m=mk;
+  document.querySelectorAll("#market button").forEach(b=>b.setAttribute("aria-checked",b.dataset.m===mk));
+  document.querySelectorAll(".cur").forEach(s=>s.textContent=m.cur);
+  $("hrsHint").textContent=m.hrsHint;
+  $("rateHint").textContent=`Default ≈ ${m.sym}${hourly(m)}/hr: median ${m.sym}${m.median.toLocaleString(m.loc)} a month × 12 ÷ (${m.week} hrs × 52 weeks).`;
+  $("srcTitle").textContent=`Where the ${m.name} defaults come from`;
+  const ol=$("srcList");ol.textContent="";
+  m.src.forEach((s,i)=>{const li=document.createElement("li");li.id="src-"+(i+1);const b=document.createElement("b");b.textContent=s[0]+": ";const a=document.createElement("a");a.href=s[2];a.textContent="Source";a.rel="noopener";li.append(b,s[1]+" ",a);ol.append(li)});
+}
+// tweened numbers
+const reduce=matchMedia("(prefers-reduced-motion: reduce)").matches;
+const tw={};
+function tween(id,to,f){const from=tw[id]??0;tw[id]=to;const t0=performance.now(),D=reduce?0:550;const el=$(id);
+  function step(t){const k=D?Math.min(1,(t-t0)/D):1,e=1-Math.pow(1-k,3);el.textContent=f(from+(to-from)*e);if(k<1)requestAnimationFrame(step)}requestAnimationFrame(step)}
+// isometric paper stacks
+const iso={a:0,b:0,ta:0,tb:0,la:"",lb:"",lc:""};
+function drawIso(){
+  const s=$("isoSvg"),W=s.clientWidth,H=s.clientHeight;if(!W)return;
+  const c=Math.cos(Math.PI/6),sn=Math.sin(Math.PI/6),sz=Math.min(78,W/5.2),gap=sz*1.25;
+  const ox=W/2,oy=H-30;
+  const P=(x,y,z)=>[ox+(x-y)*c,oy+(x+y)*sn-z];
+  const poly=(pts,fill,extra="")=>`<polygon points="${pts.map(p=>p.map(v=>v.toFixed(1)).join(",")).join(" ")}" fill="${fill}" ${extra}/>`;
+  const maxH=H-90;
+  function box(bx,by,h,top,left,right,label,sub){
+    h=Math.max(4,h);
+    let g=poly([P(bx,by+sz,0),P(bx+sz,by+sz,0),P(bx+sz,by+sz,h),P(bx,by+sz,h)],left)+poly([P(bx+sz,by,0),P(bx+sz,by+sz,0),P(bx+sz,by+sz,h),P(bx+sz,by,h)],right);
+    for(let z=10;z<h-4;z+=10){const a=P(bx,by+sz,z),b=P(bx+sz,by+sz,z),d=P(bx+sz,by,z);g+=`<polyline points="${a.join(",")} ${b.join(",")} ${d.join(",")}" fill="none" stroke="rgba(255,255,255,.16)" stroke-width="1"/>`}
+    g+=poly([P(bx,by,h),P(bx+sz,by,h),P(bx+sz,by+sz,h),P(bx,by+sz,h)],top);
+    const t=P(bx+sz/2,by+sz/2,h);
+    g+=`<text x="${t[0]}" y="${t[1]-26}" text-anchor="middle" font-family="Plus Jakarta Sans" font-weight="800" font-size="17" fill="#fff">${label}</text><text x="${t[0]}" y="${t[1]-10}" text-anchor="middle" font-family="Plus Jakarta Sans" font-weight="600" font-size="12" fill="#c9d8d1">${sub}</text>`;
+    return g;
+  }
+  const mx=Math.max(iso.a,1),ha=iso.a/mx*maxH,hb=iso.b/mx*maxH;
+  let g=`<ellipse cx="${ox}" cy="${oy+sz*.55}" rx="${sz*2.3}" ry="${sz*.55}" fill="rgba(0,0,0,.35)"/>`;
+  g+=box(-gap-sz/2,-sz/2+gap*.15,ha,"#ffe08a","#e0a92e","#b9861c",iso.la,"hrs/week today");
+  g+=box(gap-sz/2,-sz/2-gap*.15,hb,"#c4f7d8","#5fd394","#3fa46f",iso.lb,"with automation");
+  s.innerHTML=g+`<g class="${reduce?"":"isoFloat"}"><rect x="${ox-62}" y="6" width="124" height="34" rx="17" fill="#0b1511" stroke="#9ff0c0"/><text x="${ox}" y="28" text-anchor="middle" font-family="Plus Jakarta Sans" font-weight="800" font-size="14" fill="#9ff0c0">${iso.lc}</text></g>`;
+}
+function animIso(){const t0=performance.now(),fa=iso.a,fb=iso.b,D=reduce?0:650;
+  function st(t){const k=D?Math.min(1,(t-t0)/D):1,e=1-Math.pow(1-k,3);iso.a=fa+(iso.ta-fa)*e;iso.b=fb+(iso.tb-fb)*e;drawIso();if(k<1)requestAnimationFrame(st)}requestAnimationFrame(st)}
+const isoRO=new ResizeObserver(drawIso);isoRO.observe($("iso"));
 function calc(){
-  const v={};keys.forEach(k=>v[k]=Math.max(0,parseFloat($(k).value)||0));
-  const hours=v.staff*v.hrs*48*v.save/100,labour=hours*v.rate,paperS=v.paper*12*0.6,gross=labour+paperS,net=gross-v.inv;
-  $("net").textContent=(net<0?"−":"")+fmt(Math.abs(net));
-  $("roiLine").textContent=v.inv>0?`${Math.round(net/v.inv*100)}% return on investment`:"Enter an investment to see ROI";
-  $("hSaved").textContent=Math.round(hours).toLocaleString("en-SG")+" hrs";
-  $("fte").textContent=(hours/1760).toFixed(1);
-  $("labour").textContent=fmt(labour);$("paperS").textContent=fmt(paperS);
+  const m=M(),v={};keys.forEach(k=>v[k]=Math.max(0,parseFloat($(k).value)||0));
+  const week=v.staff*v.hrs,weekAfter=week*(1-v.save/100);
+  const hours=week*48*v.save/100,labour=hours*v.rate,paperS=v.paper*12*0.6,gross=labour+paperS,net=gross-v.inv,roi=v.inv>0?net/v.inv*100:0;
+  tween("net",net,x=>(x<0?"−":"")+fmt(Math.abs(x)));
+  $("roiLine").textContent=v.inv>0?`${Math.round(roi)}% return on a ${fmt(v.inv)} investment`:"Enter an investment to see ROI";
+  tween("hSaved",hours,x=>Math.round(x).toLocaleString(m.loc)+" hrs");
+  tween("fte",hours/(m.week*48),x=>x.toFixed(1));
+  tween("labour",labour,fmt);tween("paperS",paperS,fmt);
   $("payback").textContent=gross>0&&v.inv>0?(v.inv/(gross/12)).toFixed(1)+" months":"—";
-  const m=Math.max(gross,v.inv,1);$("bS").style.width=gross/m*100+"%";$("bI").style.width=v.inv/m*100+"%";
-  last={...v,hours:Math.round(hours),gross:Math.round(gross),net:Math.round(net)};
-  try{localStorage.setItem("roi",JSON.stringify(v))}catch(e){}
+  const arc=Math.max(0,Math.min(1,roi/300));$("gArc").setAttribute("stroke-dasharray",`${(arc*251.3).toFixed(1)} 252`);$("gTxt").textContent=v.inv>0?Math.round(roi)+"%":"—";
+  iso.ta=week;iso.tb=weekAfter;iso.la=Math.round(week).toLocaleString(m.loc);iso.lb=Math.round(weekAfter).toLocaleString(m.loc);iso.lc="+"+Math.round(week-weekAfter).toLocaleString(m.loc)+" hrs/week back";animIso();
+  last={market:m.name,currency:m.cur,...v,hours:Math.round(hours),gross:Math.round(gross),net:Math.round(net)};
+  try{localStorage.setItem("roi2",JSON.stringify({mk,v}))}catch(e){}
 }
 keys.forEach(k=>{
   $(k+"R").addEventListener("input",e=>{$(k).value=e.target.value;clearP();calc()});
   $(k).addEventListener("input",e=>{$(k+"R").value=e.target.value;clearP();calc()});
 });
 function clearP(){document.querySelectorAll(".chip").forEach(c=>c.setAttribute("aria-pressed","false"))}
-document.querySelectorAll(".chip").forEach(c=>c.addEventListener("click",()=>{clearP();c.setAttribute("aria-pressed","true");setAll(P[c.dataset.p])}));
-let saved=null;try{saved=JSON.parse(localStorage.getItem("roi"))}catch(e){}
-if(saved&&keys.every(k=>k in saved)){clearP();setAll(saved)}else setAll(P.sme);
+document.querySelectorAll(".chip").forEach(c=>c.addEventListener("click",()=>{clearP();c.setAttribute("aria-pressed","true");preset=c.dataset.p;setAll(defaults(preset))}));
+document.querySelectorAll("#market button").forEach(b=>b.addEventListener("click",()=>{if(mk===b.dataset.m)return;mk=b.dataset.m;renderMarket();clearP();document.querySelector(`.chip[data-p="${preset}"]`).setAttribute("aria-pressed","true");setAll(defaults(preset))}));
+$("market").addEventListener("keydown",e=>{if(e.key==="ArrowRight"||e.key==="ArrowLeft"){const n=mk==="sg"?"my":"sg";document.querySelector(`#market button[data-m="${n}"]`).click();document.querySelector(`#market button[data-m="${n}"]`).focus();e.preventDefault()}});
+// 3D tilt on the result card
+const card=$("result");
+if(!reduce&&matchMedia("(hover: hover)").matches){
+  card.addEventListener("pointermove",e=>{const r=card.getBoundingClientRect(),x=(e.clientX-r.left)/r.width,y=(e.clientY-r.top)/r.height;card.style.transform=`perspective(1100px) rotateY(${(x-.5)*9}deg) rotateX(${(.5-y)*7}deg)`;card.style.setProperty("--gx",x*100+"%");card.style.setProperty("--gy",y*100+"%")});
+  card.addEventListener("pointerleave",()=>{card.style.transform=""});
+}
+let saved=null;try{saved=JSON.parse(localStorage.getItem("roi2"))}catch(e){}
+if(saved&&MK[saved.mk]&&saved.v&&keys.every(k=>k in saved.v)){mk=saved.mk;renderMarket();clearP();setAll(saved.v)}else{renderMarket();setAll(defaults("sme"))}
 let includeRoi=false;
 $("toCollab").addEventListener("click",()=>{const c=document.querySelector('input[value="Creator collaboration"]');if(c)c.checked=true;const m=$("fm");if(!m.value)m.value="I'd like your rate card for: ";});
 $("toSpeak").addEventListener("click",()=>{const c=document.querySelector('input[value="Speaking or workshop"]');if(c)c.checked=true;});
-$("toForm").addEventListener("click",()=>{includeRoi=true;const m=$("fm");if(!m.value)m.value=`My ROI estimate: ${last.hours} hours/year saved, net benefit ${fmt(last.net)} in year one.`});
+$("toForm").addEventListener("click",()=>{includeRoi=true;const c=$("fl");if(c)c.value=M().name;const m=$("fm");if(!m.value)m.value=`My ROI estimate (${M().name}): ${last.hours} hours/year saved, net benefit ${fmt(last.net)} in year one.`});
 
 
 // stage ring
 const STAGE=[
- ["shadow-ai-sg","Shadow AI: The Hidden Cost Between Innovation and Exposure","Finance Reimagined, Singapore 2026","50% 40%"],
- ["digitalcfo-kl","Transforming finance with intelligent documents","4th DigitalCFO Asia Malaysia Symposium, Kuala Lumpur 2025","30% 40%"],
+ ["shadow-ai-sg","Shadow AI: The Hidden Cost Between Innovation and Exposure","5th Finance ReImagined Singapore 2026, DigitalCFO Asia","50% 40%"],
+ ["digitalcfo-kl","Simplifying Requisition: From Chaos to Clarity","4th DigitalCFO Asia Malaysia Symposium, Kuala Lumpur 2025","30% 40%"],
  ["docuworld-aura","Live DocuWare Aura demo","DocuWorld 2026","40% 30%"],
- ["tech-for-parents","Panel: When You Step Away, Who Steps In?","Ready, Set, Parent! 2026","78% 62%"],
- ["finance-reimagined-bkk","AI and the future finance team","5th Finance Reimagined Thailand, Bangkok 2026","45% 55%"],
+ ["tech-for-parents","Panel: When You Step Away, Who Steps In?","Ready, Set, Parent! at Masjid Darul Ghufran, 2026","78% 62%"],
+ ["finance-reimagined-bkk","Shadow AI: The Hidden Cost Between Innovation and Exposure","5th Finance ReImagined Thailand, Bangkok 2026","45% 55%"],
  ["ai-governance","AI to your data, not data to AI","Hands-on AI governance workshop, Singapore 2026","14% 45%"],
  ["linkedin-talk","Advocating work on LinkedIn","LinkedIn personal branding talk, Singapore 2026","42% 55%"],
  ["docuworld-laugh","Partner session","DocuWorld 2026","50% 30%"]
@@ -383,7 +479,6 @@ const STAGE=[
 const ring=$("ring"),stage=$("ring3d"),cap=$("ringcap"),N=STAGE.length,STEP=360/N;
 ring.innerHTML=STAGE.map((s,i)=>`<figure data-i="${i}"><button class="pic" aria-label="Enlarge: ${s[1]}, ${s[2]}"><img src="img/stage/${s[0]}.jpg" alt="Halid speaking — ${s[1]}, ${s[2]}" loading="${i<3?'eager':'lazy'}" style="object-position:${s[3]}"></button></figure>`).join("");
 const figs=[...ring.children];
-const reduce=matchMedia("(prefers-reduced-motion: reduce)").matches;
 let angle=0,target=null,paused=false,dragX=null,dragA=0,moved=false,lastT=performance.now();
 function radius(){const w=parseFloat(getComputedStyle(stage).getPropertyValue("--cw"))||240;return w/2/Math.tan(Math.PI/N)+24}
 function frontIndex(){return ((Math.round(-angle/STEP)%N)+N)%N}
