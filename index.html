@@ -129,7 +129,10 @@ input[type=number],input[type=text],input[type=email],select,textarea{width:100%
 .ring button.pic:focus-visible{outline:3px solid var(--accent);outline-offset:-3px}
 .ring img{width:100%;height:100%;object-fit:cover;display:block;pointer-events:none}
 .ring3d{--cw:240px}@media(max-width:600px){.ring3d{--cw:160px;height:320px}}
-.ringbar{display:flex;align-items:center;justify-content:center;gap:14px;flex-wrap:wrap;margin-bottom:clamp(28px,4vw,48px)}
+.ringbar{display:flex;flex-direction:column;align-items:center;gap:16px;margin-bottom:clamp(28px,4vw,48px)}
+.ringbar .ringcap{flex:none;width:100%;max-width:560px;min-height:3.4em}
+.rnav{display:flex;align-items:center;justify-content:center;gap:18px}
+.rdots{display:flex;gap:7px}.rdots i{width:7px;height:7px;border-radius:50%;background:var(--line);transition:all .3s}.rdots i.on{width:22px;border-radius:6px;background:var(--green)}
 .ringcap{min-width:0;flex:1 1 260px;max-width:460px;text-align:center;font-weight:600;color:var(--green)}
 .ringcap span{display:block;color:var(--soft);font-weight:500;font-size:14px}
 .rbtn{width:48px;height:48px;border-radius:50%;border:2px solid var(--green);background:transparent;color:var(--green);font:700 20px "Plus Jakarta Sans",sans-serif;cursor:pointer;flex:none}
@@ -446,7 +449,7 @@ a.inl{color:var(--green);font-weight:600;text-underline-offset:3px}
   <h2>On stage</h2>
   <p class="muted" style="margin-bottom:8px">Drag to spin, or tap a photo to see it full size.</p>
   <div class="ring3d" id="ring3d" aria-roledescription="carousel" aria-label="Photos of Halid speaking at events"><div class="ring" id="ring"></div></div>
-  <div class="ringbar"><button class="rbtn" id="rPrev" aria-label="Previous photo">&#8592;</button><p class="ringcap" id="ringcap" aria-live="polite"></p><button class="rbtn" id="rNext" aria-label="Next photo">&#8594;</button></div>
+  <div class="ringbar"><p class="ringcap" id="ringcap" aria-live="polite"></p><div class="rnav"><button class="rbtn" id="rPrev" aria-label="Previous photo">&#8592;</button><span class="rdots" id="rdots" aria-hidden="true"></span><button class="rbtn" id="rNext" aria-label="Next photo">&#8594;</button></div></div>
 </div><div class="wrap">
   <div class="spk-intro">
     <div><h3 style="font-size:clamp(26px,3vw,34px)">Speaking &amp; workshops</h3>
@@ -744,6 +747,7 @@ const STAGE=[
 const ring=$("ring"),stage=$("ring3d"),cap=$("ringcap"),N=STAGE.length,STEP=360/N;
 ring.innerHTML=STAGE.map((s,i)=>`<figure data-i="${i}"><button class="pic" aria-label="Enlarge: ${s[1]}, ${s[2]}"><img src="img/stage/${s[0]}.jpg" alt="Halid speaking — ${s[1]}, ${s[2]}" loading="${i<3?'eager':'lazy'}" style="object-position:${s[3]}"></button></figure>`).join("");
 const figs=[...ring.children];
+const dots=$("rdots");dots.innerHTML=STAGE.map(()=>"<i></i>").join("");const dotEls=[...dots.children];
 let angle=0,target=null,paused=false,dragX=null,dragA=0,moved=false,lastT=performance.now();
 function radius(){const w=parseFloat(getComputedStyle(stage).getPropertyValue("--cw"))||240;return w/2/Math.tan(Math.PI/N)+24}
 function frontIndex(){return ((Math.round(-angle/STEP)%N)+N)%N}
@@ -753,7 +757,7 @@ function render(){
   figs.forEach((f,i)=>f.style.transform=`rotateY(${i*STEP}deg) translateZ(${r}px)`);
   ring.style.transform=`translateZ(${-r}px) rotateY(${angle}deg)`;
   const fi=frontIndex();
-  if(fi!==shown){shown=fi;figs.forEach((f,i)=>f.classList.toggle("front",i===fi));cap.textContent="";cap.append(STAGE[fi][1]);const s=document.createElement("span");s.textContent=STAGE[fi][2];cap.append(s)}
+  if(fi!==shown){shown=fi;figs.forEach((f,i)=>f.classList.toggle("front",i===fi));dotEls.forEach((d,i)=>d.classList.toggle("on",i===fi));cap.textContent="";cap.append(STAGE[fi][1]);const s=document.createElement("span");s.textContent=STAGE[fi][2];cap.append(s)}
 }
 function tick(t){
   const dt=Math.min(t-lastT,64);lastT=t;
