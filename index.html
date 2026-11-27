@@ -38,7 +38,7 @@
    LAYOUT: full website — nav, hero scene, story, journey, work, ROI tool, sign-up, footer */
 :root{color-scheme:dark;--bg:#0b1511;--bg2:#10201a;--card:#142a21;--line:#24463a;--ink:#ffffff;--soft:#c9d8d1;--green:#9ff0c0;--green2:#5fd394;--accent:#ffd166}
 *{box-sizing:border-box;min-width:0}
-html{scroll-behavior:smooth;scroll-padding-top:72px}
+html{scroll-behavior:smooth;scroll-padding-top:72px;overflow-x:clip}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}
 body{margin:0;background:var(--bg);color:var(--ink);font:16.5px/1.6 "Plus Jakarta Sans",ui-sans-serif,sans-serif;overflow-x:clip}
 h1,h2,h3{color:var(--green);font-weight:800;line-height:1.08;text-wrap:balance;margin:0 0 .5em}
@@ -145,6 +145,7 @@ input[type=number],input[type=text],input[type=email],select,textarea{width:100%
 .totop{position:fixed;right:max(18px,env(safe-area-inset-right));bottom:max(18px,env(safe-area-inset-bottom));z-index:60;width:52px;height:52px;border-radius:50%;display:grid;place-items:center;background:#12251dee;color:var(--green);border:1px solid var(--line);box-shadow:0 12px 30px rgba(0,0,0,.45);backdrop-filter:blur(8px);opacity:0;transform:translateY(16px) scale(.9);pointer-events:none;transition:opacity .35s,transform .35s,background .25s}
 .totop.show{opacity:1;transform:none;pointer-events:auto}.totop:hover{background:var(--green);color:#08130e}.totop:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
 .totop .prog{position:absolute;inset:-1px;width:54px;height:54px;transform:rotate(-90deg)}.totop .prog circle{fill:none;stroke:var(--green);stroke-width:2.5;stroke-dasharray:151;stroke-dashoffset:var(--off,151);stroke-linecap:round}
+#speaking,#top{overflow-x:clip}
 .fine{font-size:12px;line-height:1.55;color:var(--soft);margin:14px 0 0}
 .quotes{background:radial-gradient(900px 400px at 15% 0%,rgba(95,211,148,.10),transparent 60%),linear-gradient(180deg,#0d1a14,#0b1511)}
 @media(min-width:701px){.qgrid{grid-template-columns:repeat(2,minmax(0,1fr))}}@media(min-width:1100px){.qgrid{grid-template-columns:repeat(3,minmax(0,1fr))}}
@@ -849,7 +850,7 @@ a.inl{color:var(--green);font-weight:600;text-underline-offset:3px}
             <g transform="translate(70 34)"><rect width="260" height="192" rx="20" fill="#0f241c" stroke="#5fd394" stroke-width="2.5"/><text x="20" y="32" font-size="14" font-weight="800" fill="#9ff0c0">AI audit trail</text><circle cx="232" cy="27" r="6" fill="#5fd394"/>
               <g font-size="11" fill="#c9d8d1">
                 <g transform="translate(20 52)"><circle cx="10" cy="10" r="10" fill="#2f6b52"/><rect x="28" y="4" width="120" height="8" rx="4" fill="#24463a"/><text x="28" y="26" fill="#8fb3a3">Summarised invoice · Finance</text><circle cx="212" cy="10" r="9" fill="#5fd394"/><path d="M207 10l3 3 6-6" stroke="#08130e" stroke-width="2.5" fill="none" stroke-linecap="round"/></g>
-                <g transform="translate(20 94)"><circle cx="10" cy="10" r="10" fill="#2f6b52"/><rect x="28" y="4" width="100" height="8" rx="4" fill="#24463a"/><text x="28" y="26" fill="#8fb3a3">Compared contract v1 / v2 · Legal</text><circle cx="212" cy="10" r="9" fill="#5fd394"/><path d="M207 10l3 3 6-6" stroke="#08130e" stroke-width="2.5" fill="none" stroke-linecap="round"/></g>
+                <g transform="translate(20 94)"><circle cx="10" cy="10" r="10" fill="#2f6b52"/><rect x="28" y="4" width="100" height="8" rx="4" fill="#24463a"/><text x="28" y="26" fill="#8fb3a3">Compared contracts · Legal</text><circle cx="212" cy="10" r="9" fill="#5fd394"/><path d="M207 10l3 3 6-6" stroke="#08130e" stroke-width="2.5" fill="none" stroke-linecap="round"/></g>
                 <g transform="translate(20 136)"><circle cx="10" cy="10" r="10" fill="#2f6b52"/><rect x="28" y="4" width="132" height="8" rx="4" fill="#24463a"/><text x="28" y="26" fill="#8fb3a3">Translated HR policy · HR</text><circle cx="212" cy="10" r="9" fill="#5fd394"/><path d="M207 10l3 3 6-6" stroke="#08130e" stroke-width="2.5" fill="none" stroke-linecap="round"/></g>
               </g></g>
           </g>
@@ -1318,8 +1319,8 @@ if(mapCard){
   const place=k=>{if(matchMedia("(max-width:700px)").matches){mapCard.style.left=mapCard.style.top="";return}
     const pin=pins.find(p=>p.dataset.c===k).querySelector(".dot"),b=mbox.getBoundingClientRect(),r=pin.getBoundingClientRect();
     const px=r.left+r.width/2-b.left,py=r.top+r.height/2-b.top,cw=mapCard.offsetWidth,ch=mapCard.offsetHeight,g=34;
-    let x=px+g;if(x+cw>b.width-6)x=px-g-cw;x=Math.max(6,Math.min(x,b.width-cw-6));
-    let y=py-ch/2;if(k==="SG")y=py-ch-g;y=Math.max(6,Math.min(y,b.height-ch-6));
+    let x=k==="SG"?px-24:px-cw/2;x=Math.max(6,Math.min(x,b.width-cw-6));
+    let y=py+g;if(y+ch>b.height-6)y=py-g-ch-(k==="SG"?0:24);y=Math.max(6,Math.min(y,b.height-ch-6));
     mapCard.style.left=x+"px";mapCard.style.top=y+"px"};
   addEventListener("resize",()=>{const on=pins.find(p=>p.classList.contains("on"));if(on)place(on.dataset.c)});
   const esc=s=>s.replace(/[&<>]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;"}[c]));
